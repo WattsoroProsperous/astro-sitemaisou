@@ -1,6 +1,7 @@
 {
+  "trailingSlash": true,
   "rewrites": [
-    { "source": "/pharma/(.*)", "destination": "/pharma/index.html" },
-    { "source": "/doctor/(.*)", "destination": "/doctor/index.html" }
+    { "source": "/pharma/:path*", "destination": "/pharma/index.html" },
+    { "source": "/doctor/:path*", "destination": "/doctor/index.html" }
   ]
 }
