@@ -48923,7 +48923,10 @@ p=o.c
 p.toString
 A.c(p)
 r=t.p
-return A.qn(new A.W(B.br,A.Y(A.b([A.a4(A.b([A.ad(B.Np,B.o,n,20),B.ac,B.a4h],r),B.k,B.e,B.h,0),B.j8,o.RX(B.nj,"Nouvelle consultation",new A.aAe(o,a)),o.RX(B.dj,"Nouvelle ordonnance",new A.aAf(o,a)),o.RY(B.jC,"Historique des visites",o.gar2(),!1)],r),B.z,n,B.e,B.h),n),n,l,0,n,q,new A.aG(m,B.q),s)},
+r=A.b([A.a4(A.b([A.ad(B.Np,B.o,n,20),B.ac,B.a4h],r),B.k,B.e,B.h,0),B.j8,o.RX(B.nj,"Nouvelle consultation",new A.aAe(o,a))],r)
+if(o.a.c==="doctor")r.push(o.RX(B.dj,"Nouvelle ordonnance",new A.aAf(o,a)))
+r.push(o.RY(B.jC,"Historique des visites",o.gar2(),!1))
+return A.qn(new A.W(B.br,A.Y(r,B.z,n,B.e,B.h),n),n,l,0,n,q,new A.aG(m,B.q),s)},
 RY(a,b,c,d){var s,r,q,p=this,o=null,n=A.B(8),m=p.c
 m.toString
 s=(A.c(m).ax.a===B.b?B.bh:B.bi).ab(0.15)
@@ -52406,61 +52409,77 @@ s=1
 break
 case 1:return A.r(q,r)}})
 return A.t($async$y5,r)},
-n6(){var s=0,r=A.u(t.Ip),q,p=this,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2
-var $async$n6=A.v(function(a3,a4){if(a3===1)return A.q(a4,r)
-while(true)switch(s){case 0:s=3
-return A.n(p.b.k0(),$async$n6)
-case 3:a=a4
-a0=p.a
-s=4
-return A.n(a0.cP("medical").bM("prescription_templates").cQ("id, name, description, diagnosis, instructions, duration, duration_unit").dn("doctor_id",a).Of("name"),$async$n6)
-case 4:a1=a4
-a2=A.b([],t.O4)
-o=J.bD(a1),n=t.jM
-case 5:if(!o.u()){s=6
-break}m=o.gP()
+n6(){var s=0,r=A.u(t.Ip),q,p=2,o=[],n=this,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6
+var $async$n6=A.v(function(a7,a8){if(a7===1){o.push(a8)
+s=p}while(true)switch(s){case 0:a5=null
+p=4
 s=7
-return A.n(a0.cP("medical").bM("prescription_template_medications").cQ("medication_id, dosage, form, instructions, generic_substitution").dn("template_id",m.h(0,"id")),$async$n6)
-case 7:l=a4
-k=A.b([],n)
-j=J.bD(l)
-case 8:if(!j.u()){s=9
-break}i=j.gP()
-s=10
-return A.n(a0.bM("prescribed_medications").cQ("name, category").dn("id",i.h(0,"medication_id")).EP(),$async$n6)
-case 10:h=a4
-g=J.bP(i.h(0,"medication_id"))
-f=h==null
-e=f?null:h.h(0,"name")
-if(e==null)e=""
-d=i.h(0,"dosage")
-if(d==null)d=""
-c=i.h(0,"form")
-if(c==null)c=""
-b=i.h(0,"instructions")
-if(b==null)b=""
-f=f?null:h.h(0,"category")
-if(f==null)f=""
-i=i.h(0,"generic_substitution")
-k.push(new A.eQ(g,e,d,c,b,f,i==null?!0:i))
-s=8
+return A.n(n.b.k0(),$async$n6)
+case 7:a5=a8
+p=2
+s=6
 break
-case 9:j=J.bP(m.h(0,"id"))
-i=m.h(0,"name")
-if(i==null)i=""
-g=m.h(0,"diagnosis")
-if(g==null)g=""
-m.h(0,"instructions")
-f=m.h(0,"duration")
-if(f==null)f=7
-m=m.h(0,"duration_unit")
-a2.push(new A.fu(j,i,k,g,f,m==null?"Jours":m))
-s=5
-break
-case 6:q=a2
+case 4:p=3
+a6=o.pop()
+l=A.b([],t.O4)
+q=l
 s=1
 break
-case 1:return A.r(q,r)}})
+s=6
+break
+case 3:s=2
+break
+case 6:l=n.a
+s=8
+return A.n(l.cP("medical").bM("prescription_templates").cQ("id, name, description, diagnosis, instructions, duration, duration_unit").dn("doctor_id",a5).Of("name"),$async$n6)
+case 8:k=a8
+j=A.b([],t.O4)
+i=J.bD(k),h=t.jM
+case 9:if(!i.u()){s=10
+break}g=i.gP()
+s=11
+return A.n(l.cP("medical").bM("prescription_template_medications").cQ("medication_id, dosage, form, instructions, generic_substitution").dn("template_id",g.h(0,"id")),$async$n6)
+case 11:f=a8
+e=A.b([],h)
+d=J.bD(f)
+case 12:if(!d.u()){s=13
+break}c=d.gP()
+s=14
+return A.n(l.bM("prescribed_medications").cQ("name, category").dn("id",c.h(0,"medication_id")).EP(),$async$n6)
+case 14:b=a8
+a=J.bP(c.h(0,"medication_id"))
+a0=b==null
+a1=a0?null:b.h(0,"name")
+if(a1==null)a1=""
+a2=c.h(0,"dosage")
+if(a2==null)a2=""
+a3=c.h(0,"form")
+if(a3==null)a3=""
+a4=c.h(0,"instructions")
+if(a4==null)a4=""
+a0=a0?null:b.h(0,"category")
+if(a0==null)a0=""
+c=c.h(0,"generic_substitution")
+e.push(new A.eQ(a,a1,a2,a3,a4,a0,c==null?!0:c))
+s=12
+break
+case 13:d=J.bP(g.h(0,"id"))
+c=g.h(0,"name")
+if(c==null)c=""
+a=g.h(0,"diagnosis")
+if(a==null)a=""
+g.h(0,"instructions")
+a0=g.h(0,"duration")
+if(a0==null)a0=7
+g=g.h(0,"duration_unit")
+j.push(new A.fu(d,c,e,a,a0,g==null?"Jours":g))
+s=9
+break
+case 10:q=j
+s=1
+break
+case 1:return A.r(q,r)
+case 2:return A.q(o.at(-1),r)}})
 return A.t($async$n6,r)},
 zT(a){return this.a5U(a)},
 a5U(a){var s=0,r=A.u(t.Dk),q,p=this,o,n
