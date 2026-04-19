@@ -1,0 +1,137 @@
+---
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
+---
+<!-- AUTH MODAL — Sélection profil -->
+<div id="supabaseConfig" data-url={supabaseUrl} data-key={supabaseKey} class="hidden"></div>
+<div id="authOverlay" class="fixed inset-0 z-[70] bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200"></div>
+<div id="authModal" class="fixed inset-0 z-[80] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+  <div class="bg-white rounded-lg border border-[#e5e5e5] w-full max-w-[440px] max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-[#e5e5e5]">
+      <h2 id="authTitle" class="text-[16px] font-bold tracking-[-0.02em]">Choisir votre profil</h2>
+      <button onclick="closeAuth()" class="p-1 text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Sélection profil -->
+    <div id="stepProfile" class="p-6">
+      <p class="text-[13px] font-semibold text-[#6B7280] mb-5">Sélectionnez le profil qui vous correspond.</p>
+      <div class="space-y-3">
+        <button onclick="selectProfile('client')" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#3B5B32] transition-colors text-left group">
+          <div class="w-10 h-10 rounded-lg bg-[#f3f6f2] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div>
+          <div class="flex-1"><p class="text-[14px] font-bold">Patient</p><p class="text-[12px] font-semibold text-[#6B7280]">Commander des médicaments, suivre vos livraisons</p></div>
+          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </button>
+        <button onclick="selectProfile('livreur')" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#3B5B32] transition-colors text-left group">
+          <div class="w-10 h-10 rounded-lg bg-[#f3f6f2] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
+          <div class="flex-1"><p class="text-[14px] font-bold">Livreur</p><p class="text-[12px] font-semibold text-[#6B7280]">Effectuer des livraisons de médicaments</p></div>
+          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </button>
+        <a href="/pharma/" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#0A8754] transition-colors text-left group">
+          <div class="w-10 h-10 rounded-lg bg-[#e8f5ef] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#0A8754]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div>
+          <div class="flex-1"><p class="text-[14px] font-bold">Pharmacien</p><p class="text-[12px] font-semibold text-[#6B7280]">Gérer votre stock, recevoir des commandes</p></div>
+          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#0A8754]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </a>
+        <a href="/doctor/" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#0E7C86] transition-colors text-left group">
+          <div class="w-10 h-10 rounded-lg bg-[#e6f4f5] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#0E7C86]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
+          <div class="flex-1"><p class="text-[14px] font-bold">Hôpital</p><p class="text-[12px] font-semibold text-[#6B7280]">Gérer les dossiers patients et ordonnances</p></div>
+          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#0E7C86]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Patient / Livreur — Inscription uniquement -->
+    <div id="stepMobile" class="p-6 hidden">
+      <button onclick="goBack()" class="flex items-center gap-1.5 text-[12px] font-semibold text-[#6B7280] hover:text-[#0A0A0A] transition-colors mb-5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>Retour</button>
+      <div class="flex items-start gap-3 p-3 bg-[#f3f6f2] border border-[#e5e5e5] rounded-lg mb-6">
+        <svg class="w-4 h-4 text-[#3B5B32] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
+        <p class="text-[12px] font-semibold text-[#6B7280]">Créez votre compte ici, puis téléchargez l'application pour vous connecter.</p>
+      </div>
+      <form id="formMobileSignup" onsubmit="handleMobileSignup(event)" class="space-y-4">
+        <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Nom complet</label><input type="text" id="mobileSignupName" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="Jean Dupont"></div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Email</label><input type="email" id="mobileSignupEmail" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="votre@email.com"></div>
+          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Téléphone</label><input type="tel" id="mobileSignupPhone" required pattern="[0-9]{9,15}" title="9 à 15 chiffres" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="0701020304"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Mot de passe</label><input type="password" id="mobileSignupPassword" required minlength="6" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="Min. 6 car."></div>
+          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Confirmer</label><input type="password" id="mobileSignupConfirm" required minlength="6" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="••••••••"></div>
+        </div>
+        <div id="mobileSignupError" class="text-[12px] font-semibold text-[#EF4444] hidden"></div>
+        <button type="submit" id="mobileSignupBtn" class="w-full bg-[#3B5B32] text-white text-[13px] font-bold rounded-lg py-3 hover:bg-[#2d4526] transition-colors">Créer mon compte</button>
+      </form>
+      <div id="mobileSuccess" class="hidden text-center py-6">
+        <div class="w-12 h-12 rounded-full bg-[#f3f6f2] flex items-center justify-center mx-auto mb-4"><svg class="w-6 h-6 text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
+        <p class="text-[16px] font-bold mb-2">Compte créé !</p>
+        <p class="text-[13px] font-semibold text-[#6B7280] mb-6">Téléchargez l'app Mainsou et connectez-vous avec vos identifiants.</p>
+        <a href={apkUrl} download class="inline-flex items-center justify-center gap-2 bg-[#3B5B32] text-white text-[13px] font-bold rounded-lg px-6 py-3 hover:bg-[#2d4526] transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>Télécharger Mainsou (.apk)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  var _cfg=document.getElementById('supabaseConfig');
+  var SUPABASE_URL=_cfg.dataset.url;
+  var SUPABASE_KEY=_cfg.dataset.key;
+  var sb=null, selectedRole='';
+  function getSb(){if(!sb)sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);return sb;}
+
+  function openAuth(){
+    document.getElementById('authOverlay').classList.remove('opacity-0','pointer-events-none');
+    document.getElementById('authModal').classList.remove('opacity-0','pointer-events-none');
+    document.body.style.overflow='hidden';
+    goBack();
+  }
+  function closeAuth(){
+    document.getElementById('authOverlay').classList.add('opacity-0','pointer-events-none');
+    document.getElementById('authModal').classList.add('opacity-0','pointer-events-none');
+    document.body.style.overflow='';
+  }
+  document.getElementById('authOverlay').addEventListener('click',closeAuth);
+
+  function goBack(){
+    document.getElementById('stepProfile').classList.remove('hidden');
+    document.getElementById('stepMobile').classList.add('hidden');
+    document.getElementById('authTitle').textContent='Choisir votre profil';
+    var f=document.getElementById('formMobileSignup');if(f)f.reset();
+    document.getElementById('mobileSignupError').classList.add('hidden');
+    document.getElementById('mobileSuccess').classList.add('hidden');
+    document.getElementById('formMobileSignup').classList.remove('hidden');
+  }
+
+  function selectProfile(role){
+    selectedRole=role;
+    document.getElementById('stepProfile').classList.add('hidden');
+    document.getElementById('stepMobile').classList.remove('hidden');
+    document.getElementById('authTitle').textContent=(role==='client'?'Patient':'Livreur')+' — Inscription';
+  }
+
+  function showError(id,msg){var e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden');}
+
+  async function handleMobileSignup(e){
+    e.preventDefault();
+    var pw=document.getElementById('mobileSignupPassword').value;
+    var pw2=document.getElementById('mobileSignupConfirm').value;
+    if(pw.length<6){showError('mobileSignupError','Le mot de passe doit contenir au moins 6 caractères');return;}
+    if(pw!==pw2){showError('mobileSignupError','Les mots de passe ne correspondent pas');return;}
+    var phone=document.getElementById('mobileSignupPhone').value.replace(/\s/g,'');
+    if(!/^[0-9]{9,15}$/.test(phone)){showError('mobileSignupError','Numéro de téléphone invalide');return;}
+    var btn=document.getElementById('mobileSignupBtn');
+    btn.disabled=true;btn.textContent='Chargement...';
+    document.getElementById('mobileSignupError').classList.add('hidden');
+    try{
+      var res=await getSb().auth.signUp({
+        email:document.getElementById('mobileSignupEmail').value.trim(),
+        password:pw,
+        options:{data:{full_name:document.getElementById('mobileSignupName').value.trim(),phone:phone,role:selectedRole}}
+      });
+      if(res.error)throw res.error;
+      document.getElementById('formMobileSignup').classList.add('hidden');
+      document.getElementById('mobileSuccess').classList.remove('hidden');
+    }catch(err){showError('mobileSignupError',err.message||'Erreur lors de l\'inscription');}
+    finally{btn.disabled=false;btn.textContent='Créer mon compte';}
+  }
+</script>

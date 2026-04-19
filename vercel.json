@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/pharma/(.*)", "destination": "/pharma/index.html" },
+    { "source": "/doctor/(.*)", "destination": "/doctor/index.html" }
+  ]
+}

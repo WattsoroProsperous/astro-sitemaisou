@@ -1,0 +1,36 @@
+---
+const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
+---
+<!-- NAV — Linear/Ramp style -->
+<header class="nav-bar fixed inset-x-0 top-0 z-50">
+  <div class="mx-auto max-w-[1120px] px-6 flex h-14 items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5">
+      <img src="/mainsou.png" alt="Mainsou" class="h-7">
+    </a>
+    <nav class="hidden md:flex items-center gap-7">
+      <a href="#how" class="nav-link text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Comment ça marche</a>
+      <a href="#apps" class="nav-link text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Écosystème</a>
+      <a href="#features" class="nav-link text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Fonctionnalités</a>
+      <a href="#pricing" class="nav-link text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Tarifs</a>
+    </nav>
+    <div class="hidden md:flex items-center gap-3">
+      <button onclick="openAuth()" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Se connecter</button>
+      <a href={apkUrl} download class="inline-flex items-center text-[13px] font-bold text-white bg-[#0A0A0A] hover:bg-[#1a1a1a] rounded-lg px-4 py-2 transition-colors">Télécharger .apk</a>
+    </div>
+    <button id="menuBtn" class="md:hidden p-2 text-[#0A0A0A]"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg></button>
+  </div>
+</header>
+<div id="mobileOverlay" class="mob-overlay"></div>
+<div id="mobileMenu" class="mob-menu fixed inset-y-0 right-0 z-[60] w-72 bg-white border-l border-[#e5e5e5] p-6 pt-8 flex flex-col gap-1">
+  <button id="closeMenu" class="self-end p-2 text-[#0A0A0A] mb-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  <a href="#how" class="nav-link text-[15px] font-bold text-[#0A0A0A] py-2.5 border-b border-[#f0f0f0]">Comment ça marche</a>
+  <a href="#apps" class="nav-link text-[15px] font-bold text-[#0A0A0A] py-2.5 border-b border-[#f0f0f0]">Écosystème</a>
+  <a href="#features" class="nav-link text-[15px] font-bold text-[#0A0A0A] py-2.5 border-b border-[#f0f0f0]">Fonctionnalités</a>
+  <a href="#pricing" class="nav-link text-[15px] font-bold text-[#0A0A0A] py-2.5 border-b border-[#f0f0f0]">Tarifs</a>
+  <button onclick="openAuth();cl();" class="text-[15px] font-bold text-[#0A0A0A] py-2.5 border-b border-[#f0f0f0] text-left">Se connecter</button>
+  <a href={apkUrl} download class="mt-auto text-center text-[14px] font-bold text-white bg-[#0A0A0A] rounded-lg px-5 py-3">Télécharger .apk</a>
+</div>
+
+<style>
+  .nav-link.active { color: #3B5B32; }
+</style>
