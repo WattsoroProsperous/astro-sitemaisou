@@ -301,9 +301,9 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     <div class="mb-16 reveal">
       <p class="text-[11px] font-semibold text-brand tracking-[0.1em] uppercase mb-3">Tarifs</p>
       <h2 class="text-[32px] sm:text-[40px] font-bold leading-[1.08] tracking-[-0.03em]">Gratuit pour les patients.</h2>
-      <p class="text-[14px] font-semibold text-[#6B7280] mt-3">Les pharmacies financent l'écosystème via un système de crédits.</p>
+      <p class="text-[14px] font-semibold text-[#6B7280] mt-3">Un modèle SaaS + micro-crédits pour les professionnels, une marketplace para-pharmaceutique pour tous.</p>
     </div>
-    <div class="grid sm:grid-cols-3 gap-px bg-[#e5e5e5] border border-[#e5e5e5] rounded-lg overflow-hidden max-w-3xl mx-auto reveal">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#e5e5e5] border border-[#e5e5e5] rounded-lg overflow-hidden max-w-4xl mx-auto reveal">
       <!-- Patient -->
       <div class="bg-white p-7">
         <p class="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.08em] mb-6">Patient</p>
@@ -312,7 +312,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         <ul class="space-y-3 text-[13px] font-semibold text-[#6B7280] mb-8">
           <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Commande & OCR</li>
           <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Suivi temps réel</li>
-          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Historique complet</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Marketplace para-pharma</li>
         </ul>
         <a href={apkUrl} download class="block text-center text-[13px] font-semibold border border-[#e5e5e5] rounded-lg py-2.5 hover:border-[#0A0A0A] transition-colors">Télécharger l'APK</a>
       </div>
@@ -320,26 +320,41 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <div class="bg-[#FAFAFA] p-7 relative">
         <div class="absolute top-0 left-0 right-0 h-[2px] bg-brand"></div>
         <p class="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.08em] mb-6">Pharmacie</p>
-        <p class="text-[36px] font-bold tracking-[-0.03em] mb-1">Crédits</p>
-        <p class="text-[13px] text-[#9CA3AF] mb-8">Tarifs dégressifs</p>
+        <p class="text-[36px] font-bold tracking-[-0.03em] mb-1">SaaS</p>
+        <p class="text-[13px] text-[#9CA3AF] mb-8">Abonnement + crédits</p>
         <ul class="space-y-3 text-[13px] font-semibold text-[#6B7280] mb-8">
-          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Commandes & stock</li>
-          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dashboard ROI</li>
-          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Garantie de ROI</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Outils de gestion & stock</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Micro-crédits flexibles</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>ROI garanti par proximité</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Publicité marketplace</li>
         </ul>
         <button onclick="openAuth()" class="w-full text-center text-[13px] font-semibold bg-[#0A0A0A] text-white rounded-lg py-2.5 hover:bg-[#1a1a1a] transition-colors">Devenir partenaire</button>
       </div>
       <!-- Hôpital -->
       <div class="bg-white p-7">
         <p class="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.08em] mb-6">Hôpital</p>
-        <p class="text-[36px] font-bold tracking-[-0.03em] mb-1">Gratuit</p>
-        <p class="text-[13px] text-[#9CA3AF] mb-8">Sur agrément</p>
+        <p class="text-[36px] font-bold tracking-[-0.03em] mb-1">SaaS</p>
+        <p class="text-[13px] text-[#9CA3AF] mb-8">Abonnement mensuel</p>
         <ul class="space-y-3 text-[13px] font-semibold text-[#6B7280] mb-8">
-          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dossiers partagés</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dossier médical partagé</li>
           <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>E-ordonnances</li>
           <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Gestion médecins</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Services premium optionnels</li>
         </ul>
         <button onclick="openAuth()" class="w-full text-center text-[13px] font-semibold border border-[#e5e5e5] rounded-lg py-2.5 hover:border-[#0A0A0A] transition-colors">Demander un agrément</button>
+      </div>
+      <!-- Marketplace -->
+      <div class="bg-white p-7">
+        <p class="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.08em] mb-6">Marketplace</p>
+        <p class="text-[36px] font-bold tracking-[-0.03em] mb-1">Para</p>
+        <p class="text-[13px] text-[#9CA3AF] mb-8">Produits non-urgents</p>
+        <ul class="space-y-3 text-[13px] font-semibold text-[#6B7280] mb-8">
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Cosmétiques & beauté</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Alimentation nourrissons</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Pubs labos & marques</li>
+          <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Algorithme de proximité</li>
+        </ul>
+        <a href={apkUrl} download class="block text-center text-[13px] font-semibold border border-[#e5e5e5] rounded-lg py-2.5 hover:border-[#0A0A0A] transition-colors">Découvrir</a>
       </div>
     </div>
   </div>
@@ -409,27 +424,31 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <!-- FAQ 3 -->
       <details class="group bg-white">
         <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-[#FAFAFA] transition-colors">
-          <span class="text-[15px] font-semibold tracking-[-0.02em] pr-4">Comment Mainsou génère-t-il des revenus sans prendre de commission sur les médicaments ?</span>
+          <span class="text-[15px] font-semibold tracking-[-0.02em] pr-4">Quel est le modèle économique de Mainsou ?</span>
           <svg class="w-5 h-5 text-[#9CA3AF] shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
         </summary>
         <div class="px-6 pb-6 text-[13px] font-semibold text-[#6B7280] leading-[1.8] space-y-3">
-          <p>Notre modèle repose sur la diversification des sources de revenus, sans toucher aux prix réglementés :</p>
+          <p>Notre modèle repose sur plusieurs piliers complémentaires, sans toucher aux prix réglementés des médicaments :</p>
           <div class="space-y-2">
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Système de crédits :</strong> La pharmacie achète des crédits pour recevoir des commandes (ex : 100 crédits pour 10 000 FCFA). Le ROI est garanti car la valeur des commandes reçues dépasse largement le coût des crédits.</span>
+              <span><strong class="text-[#0A0A0A]">Abonnement SaaS :</strong> Hôpitaux et pharmacies souscrivent un abonnement pour accéder au dossier médical partagé et aux outils de gestion (stock, commandes, dashboard).</span>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Marketplace intégrée :</strong> Une plateforme de vente pour les produits cosmétiques, dermatologiques et de parapharmacie. Ces produits hors ordonnance offrent une plus grande liberté de marge et un canal omnicanal pour les pharmacies.</span>
+              <span><strong class="text-[#0A0A0A]">Micro-crédits flexibles :</strong> Les pharmacies achètent des crédits pour augmenter leur volume de commandes. Le ROI est garanti grâce à un flux minimal de commandes assuré par nos algorithmes de répartition.</span>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Publicité & promotions :</strong> La marketplace sert de support publicitaire pour les laboratoires et marques. Emplacements sponsorisés et campagnes ciblées génèrent des revenus additionnels.</span>
+              <span><strong class="text-[#0A0A0A]">Marketplace para-pharmaceutique :</strong> Une plateforme dédiée aux produits non-urgents (cosmétiques, beauté, alimentation nourrissons). Les pharmacies et laboratoires y font de la publicité ciblée.</span>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Zéro commission sur le réglementé :</strong> Aucune commission sur les médicaments à prix imposés. Notre rentabilité repose sur l'apport de clients, les services marketplace et les régies publicitaires.</span>
+              <span><strong class="text-[#0A0A0A]">Commissions livraison :</strong> Les frais de livraison génèrent des commissions. Les hôpitaux peuvent aussi opter pour des services premium comme la téléconsultation.</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
+              <span><strong class="text-[#0A0A0A]">Algorithme de proximité :</strong> Chaque commande est attribuée à la pharmacie la plus proche. Si elle n'a pas le produit, l'algorithme redirige vers la suivante, toujours en logique de proximité.</span>
             </div>
           </div>
         </div>
@@ -438,23 +457,27 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <!-- FAQ 4 -->
       <details class="group bg-white">
         <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-[#FAFAFA] transition-colors">
-          <span class="text-[15px] font-semibold tracking-[-0.02em] pr-4">Qu'est-ce que la marketplace Mainsou et quels avantages pour ma pharmacie ?</span>
+          <span class="text-[15px] font-semibold tracking-[-0.02em] pr-4">Qu'est-ce que la marketplace et comment fonctionne l'algorithme de proximité ?</span>
           <svg class="w-5 h-5 text-[#9CA3AF] shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
         </summary>
         <div class="px-6 pb-6 text-[13px] font-semibold text-[#6B7280] leading-[1.8] space-y-3">
-          <p>La marketplace est un canal de vente digitale intégré à l'écosystème Mainsou :</p>
+          <p>La marketplace est exclusivement dédiée aux produits para-pharmaceutiques, distincte des médicaments urgents :</p>
           <div class="space-y-2">
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Produits beauté & bien-être :</strong> Vendez vos produits cosmétiques, dermatologiques et de parapharmacie en ligne, directement depuis votre stock existant.</span>
+              <span><strong class="text-[#0A0A0A]">Produits non-urgents uniquement :</strong> Cosmétiques, produits de beauté, dermatologie, alimentation pour nourrissons et bien-être. Aucun médicament d'urgence sur la marketplace.</span>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Écouler les stocks :</strong> Canal idéal pour les produits à rotation lente ou pour capter une clientèle digitale sur des segments à forte valeur ajoutée.</span>
+              <span><strong class="text-[#0A0A0A]">Algorithme de proximité :</strong> Chaque commande est automatiquement attribuée à la pharmacie la plus proche du client. Si elle n'a pas le produit, l'algorithme redirige vers la suivante, toujours en respectant la logique de proximité.</span>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-              <span><strong class="text-[#0A0A0A]">Visibilité accrue :</strong> Les laboratoires et marques sponsorisent des emplacements sur la marketplace, ce qui augmente le trafic et la visibilité de votre pharmacie.</span>
+              <span><strong class="text-[#0A0A0A]">Publicité ciblée :</strong> Les pharmacies et laboratoires font la promotion de leurs produits directement sur la marketplace, avec des emplacements sponsorisés et des campagnes ciblées par zone géographique.</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-md bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
+              <span><strong class="text-[#0A0A0A]">ROI garanti :</strong> Nous nous engageons à garantir un flux minimal de commandes pour chaque pharmacie partenaire, en ajustant les algorithmes de répartition pour assurer la rentabilité.</span>
             </div>
           </div>
         </div>
