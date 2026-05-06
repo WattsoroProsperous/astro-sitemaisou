@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="404 — Page introuvable | Mainsou">
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0a;padding:24px;">
+  <div style="text-align:center;max-width:480px;">
+
+    <!-- Logo -->
+    <a href="/" style="display:inline-block;margin-bottom:48px;">
+      <img src="/mainsou.png" alt="Mainsou" style="height:32px;filter:brightness(0) invert(1);opacity:0.6;">
+    </a>
+
+    <!-- 404 number -->
+    <p style="font-size:clamp(80px,15vw,140px);font-weight:800;line-height:1;letter-spacing:-0.05em;background:linear-gradient(135deg,#3B5B32,#7bc86c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:24px;">
+      404
+    </p>
+
+    <!-- Message -->
+    <h1 style="font-size:clamp(24px,4vw,36px);font-weight:700;color:#ffffff;letter-spacing:-0.03em;margin-bottom:12px;">
+      Page introuvable
+    </h1>
+    <p style="font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:40px;">
+      La page que vous cherchez n'existe pas ou a été déplacée.
+    </p>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:#191919;background:#ffffff;border-radius:12px;padding:14px 24px;transition:background 0.15s;text-decoration:none;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        Retour à l'accueil
+      </a>
+      <a href="mailto:contact@mainsou.app" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:500;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 24px;transition:all 0.15s;text-decoration:none;">
+        Nous contacter
+      </a>
+    </div>
+  </div>
+</div>
+</Layout>

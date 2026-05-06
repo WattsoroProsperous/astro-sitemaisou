@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx uipro:*)",
+      "Bash(npx astro:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

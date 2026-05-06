@@ -1,44 +1,80 @@
-<!-- FOOTER — Linear/Ramp style -->
-<footer class="border-t border-[#e5e5e5] bg-white">
-  <div class="mx-auto max-w-[1120px] px-6 py-16">
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
-      <div class="col-span-2 md:col-span-1">
-        <img src="/mainsou.png" alt="Mainsou" class="h-7 mb-4">
-        <p class="text-[13px] font-bold text-[#0A0A0A] leading-relaxed">L'écosystème santé<br>pour l'Afrique.</p>
+---
+const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
+---
+<footer class="bg-[#191919]">
+  <div class="mx-auto max-w-[1080px] px-6 pt-20 pb-10">
+
+    <!-- Top: CTA banner -->
+    <div class="rounded-2xl bg-gradient-to-br from-[#243d1e] to-[#1a2b17] p-10 sm:p-14 mb-16 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.07]" style="background-image:url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      <div class="relative z-10 flex flex-col sm:flex-row items-center gap-8">
+        <div class="flex-1">
+          <h3 class="text-[28px] sm:text-[32px] font-bold text-white tracking-tight leading-tight mb-3">Rejoignez l'écosystème Mainsou</h3>
+          <p class="text-[16px] text-white/80 leading-relaxed max-w-md">Téléchargez l'app, créez votre compte et accédez à vos médicaments en quelques minutes.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a href={apkUrl} download class="inline-flex items-center justify-center gap-2 text-[14px] font-medium bg-white text-[#191919] hover:bg-white/90 rounded-lg px-5 py-3 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            Télécharger l'APK
+          </a>
+          <button onclick="openAuth()" class="inline-flex items-center justify-center gap-2 text-[14px] font-medium text-white hover:text-white border border-white/30 hover:border-white/50 rounded-lg px-5 py-3 transition-all">
+            Créer un compte
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-8 mb-14">
+      <div class="col-span-2 sm:col-span-4 md:col-span-1 mb-4 md:mb-0">
+        <img src="/mainsou.png" alt="Mainsou" class="h-6 mb-4 brightness-0 invert">
+        <p class="text-[14px] text-white/70 leading-relaxed">L'écosystème santé<br>pour l'Afrique.</p>
       </div>
       <div>
-        <p class="text-[11px] font-bold text-[#9CA3AF] uppercase tracking-[0.08em] mb-4">Produit</p>
-        <ul class="space-y-2.5">
-          <li><a href="#features" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Fonctionnalités</a></li>
-          <li><a href="#pricing" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Tarifs</a></li>
-          <li><a href="#download" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Télécharger</a></li>
+        <p class="text-[11px] font-semibold text-white/60 uppercase tracking-[0.08em] mb-4">Produit</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#features" class="text-[14px] text-white hover:text-white/70 transition-colors">Fonctionnalités</a></li>
+          <li><a href="#pricing" class="text-[14px] text-white hover:text-white/70 transition-colors">Tarifs</a></li>
+          <li><a href="#download" class="text-[14px] text-white hover:text-white/70 transition-colors">Télécharger</a></li>
         </ul>
       </div>
       <div>
-        <p class="text-[11px] font-bold text-[#9CA3AF] uppercase tracking-[0.08em] mb-4">Entreprise</p>
-        <ul class="space-y-2.5">
-          <li><a href="#" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">À propos</a></li>
-          <li><a href="mailto:contact@mainsou.app" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Contact</a></li>
+        <p class="text-[11px] font-semibold text-white/60 uppercase tracking-[0.08em] mb-4">Entreprise</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="text-[14px] text-white hover:text-white/70 transition-colors">À propos</a></li>
+          <li><a href="mailto:contact@mainsou.app" class="text-[14px] text-white hover:text-white/70 transition-colors">Contact</a></li>
         </ul>
       </div>
       <div>
-        <p class="text-[11px] font-bold text-[#9CA3AF] uppercase tracking-[0.08em] mb-4">Légal</p>
-        <ul class="space-y-2.5">
-          <li><a href="#" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">CGU</a></li>
-          <li><a href="#" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">Confidentialité</a></li>
+        <p class="text-[11px] font-semibold text-white/60 uppercase tracking-[0.08em] mb-4">Légal</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="text-[14px] text-white hover:text-white/70 transition-colors">CGU</a></li>
+          <li><a href="#" class="text-[14px] text-white hover:text-white/70 transition-colors">Confidentialité</a></li>
         </ul>
       </div>
       <div>
-        <p class="text-[11px] font-bold text-[#9CA3AF] uppercase tracking-[0.08em] mb-4">Social</p>
-        <ul class="space-y-2.5">
-          <li><a href="#" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">X / Twitter</a></li>
-          <li><a href="#" class="text-[13px] font-bold text-[#0A0A0A] hover:text-brand transition-colors">LinkedIn</a></li>
+        <p class="text-[11px] font-semibold text-white/60 uppercase tracking-[0.08em] mb-4">Social</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="inline-flex items-center gap-2 text-[14px] text-white hover:text-white/70 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </a></li>
+          <li><a href="#" class="inline-flex items-center gap-2 text-[14px] text-white hover:text-white/70 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a></li>
         </ul>
       </div>
     </div>
-    <div class="border-t border-[#e5e5e5] pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p class="text-[12px] font-bold text-[#9CA3AF]">&copy; 2026 Mainsou. Tous droits réservés.</p>
-      <p class="text-[12px] font-bold text-[#9CA3AF]">Conçu en Afrique.</p>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/20 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-[13px] text-white/70">&copy; 2026 Mainsou. Tous droits réservés.</p>
+      <div class="flex items-center gap-1.5 text-[13px] text-white/70">
+        <span>Conçu avec</span>
+        <svg class="w-3.5 h-3.5 text-[#4a7340]" fill="currentColor" viewBox="0 0 24 24"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/></svg>
+        <span>en Afrique</span>
+      </div>
     </div>
   </div>
 </footer>

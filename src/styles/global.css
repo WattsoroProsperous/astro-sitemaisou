@@ -1,1 +1,238 @@
-/* Empty - using Tailwind CDN instead */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --color-text: #191919;
+  --color-text-secondary: #787774;
+  --color-text-tertiary: #acaba9;
+
+  --color-brand: #3B5B32;
+  --color-brand-light: #4a7340;
+  --color-gold: #D4930A;
+
+  --color-forest-50: #f3f6f2;
+  --color-forest-100: #e4ebe2;
+  --color-forest-600: #3B5B32;
+  --color-forest-700: #2d4526;
+  --color-forest-900: #1a2b17;
+
+  --color-accent-orange: #FF8A33;
+  --color-accent-violet: #AD6DED;
+  --color-accent-teal: #2A9D99;
+  --color-accent-rose: #FF83DD;
+  --color-accent-blue: #529CCA;
+
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F7F7F5;
+  --color-border: #e3e2e0;
+  --color-muted: #787774;
+  --color-subtle: #acaba9;
+}
+
+/* ── Base ── */
+@layer base {
+  *, *::before, *::after { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color: #191919;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::marker { display: none; }
+}
+
+/* ── Components ── */
+@layer components {
+
+  /* ── Typography — all responsive with clamp() ── */
+  .heading-hero {
+    font-size: clamp(44px, 9vw, 92px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+  }
+  .heading-section {
+    font-size: clamp(32px, 5.5vw, 60px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #191919;
+  }
+  .heading-card {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #191919;
+  }
+  .body-large {
+    font-size: clamp(17px, 1.8vw, 20px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: #787774;
+  }
+  .body-default {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: #787774;
+  }
+  .body-small {
+    font-size: clamp(14px, 1.3vw, 16px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: #787774;
+  }
+  .caption {
+    font-size: clamp(11px, 1vw, 13px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #acaba9;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(14px, 1.3vw, 16px);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Nav — 60px ── */
+  .nav-bar {
+    height: 60px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: box-shadow 0.2s ease;
+  }
+  .nav-bar.scrolled {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  /* ── Hero ── */
+  .hero-section {
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.65) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Cards ── */
+  .notion-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: rgba(15,15,15,0.04) 0px 2px 6px, rgba(15,15,15,0.02) 0px 0px 0px 1px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .notion-card:hover {
+    box-shadow: rgba(15,15,15,0.08) 0px 8px 24px, rgba(15,15,15,0.04) 0px 0px 0px 1px;
+    transform: translateY(-1px);
+  }
+
+  /* ── Accent backgrounds ── */
+  .bg-accent-orange { background: #FFF3E8; }
+  .bg-accent-violet { background: #F3ECFF; }
+  .bg-accent-teal { background: #E8F6F5; }
+  .bg-accent-rose { background: #FFF0FA; }
+  .bg-accent-blue { background: #EBF3FA; }
+  .bg-accent-green { background: #f0f5ee; }
+
+  /* ── Buttons — bigger, more imposing ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #191919;
+    color: #FFFFFF;
+    transition: background 0.15s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background: #333; }
+
+  .btn-primary-large {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 16px 28px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    color: #191919;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary-large:hover { background: #f0f0ef; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 16px 28px;
+    border-radius: 12px;
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+
+  /* ── Mobile menu ── */
+  .mob-menu { transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+  .mob-menu.open { transform: none; }
+  .mob-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.15); z-index: 55; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+  .mob-overlay.open { opacity: 1; pointer-events: auto; }
+
+  /* ── Marquee ── */
+  .marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+  .marquee-content { display: flex; align-items: center; flex-shrink: 0; }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  /* ── Pulse dot ── */
+  .pulse-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #3B5B32;
+    animation: pulse 2s infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59,91,50,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(59,91,50,0); }
+}
