@@ -5,7 +5,21 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   <div class="mx-auto max-w-[1200px] px-6 lg:px-10 pt-24 pb-12">
 
     <!-- Top: CTA banner -->
-    <div class="rounded-3xl p-10 sm:p-16 mb-20 relative overflow-hidden" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);">
+    <div class="rounded-3xl p-10 sm:p-16 mb-20 relative overflow-hidden" style="background:linear-gradient(160deg, #0d3315 0%, #092810 30%, #05190a 60%, #0d3315 100%);border:1px solid rgba(255,255,255,0.08);">
+      <!-- Stars pattern -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="stars" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M10 2l1.5 3 3.5.5-2.5 2.5.5 3.5L10 9.5 7 11.5l.5-3.5L5 5.5 8.5 5z" fill="rgba(255,255,255,0.5)" />
+            <path d="M55 38l1 2 2.5.3-1.8 1.8.4 2.4-2.1-1.1-2.1 1.1.4-2.4-1.8-1.8 2.5-.3z" fill="rgba(0,0,0,0.45)" />
+            <path d="M35 58l1.2 2.5 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="rgba(255,255,255,0.4)" />
+            <path d="M65 12l.8 1.6 1.8.3-1.3 1.3.3 1.8-1.6-.8-1.6.8.3-1.8-1.3-1.3 1.8-.3z" fill="rgba(0,0,0,0.4)" />
+            <path d="M25 25l1 2 2 .3-1.5 1.5.3 2-1.8-1-1.8 1 .3-2-1.5-1.5 2-.3z" fill="rgba(255,255,255,0.35)" />
+            <path d="M70 65l.6 1.2 1.4.2-1 1 .2 1.4-1.2-.6-1.2.6.2-1.4-1-1 1.4-.2z" fill="rgba(0,0,0,0.35)" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#stars)" />
+      </svg>
       <div class="relative z-10 flex flex-col sm:flex-row items-center gap-8">
         <div class="flex-1">
           <h3 class="text-[32px] sm:text-[40px] font-extrabold text-white tracking-tight leading-[1.05] mb-4">Rejoignez l'écosystème<br>Mainsou</h3>
