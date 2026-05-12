@@ -21,24 +21,26 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   <div class="hero-center">
     <HeroText client:load apkUrl={apkUrl} />
   </div>
+
+  </div>
 </section>
 
 <!-- ===== MARQUEE ===== -->
-<div class="overflow-hidden relative" style="padding:20px 0;background:#111110;">
+<div class="overflow-hidden relative" style="padding:24px 0;background:linear-gradient(90deg, rgba(135,206,250,0.08) 0%, rgba(100,180,255,0.25) 20%, rgba(255,255,255,0.1) 40%, rgba(135,206,250,0.3) 55%, rgba(255,255,255,0.08) 70%, rgba(100,180,255,0.2) 85%, rgba(173,216,230,0.12) 100%);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-top:1px solid rgba(255,255,255,0.4);border-bottom:1px solid rgba(135,206,250,0.25);">
   <div class="marquee-track relative z-10">
     <div class="marquee-content">
       {['Ordonnances numériques', 'OCR intelligent', 'Géolocalisation', 'Livraison GPS', 'Chiffrement E2E', 'Dossier médical partagé'].map(text => (
         <>
-          <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">{text}</span>
-          <span style="margin:0 36px;color:rgba(255,255,255,0.15);">&#x2022;</span>
+          <span style="font-size:18px;font-weight:700;color:#191919;letter-spacing:0.08em;text-transform:uppercase;">{text}</span>
+          <span style="margin:0 40px;color:rgba(0,0,0,0.2);">&#x2022;</span>
         </>
       ))}
     </div>
     <div class="marquee-content" aria-hidden="true">
       {['Ordonnances numériques', 'OCR intelligent', 'Géolocalisation', 'Livraison GPS', 'Chiffrement E2E', 'Dossier médical partagé'].map(text => (
         <>
-          <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">{text}</span>
-          <span style="margin:0 36px;color:rgba(255,255,255,0.15);">&#x2022;</span>
+          <span style="font-size:18px;font-weight:700;color:#191919;letter-spacing:0.08em;text-transform:uppercase;">{text}</span>
+          <span style="margin:0 40px;color:rgba(0,0,0,0.2);">&#x2022;</span>
         </>
       ))}
     </div>

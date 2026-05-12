@@ -19,7 +19,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 
     <!-- Desktop actions -->
     <div class="hidden md:flex items-center gap-3 shrink-0">
-      <button onclick="openAuth()" class="text-[15px] font-bold text-[#1a1a1a] hover:text-[#000] transition-colors rounded-xl px-5 py-2.5 hover:bg-[#f5f5f3]">Se connecter</button>
+      <button onclick="openAuth()" class="nav-login text-[15px] font-bold text-[#1a1a1a] hover:text-[#000] transition-colors rounded-xl px-5 py-2.5 hover:bg-[#f5f5f3]">Se connecter</button>
       <a href={apkUrl} download class="inline-flex items-center gap-2.5 text-[15px] font-semibold text-white bg-[#2a7a35] hover:bg-[#349640] rounded-xl px-6 py-3 transition-colors">
         <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
         Télécharger
@@ -27,7 +27,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     </div>
 
     <!-- Mobile hamburger -->
-    <button id="menuBtn" class="md:hidden p-2.5 -mr-2 text-[#1a1a1a] hover:bg-[#f5f5f3] rounded-xl transition-colors">
+    <button id="menuBtn" class="nav-hamburger md:hidden p-2.5 -mr-2 text-[#1a1a1a] hover:bg-[#f5f5f3] rounded-xl transition-colors">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
     </button>
   </div>
@@ -83,10 +83,19 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 </div>
 
 <script is:inline>
-  var nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 10) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
+  document.addEventListener('DOMContentLoaded', function() {
+    var nav = document.getElementById('mainNav');
+    var hero = document.querySelector('.hero-section');
+    function updateNav() {
+      var heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 0;
+      if (window.scrollY > heroBottom - nav.offsetHeight) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    updateNav();
+    window.addEventListener('scroll', updateNav);
   });
 </script>
 
@@ -95,7 +104,15 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     border-radius: 14px;
     background: rgba(0, 0, 0, 0.04);
     backdrop-filter: blur(8px);
+    border: 1px solid transparent;
     padding: 4px;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-tabs-container {
+    background: linear-gradient(90deg, rgba(135,206,250,0.1) 0%, rgba(100,180,255,0.2) 30%, rgba(255,255,255,0.08) 50%, rgba(135,206,250,0.25) 70%, rgba(173,216,230,0.1) 100%);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-color: rgba(135,206,250,0.2);
   }
   .nav-tab {
     position: relative;
@@ -104,17 +121,40 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     color: #1a1a1a;
     padding: 10px 20px;
     border-radius: 10px;
-    transition: opacity 0.2s ease;
+    transition: color 0.4s ease, background 0.4s ease;
     white-space: nowrap;
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-tab {
+    color: #ffffff;
+    font-weight: 700;
   }
   .nav-tab:hover {
     color: #000;
     background: rgba(255, 255, 255, 0.6);
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-tab:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-login {
+    color: #ffffff !important;
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-login:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-hamburger {
+    color: #ffffff;
   }
   .nav-link.active.nav-tab {
     color: #ffffff;
     font-weight: 700;
     background: linear-gradient(160deg, #1a2230 0%, #212a3a 30%, #262f40 55%, #1c2534 100%);
     box-shadow: 0 2px 8px rgba(26, 34, 48, 0.3);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+  }
+  :global(.nav-bar:not(.scrolled)) .nav-link.active.nav-tab {
+    background: #2a7a35;
+    box-shadow: 0 2px 8px rgba(42, 122, 53, 0.4);
   }
 </style>

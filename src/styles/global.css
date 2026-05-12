@@ -131,16 +131,18 @@
   .nav-bar {
     font-family: var(--font-heading);
     height: 88px;
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(24px) saturate(1.4);
-    -webkit-backdrop-filter: blur(24px) saturate(1.4);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s ease;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
   }
   .nav-bar.scrolled {
-    background: rgba(255,255,255,0.92);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    border-bottom-color: rgba(0,0,0,0.05);
+    background: linear-gradient(90deg, rgba(135,206,250,0.08) 0%, rgba(100,180,255,0.25) 20%, rgba(255,255,255,0.1) 40%, rgba(135,206,250,0.3) 55%, rgba(255,255,255,0.08) 70%, rgba(100,180,255,0.2) 85%, rgba(173,216,230,0.12) 100%);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow: 0 1px 0 rgba(100,180,255,0.1);
+    border-bottom-color: rgba(135,206,250,0.2);
   }
 
   /* ── Hero ── */
@@ -365,7 +367,9 @@
 
   /* Tinted — slightly green-tinted warm surface */
   .s-tinted {
-    background: linear-gradient(180deg, #f6f8f5 0%, #f0f3ee 100%);
+    background: linear-gradient(90deg, rgba(135,206,250,0.08) 0%, rgba(100,180,255,0.25) 20%, rgba(255,255,255,0.1) 40%, rgba(135,206,250,0.3) 55%, rgba(255,255,255,0.08) 70%, rgba(100,180,255,0.2) 85%, rgba(173,216,230,0.12) 100%);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     position: relative;
     overflow: hidden;
   }
@@ -377,7 +381,7 @@
     transform: translateX(-50%);
     width: 70%;
     height: 40%;
-    background: radial-gradient(ellipse at center, rgba(42,122,53,0.06) 0%, transparent 55%);
+    background: radial-gradient(ellipse at center, rgba(100,180,255,0.12) 0%, transparent 55%);
     pointer-events: none;
     filter: blur(100px);
   }
