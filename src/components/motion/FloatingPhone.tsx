@@ -15,7 +15,7 @@ export default function FloatingPhone() {
         <img
           src="/mainsou-catalogue.png"
           alt="Mainsou App"
-          className="w-[240px] sm:w-[280px] rounded-3xl shadow-2xl shadow-black/30 ring-1 ring-white/10"
+          className="w-[260px] sm:w-[300px] lg:w-[320px] rounded-3xl shadow-2xl shadow-black/40 ring-1 ring-white/10"
         />
       </motion.div>
     </motion.div>

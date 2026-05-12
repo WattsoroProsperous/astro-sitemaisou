@@ -1,23 +1,22 @@
 ---
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 ---
-<footer class="bg-[#191919]">
-  <div class="mx-auto max-w-[1080px] px-6 pt-20 pb-10">
+<footer style="font-family:'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;background:linear-gradient(160deg, #1a2230 0%, #212a3a 30%, #262f40 55%, #1c2534 100%);">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-10 pt-24 pb-12">
 
     <!-- Top: CTA banner -->
-    <div class="rounded-2xl bg-gradient-to-br from-[#243d1e] to-[#1a2b17] p-10 sm:p-14 mb-16 relative overflow-hidden">
-      <div class="absolute inset-0 opacity-[0.07]" style="background-image:url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="rounded-3xl p-10 sm:p-16 mb-20 relative overflow-hidden" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);">
       <div class="relative z-10 flex flex-col sm:flex-row items-center gap-8">
         <div class="flex-1">
-          <h3 class="text-[28px] sm:text-[32px] font-bold text-white tracking-tight leading-tight mb-3">Rejoignez l'écosystème Mainsou</h3>
-          <p class="text-[16px] text-white/80 leading-relaxed max-w-md">Téléchargez l'app, créez votre compte et accédez à vos médicaments en quelques minutes.</p>
+          <h3 class="text-[32px] sm:text-[40px] font-extrabold text-white tracking-tight leading-[1.05] mb-4">Rejoignez l'écosystème<br>Mainsou</h3>
+          <p class="text-[17px] text-white/75 leading-relaxed max-w-md">Téléchargez l'app, créez votre compte et accédez à vos médicaments en quelques minutes.</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-          <a href={apkUrl} download class="inline-flex items-center justify-center gap-2 text-[14px] font-medium bg-white text-[#191919] hover:bg-white/90 rounded-lg px-5 py-3 transition-colors">
+          <a href={apkUrl} download class="inline-flex items-center justify-center gap-2 text-[15px] font-semibold bg-white text-[#1a1a1a] hover:bg-white/90 rounded-lg px-6 py-3.5 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
             Télécharger l'APK
           </a>
-          <button onclick="openAuth()" class="inline-flex items-center justify-center gap-2 text-[14px] font-medium text-white hover:text-white border border-white/30 hover:border-white/50 rounded-lg px-5 py-3 transition-all">
+          <button onclick="openAuth()" class="inline-flex items-center justify-center gap-2 text-[15px] font-medium text-white hover:text-white border border-white/25 hover:border-white/45 rounded-lg px-6 py-3.5 transition-all">
             Créer un compte
           </button>
         </div>
@@ -25,7 +24,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     </div>
 
     <!-- Links grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-8 mb-14">
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-10 mb-16">
       <div class="col-span-2 sm:col-span-4 md:col-span-1 mb-4 md:mb-0">
         <img src="/mainsou.png" alt="Mainsou" class="h-6 mb-4 brightness-0 invert">
         <p class="text-[14px] text-white/70 leading-relaxed">L'écosystème santé<br>pour l'Afrique.</p>

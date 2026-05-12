@@ -2,33 +2,33 @@
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 ---
 <header id="mainNav" class="nav-bar fixed inset-x-0 top-0 z-50 flex items-center">
-  <div class="mx-auto w-full max-w-[1080px] px-6 flex items-center justify-between">
+  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2.5 shrink-0">
-      <img src="/mainsou.png" alt="Mainsou" class="h-7">
+    <a href="/" class="flex items-center gap-3 shrink-0">
+      <img src="/mainsou.png" alt="Mainsou" class="h-10 sm:h-11">
     </a>
 
-    <!-- Desktop nav — pill container centré -->
-    <nav class="hidden md:flex items-center gap-1 rounded-full bg-[#f7f7f5] px-1.5 py-1">
-      <a href="#how" class="nav-link text-[13px] font-medium text-[#787774] hover:text-[#191919] hover:bg-white rounded-full px-3.5 py-1.5 transition-all">Comment ça marche</a>
-      <a href="#apps" class="nav-link text-[13px] font-medium text-[#787774] hover:text-[#191919] hover:bg-white rounded-full px-3.5 py-1.5 transition-all">Écosystème</a>
-      <a href="#features" class="nav-link text-[13px] font-medium text-[#787774] hover:text-[#191919] hover:bg-white rounded-full px-3.5 py-1.5 transition-all">Fonctionnalités</a>
-      <a href="#pricing" class="nav-link text-[13px] font-medium text-[#787774] hover:text-[#191919] hover:bg-white rounded-full px-3.5 py-1.5 transition-all">Tarifs</a>
-      <a href="#faq" class="nav-link text-[13px] font-medium text-[#787774] hover:text-[#191919] hover:bg-white rounded-full px-3.5 py-1.5 transition-all">FAQ</a>
+    <!-- Desktop nav — clean segmented tabs -->
+    <nav class="hidden md:flex items-center gap-0.5 nav-tabs-container">
+      <a href="#how" class="nav-link nav-tab">Comment ça marche</a>
+      <a href="#apps" class="nav-link nav-tab">Écosystème</a>
+      <a href="#features" class="nav-link nav-tab">Fonctionnalités</a>
+      <a href="#pricing" class="nav-link nav-tab">Tarifs</a>
+      <a href="#faq" class="nav-link nav-tab">FAQ</a>
     </nav>
 
     <!-- Desktop actions -->
-    <div class="hidden md:flex items-center gap-2 shrink-0">
-      <button onclick="openAuth()" class="text-[13px] font-medium text-[#787774] hover:text-[#191919] transition-colors rounded-lg px-3 py-1.5 hover:bg-[#f7f7f5]">Se connecter</button>
-      <a href={apkUrl} download class="inline-flex items-center gap-2 text-[13px] font-medium text-white bg-[#191919] hover:bg-[#2c2c2c] rounded-lg px-4 py-2 transition-colors">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+    <div class="hidden md:flex items-center gap-3 shrink-0">
+      <button onclick="openAuth()" class="text-[15px] font-bold text-[#1a1a1a] hover:text-[#000] transition-colors rounded-xl px-5 py-2.5 hover:bg-[#f5f5f3]">Se connecter</button>
+      <a href={apkUrl} download class="inline-flex items-center gap-2.5 text-[15px] font-semibold text-white bg-[#2a7a35] hover:bg-[#349640] rounded-xl px-6 py-3 transition-colors">
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
         Télécharger
       </a>
     </div>
 
     <!-- Mobile hamburger -->
-    <button id="menuBtn" class="md:hidden p-2 -mr-2 text-[#191919] hover:bg-[#f7f7f5] rounded-lg transition-colors">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
+    <button id="menuBtn" class="md:hidden p-2.5 -mr-2 text-[#1a1a1a] hover:bg-[#f5f5f3] rounded-xl transition-colors">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
     </button>
   </div>
 </header>
@@ -39,43 +39,43 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 <!-- Mobile drawer -->
 <div id="mobileMenu" class="mob-menu fixed inset-y-0 right-0 z-[60] w-[300px] bg-white flex flex-col shadow-2xl">
   <!-- Drawer header -->
-  <div class="flex items-center justify-between px-6 py-4 border-b border-[#e3e2e0]">
-    <img src="/mainsou.png" alt="Mainsou" class="h-6">
-    <button id="closeMenu" class="p-1.5 text-[#787774] hover:text-[#191919] hover:bg-[#f7f7f5] rounded-lg transition-colors">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  <div class="flex items-center justify-between px-6 py-5 border-b border-[#e3e2e0]">
+    <img src="/mainsou.png" alt="Mainsou" class="h-8">
+    <button id="closeMenu" class="p-2 text-[#6b6b6b] hover:text-[#1a1a1a] hover:bg-[#f5f5f3] rounded-xl transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
   <!-- Drawer links -->
-  <div class="flex-1 overflow-y-auto px-4 py-3">
-    <a href="#how" class="nav-link flex items-center gap-3 text-[15px] font-medium text-[#191919] px-3 py-3 rounded-lg hover:bg-[#f7f7f5] transition-colors">
-      <svg class="w-4 h-4 text-[#acaba9]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+  <div class="flex-1 overflow-y-auto px-4 py-4">
+    <a href="#how" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
+      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
       Comment ça marche
     </a>
-    <a href="#apps" class="nav-link flex items-center gap-3 text-[15px] font-medium text-[#191919] px-3 py-3 rounded-lg hover:bg-[#f7f7f5] transition-colors">
-      <svg class="w-4 h-4 text-[#acaba9]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5z"/></svg>
+    <a href="#apps" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
+      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5z"/></svg>
       Écosystème
     </a>
-    <a href="#features" class="nav-link flex items-center gap-3 text-[15px] font-medium text-[#191919] px-3 py-3 rounded-lg hover:bg-[#f7f7f5] transition-colors">
-      <svg class="w-4 h-4 text-[#acaba9]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+    <a href="#features" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
+      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
       Fonctionnalités
     </a>
-    <a href="#pricing" class="nav-link flex items-center gap-3 text-[15px] font-medium text-[#191919] px-3 py-3 rounded-lg hover:bg-[#f7f7f5] transition-colors">
-      <svg class="w-4 h-4 text-[#acaba9]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75"/></svg>
+    <a href="#pricing" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
+      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75"/></svg>
       Tarifs
     </a>
-    <a href="#faq" class="nav-link flex items-center gap-3 text-[15px] font-medium text-[#191919] px-3 py-3 rounded-lg hover:bg-[#f7f7f5] transition-colors">
-      <svg class="w-4 h-4 text-[#acaba9]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
+    <a href="#faq" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
+      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
       FAQ
     </a>
-    <div class="my-2 mx-3 h-px bg-[#e3e2e0]"></div>
-    <button onclick="openAuth();cl();" class="flex items-center gap-3 text-[15px] font-medium text-[#191919] px-3 py-3 rounded-lg hover:bg-[#f7f7f5] transition-colors w-full text-left">
-      <svg class="w-4 h-4 text-[#acaba9]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+    <div class="my-3 mx-4 h-px bg-[#e3e2e0]"></div>
+    <button onclick="openAuth();cl();" class="flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors w-full text-left">
+      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
       Se connecter
     </button>
   </div>
   <!-- Drawer footer -->
   <div class="px-4 pb-6 pt-2">
-    <a href={apkUrl} download class="flex items-center justify-center gap-2 w-full text-[14px] font-medium text-white bg-[#191919] hover:bg-[#2c2c2c] rounded-lg px-4 py-3 transition-colors">
+    <a href={apkUrl} download class="flex items-center justify-center gap-2 w-full text-[15px] font-semibold text-white bg-[#2a7a35] hover:bg-[#349640] rounded-xl px-4 py-3.5 transition-colors">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
       Télécharger l'APK
     </a>
@@ -91,8 +91,30 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 </script>
 
 <style>
-  .nav-link.active {
-    color: #191919;
-    background: #FFFFFF;
+  .nav-tabs-container {
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+    padding: 4px;
+  }
+  .nav-tab {
+    position: relative;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+  }
+  .nav-tab:hover {
+    color: #000;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .nav-link.active.nav-tab {
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(160deg, #1a2230 0%, #212a3a 30%, #262f40 55%, #1c2534 100%);
+    box-shadow: 0 2px 8px rgba(26, 34, 48, 0.3);
   }
 </style>
