@@ -233,14 +233,48 @@
 
   /* ── Cards ── */
   .notion-card {
-    background: #FFFFFF;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255,255,255,0.35);
     border-radius: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.08);
     transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
   .notion-card:hover {
-    box-shadow: 0 16px 40px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
+    background: rgba(255,255,255,0.18);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 16px 40px rgba(0,0,0,0.1);
     transform: translateY(-2px);
+  }
+
+  /* ── Ramp card — clean elevated card ── */
+  .ramp-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+  }
+  .ramp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--ramp-accent, #2a7a35);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .ramp-card:hover {
+    border-color: rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.04);
+    transform: translateY(-3px);
+  }
+  .ramp-card:hover::before {
+    opacity: 1;
   }
 
   /* ── Accent backgrounds ── */

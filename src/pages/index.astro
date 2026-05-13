@@ -210,7 +210,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 </section>
 
 <!-- ===== PRICING — white ===== -->
-<section id="pricing" style="padding:140px 0;">
+<section id="pricing" style="padding:140px 0;background:linear-gradient(160deg, #e8ecef 0%, #dfe4e8 30%, #d5dce2 60%, #e0e5ea 100%);">
   <div class="mx-auto max-w-[1200px] px-6 lg:px-10">
     <FadeIn client:visible>
       <div style="margin-bottom:56px;">
@@ -226,53 +226,53 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-[1040px]">
         <!-- Patient -->
         <div class="notion-card" style="padding:32px;">
-          <p class="caption" style="margin-bottom:24px;">Patient</p>
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Patient</p>
           <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">Gratuit</p>
-          <p class="body-small" style="margin-bottom:28px;">Pour toujours</p>
+          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Pour toujours</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Commande & OCR</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Suivi temps réel</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Marketplace para-pharma</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Commande & OCR</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Suivi temps réel</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Marketplace para-pharma</li>
           </ul>
           <a href={apkUrl} download style="display:block;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">Télécharger</a>
         </div>
         <!-- Pharmacie -->
         <div class="notion-card relative" style="padding:32px;box-shadow:0 0 0 2px rgba(42,122,53,0.15), 0 4px 16px rgba(0,0,0,0.06);">
           <div style="position:absolute;top:-1px;left:24px;right:24px;height:3px;background:linear-gradient(90deg,#2a7a35,#349640);border-radius:2px;"></div>
-          <p class="caption" style="margin-bottom:24px;">Pharmacie</p>
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Pharmacie</p>
           <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">SaaS</p>
-          <p class="body-small" style="margin-bottom:28px;">Abonnement + crédits</p>
+          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Abonnement + crédits</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Outils de gestion & stock</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Micro-crédits flexibles</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>ROI garanti</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Publicité marketplace</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Outils de gestion & stock</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Micro-crédits flexibles</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>ROI garanti</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Publicité marketplace</li>
           </ul>
           <button onclick="openAuth()" class="btn-primary" style="width:100%;justify-content:center;">Devenir partenaire</button>
         </div>
         <!-- Hôpital -->
         <div class="notion-card" style="padding:32px;">
-          <p class="caption" style="margin-bottom:24px;">Hôpital</p>
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Hôpital</p>
           <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">SaaS</p>
-          <p class="body-small" style="margin-bottom:28px;">Abonnement mensuel</p>
+          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Abonnement mensuel</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dossier médical partagé</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>E-ordonnances</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Gestion médecins</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Services premium</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dossier médical partagé</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>E-ordonnances</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Gestion médecins</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Services premium</li>
           </ul>
           <button onclick="openAuth()" style="display:block;width:100%;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;border:none;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">Demander un agrément</button>
         </div>
         <!-- Marketplace -->
         <div class="notion-card" style="padding:32px;">
-          <p class="caption" style="margin-bottom:24px;">Marketplace</p>
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Marketplace</p>
           <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">Para</p>
-          <p class="body-small" style="margin-bottom:28px;">Produits non-urgents</p>
+          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Produits non-urgents</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Cosmétiques & beauté</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Alimentation nourrissons</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Pubs labos & marques</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#63635e;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Algorithme de proximité</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Cosmétiques & beauté</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Alimentation nourrissons</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Pubs labos & marques</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Algorithme de proximité</li>
           </ul>
           <a href={apkUrl} download style="display:block;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">Découvrir</a>
         </div>
