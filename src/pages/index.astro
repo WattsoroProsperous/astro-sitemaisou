@@ -47,6 +47,39 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   </div>
 </div>
 
+<!-- ===== ESPACES PRO ===== -->
+<section style="padding:100px 0;background:linear-gradient(160deg, #0d3315 0%, #092810 30%, #05190a 60%, #0d3315 100%);position:relative;overflow:hidden;">
+  <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="stars-pro" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M10 2l1.5 3 3.5.5-2.5 2.5.5 3.5L10 9.5 7 11.5l.5-3.5L5 5.5 8.5 5z" fill="rgba(255,255,255,0.5)" />
+        <path d="M55 38l1 2 2.5.3-1.8 1.8.4 2.4-2.1-1.1-2.1 1.1.4-2.4-1.8-1.8 2.5-.3z" fill="rgba(0,0,0,0.45)" />
+        <path d="M35 58l1.2 2.5 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="rgba(255,255,255,0.4)" />
+        <path d="M65 12l.8 1.6 1.8.3-1.3 1.3.3 1.8-1.6-.8-1.6.8.3-1.8-1.3-1.3 1.8-.3z" fill="rgba(0,0,0,0.4)" />
+        <path d="M25 25l1 2 2 .3-1.5 1.5.3 2-1.8-1-1.8 1 .3-2-1.5-1.5 2-.3z" fill="rgba(255,255,255,0.35)" />
+        <path d="M70 65l.6 1.2 1.4.2-1 1 .2 1.4-1.2-.6-1.2.6.2-1.4-1-1 1.4-.2z" fill="rgba(0,0,0,0.35)" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#stars-pro)" />
+  </svg>
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-10 relative z-10">
+    <div class="grid md:grid-cols-2 gap-8">
+      <a href="/pharma/" class="group block rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.12);transition:all 0.3s ease;">
+        <div style="overflow:hidden;">
+          <img src="/espace-pharmacien.png" alt="Espace Pharmacien" style="width:100%;display:block;transition:transform 0.4s ease;" class="group-hover:scale-[1.03]" />
+        </div>
+        <p style="padding:20px 24px;color:#ffffff;font-size:18px;font-weight:800;letter-spacing:-0.01em;">Accéder à l'espace pharmacien</p>
+      </a>
+      <a href="/doctor/" class="group block rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.12);transition:all 0.3s ease;">
+        <div style="overflow:hidden;">
+          <img src="/espace-hopital.png" alt="Espace Hôpital" style="width:100%;display:block;transition:transform 0.4s ease;" class="group-hover:scale-[1.03]" />
+        </div>
+        <p style="padding:20px 24px;color:#ffffff;font-size:18px;font-weight:800;letter-spacing:-0.01em;">Accéder à l'espace hôpital</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== HOW IT WORKS ===== -->
 <section id="how" style="padding:140px 0;">
   <div class="mx-auto max-w-[1200px] px-6 lg:px-10">
@@ -279,6 +312,12 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       </div>
     </FadeIn>
   </div>
+</section>
+
+<!-- ===== BG-SEC IMAGE ===== -->
+<section style="padding:0;position:relative;">
+  <img src="/bg-sec.png" alt="" style="width:100%;display:block;" />
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg, rgba(13,51,21,0.3) 0%, rgba(42,122,53,0.2) 50%, rgba(9,40,16,0.35) 100%);"></div>
 </section>
 
 <!-- ===== FAQ — dark block ===== -->
