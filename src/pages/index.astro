@@ -97,10 +97,14 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 </section>
 
 <!-- ===== VIDEO PRÉSENTATION ===== -->
-<section style="padding:0;background:#0a0a0a;">
-  <video autoplay loop playsinline style="width:100%;display:block;">
+<section id="video-section" style="padding:0;background:#0a0a0a;position:relative;">
+  <video id="presVideo" loop playsinline muted style="width:100%;display:block;">
     <source src="/video_pres.mp4" type="video/mp4" />
   </video>
+  <button id="videoPlayBtn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:2px solid rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:10;">
+    <svg id="playIcon" style="width:32px;height:32px;margin-left:4px;" fill="#ffffff" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="pauseIcon" style="width:32px;height:32px;display:none;" fill="#ffffff" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
 </section>
 
 <!-- ===== APPS ECOSYSTEM — dark block ===== -->
@@ -453,6 +457,51 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       var target=document.querySelector('.faq-answer[data-answer="'+idx+'"]');
       if(target) target.classList.add('faq-answer-active');
     });
+  });
+
+  // Video player
+  var video = document.getElementById('presVideo');
+  var playBtn = document.getElementById('videoPlayBtn');
+  var playIcon = document.getElementById('playIcon');
+  var pauseIcon = document.getElementById('pauseIcon');
+  var userPlaying = false;
+
+  playBtn.addEventListener('click', function() {
+    if (video.paused) {
+      video.muted = false;
+      video.play();
+      userPlaying = true;
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      playBtn.style.opacity = '0';
+    } else {
+      video.pause();
+      userPlaying = false;
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      playBtn.style.opacity = '1';
+    }
+  });
+
+  var videoSection = document.getElementById('video-section');
+  var videoObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting && userPlaying) {
+        video.pause();
+        userPlaying = false;
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        playBtn.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.3 });
+  videoObserver.observe(videoSection);
+
+  videoSection.addEventListener('mouseenter', function() {
+    if (!video.paused) playBtn.style.opacity = '0.7';
+  });
+  videoSection.addEventListener('mouseleave', function() {
+    if (!video.paused) playBtn.style.opacity = '0';
   });
 </script>
 </Layout>
