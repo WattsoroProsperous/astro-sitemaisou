@@ -4,6 +4,7 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 ---
 <!-- AUTH MODAL — Sélection profil -->
+<a id="apk-dl" href={apkUrl} download style="display:none;position:absolute;pointer-events:none;"></a>
 <div id="supabaseConfig" data-url={supabaseUrl} data-key={supabaseKey} class="hidden"></div>
 <div id="authOverlay" class="fixed inset-0 z-[70] bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200"></div>
 <div id="authModal" class="fixed inset-0 z-[80] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
@@ -50,7 +51,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         <p class="text-[12px] font-semibold text-[#6B7280]">Créez votre compte ici, puis téléchargez l'application pour vous connecter.</p>
       </div>
       <form id="formMobileSignup" onsubmit="handleMobileSignup(event)" class="space-y-4">
-        <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Nom complet</label><input type="text" id="mobileSignupName" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="Jean Dupont"></div>
+        <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Nom complet</label><input type="text" id="mobileSignupName" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="Entrez votre nom"></div>
         <div class="grid grid-cols-2 gap-3">
           <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Email</label><input type="email" id="mobileSignupEmail" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="votre@email.com"></div>
           <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Téléphone</label><input type="tel" id="mobileSignupPhone" required pattern="[0-9]{9,15}" title="9 à 15 chiffres" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="0701020304"></div>
@@ -84,6 +85,11 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     document.getElementById('authModal').classList.remove('opacity-0','pointer-events-none');
     document.body.style.overflow='hidden';
     goBack();
+  }
+  function openAuthForDownload(){
+    window._pendingApkDownload = true;
+    openAuth();
+    selectProfile('client');
   }
   function closeAuth(){
     document.getElementById('authOverlay').classList.add('opacity-0','pointer-events-none');
@@ -144,6 +150,10 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       await getSb().auth.signOut();
       document.getElementById('formMobileSignup').classList.add('hidden');
       document.getElementById('mobileSuccess').classList.remove('hidden');
+      if(window._pendingApkDownload){
+        window._pendingApkDownload=false;
+        setTimeout(function(){document.getElementById('apk-dl').click();},400);
+      }
     }catch(err){showError('mobileSignupError',err.message||'Erreur lors de l\'inscription');}
     finally{btn.disabled=false;btn.textContent='Créer mon compte';}
   }

@@ -35,10 +35,10 @@ export default function HeroText({ apkUrl }: Props) {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-3 justify-start"
         >
-        <a href={apkUrl} download className="btn-primary-large group">
+        <button onClick={() => (window as any).openAuthForDownload()} className="btn-primary-large group">
           <svg className="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
           Télécharger l'APK
-        </a>
+        </button>
         <button
           onClick={() => (window as any).openAuth()}
           className="btn-secondary"

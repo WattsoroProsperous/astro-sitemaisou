@@ -420,6 +420,18 @@
     filter: blur(100px);
   }
 
+  /* Ecosystem grid responsive */
+  .ecosystem-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .ecosystem-grid { grid-template-columns: 1fr; }
+    .ecosystem-grid .visual-col { display: none; }
+  }
+
   /* Cards on dark backgrounds */
   .card-dark {
     background: rgba(255,255,255,0.05);
@@ -591,6 +603,11 @@
 @keyframes faqFadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0px); }
 }
 
 /* Keyframes */

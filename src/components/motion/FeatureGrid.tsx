@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const features = [
   {
@@ -39,17 +40,37 @@ const features = [
   },
 ];
 
+const spring = { type: 'spring' as const, stiffness: 150, damping: 20, mass: 0.9 };
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24, scale: 0.97, filter: 'blur(6px)' },
+  visible: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transition: spring },
+};
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.04 } },
+};
+
 export default function FeatureGrid() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-6% 0px' });
+
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {features.map((f, i) => (
+    <motion.div
+      ref={ref}
+      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      variants={container}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+    >
+      {features.map((f) => (
         <motion.div
           key={f.title}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.45, delay: i * 0.06 }}
+          variants={itemVariants}
+          whileHover={{ y: -4, scale: 1.01, transition: { type: 'spring', stiffness: 400, damping: 30 } }}
           className="notion-card p-9"
+          style={{ cursor: 'default' }}
         >
           <div
             className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
@@ -61,6 +82,6 @@ export default function FeatureGrid() {
           <p className="body-default">{f.desc}</p>
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
