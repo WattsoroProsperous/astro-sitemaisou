@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import AuthModal from '../components/AuthModal.astro';
+import FadeIn from '../components/motion/FadeIn.tsx';
+---
+<Layout title="Mainsou Hôpital — Bientôt disponible">
+<Nav />
+
+<!-- ===== HERO BIENTÔT ===== -->
+<section style="padding:160px 0 100px;background:#0a0a0a;">
+  <div class="mx-auto max-w-[800px] px-6 lg:px-10 text-center">
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:20px;background:rgba(0,187,249,0.12);border:1px solid rgba(0,187,249,0.25);margin-bottom:28px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#00bbf9;display:inline-block;"></span>
+      <span style="font-size:13px;font-weight:600;color:#00bbf9;letter-spacing:0.04em;">BIENTÔT DISPONIBLE</span>
+    </div>
+    <h1 style="font-size:clamp(36px,6vw,64px);font-weight:800;color:#ffffff;letter-spacing:-0.025em;line-height:1.1;margin-bottom:24px;">
+      Mainsou pour les hôpitaux et les médecins.
+    </h1>
+    <p style="font-size:clamp(17px,1.8vw,20px);line-height:1.65;color:rgba(255,255,255,0.6);margin-bottom:44px;max-width:560px;margin-left:auto;margin-right:auto;">
+      Dossier Médical Partagé entre établissements agréés, ordonnances numériques avec code unique, gestion des médecins par établissement. En cours de déploiement, en lien avec les autorités de santé.
+    </p>
+    <a href="mailto:contact@mainsou.app?subject=Hopital — Etre informe du lancement" style="display:inline-flex;align-items:center;gap:10px;background:#00bbf9;color:#fff;font-size:16px;font-weight:700;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:all 0.15s;text-decoration:none;" onmouseover="this.style.background='#00a8e0'" onmouseout="this.style.background='#00bbf9'">
+      Être informé du lancement
+    </a>
+  </div>
+</section>
+
+<!-- ===== CE QUI ARRIVE ===== -->
+<section style="padding:100px 0;background:#F7F7F5;">
+  <div class="mx-auto max-w-[1100px] px-6 lg:px-10">
+    <FadeIn client:visible>
+      <div style="margin-bottom:48px;text-align:center;">
+        <h2 style="font-size:clamp(26px,3.5vw,40px);font-weight:700;color:#1C1F26;letter-spacing:-0.02em;margin-bottom:12px;">Ce que prépare Mainsou pour les établissements de santé</h2>
+        <p style="font-size:17px;color:#111110;max-width:560px;margin:0 auto;">Ces services seront déployés progressivement, en lien avec les autorités de santé et selon l'évolution de la réglementation.</p>
+      </div>
+    </FadeIn>
+    <FadeIn client:visible delay={0.06}>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="notion-card p-8">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(0,187,249,0.1);color:#00bbf9;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg style="width:22px;height:22px;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(0,187,249,0.1);color:#00bbf9;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 style="font-size:17px;font-weight:700;color:#1C1F26;margin-bottom:8px;">Dossier Médical Partagé</h3>
+          <p style="font-size:14px;color:#111110;line-height:1.6;">Un dossier patient unique, accessible par les établissements de santé agréés du réseau Mainsou.</p>
+        </div>
+        <div class="notion-card p-8">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(155,93,229,0.1);color:#9b5de5;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg style="width:22px;height:22px;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(155,93,229,0.1);color:#9b5de5;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 style="font-size:17px;font-weight:700;color:#1C1F26;margin-bottom:8px;">Ordonnances numériques</h3>
+          <p style="font-size:14px;color:#111110;line-height:1.6;">Code unique généré par le médecin et vérifiable par le pharmacien partenaire Mainsou.</p>
+        </div>
+        <div class="notion-card p-8">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(42,122,53,0.1);color:#2a7a35;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg style="width:22px;height:22px;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(42,122,53,0.1);color:#2a7a35;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 style="font-size:17px;font-weight:700;color:#1C1F26;margin-bottom:8px;">Gestion des médecins</h3>
+          <p style="font-size:14px;color:#111110;line-height:1.6;">Chaque établissement gère ses médecins et les ordonnances émises depuis son espace Mainsou.</p>
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section style="padding:100px 0;background:#fff;border-top:1px solid rgba(0,0,0,0.06);">
+  <div class="mx-auto max-w-[640px] px-6 lg:px-10 text-center">
+    <FadeIn client:visible>
+      <h2 style="font-size:clamp(24px,3.5vw,36px);font-weight:700;color:#1C1F26;letter-spacing:-0.02em;margin-bottom:16px;">Vous dirigez un établissement de santé ?</h2>
+      <p style="font-size:16px;color:#111110;line-height:1.65;margin-bottom:32px;">Nous travaillons avec des établissements pilotes pour le déploiement. Contactez-nous pour être informé et participer au lancement.</p>
+      <a href="mailto:contact@mainsou.app?subject=Hopital — Etre informe du lancement" style="display:inline-flex;align-items:center;gap:10px;background:#1C1F26;color:#fff;font-size:15px;font-weight:700;padding:13px 28px;border-radius:12px;border:none;cursor:pointer;transition:all 0.15s;text-decoration:none;" onmouseover="this.style.background='#2d3139'" onmouseout="this.style.background='#1C1F26'">
+        <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+        Nous contacter
+      </a>
+    </FadeIn>
+  </div>
+</section>
+
+<Footer />
+<AuthModal />
+
+<script is:inline>
+  var m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay');
+  if(m && o && document.getElementById('menuBtn')) {
+    document.getElementById('menuBtn').addEventListener('click',function(){m.classList.add('open');o.classList.add('open');document.body.style.overflow='hidden'});
+    function cl(){m.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''}
+    document.getElementById('closeMenu').addEventListener('click',cl);
+    o.addEventListener('click',cl);
+    document.querySelectorAll('#mobileMenu a').forEach(function(l){l.addEventListener('click',cl)});
+  }
+</script>
+</Layout>

@@ -171,23 +171,57 @@ En dev, un plugin Vite custom `flutter-spa-fallback` réplique les rewrites Verc
 ### Palette
 | Token | Hex | Usage |
 |---|---|---|
-| Texte principal | `#191919` | Titres, body |
-| Texte secondaire | `#787774` | Descriptions |
-| Texte tertiaire | `#acaba9` | Captions, placeholders |
+| Texte principal | `#111110` | Titres ET body — toujours |
 | Surface | `#FFFFFF` | Fond principal |
 | Surface alt | `#F7F7F5` | Fond alterné sections |
-| Brand | `#3B5B32` | Vert Mainsou |
-| Hero bg | `#0a0a0a` | Fond hero |
-| Footer bg | `#191919` | Fond footer |
+| Brand | `#2a7a35` | Vert Mainsou |
+| Hero bg | `#1c2333` | Fond hero |
+| Footer bg | `#111827` | Fond footer |
+
+### Règles de couleur de texte — NON NÉGOCIABLES
+
+> **Tout le texte est `#111110`.** Pas de gris sur les descriptions, titres ou listes.  
+> Les seules exceptions autorisées :
+> - Sections dark (`.s-dark`) : texte blanc via CSS variables `--txt-heading` / `--txt-body`
+> - Métadonnées (date, numéro de version, caption) : `#6b7280` max
+> - Texte désactivé / placeholder uniquement : `#9ca3af`
+>
+> **Jamais** `#6b7280` ou `#374151` sur le corps de texte d'une card ou d'une section blanche.
+
+### OpenType — obligatoire partout
+
+Toutes les polices doivent activer leurs fonctionnalités OpenType. Appliqué sur `html` pour Inter Variable :
+
+```css
+font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'cv01' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1, 'ss02' 1;
+font-variant-numeric: proportional-nums;
+```
+
+Sur les classes heading (Plus Jakarta Sans) :
+```css
+font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+```
+
+### Badges / Pills — spec
+
+```
+Shape     : border-radius 40px (pill complet) OU 6px (tag rectangle)
+Padding   : 4px 12px 4px 8px avec dot gauche
+Dot       : 5×5px, border-radius 50%, couleur accent
+Texte     : 11px, font-weight 700, letter-spacing 0.06em, text-transform uppercase
+Couleur   : texte foncé sur bg teinté clair — jamais texte clair sur bg clair
+Fond      : teinte très légère de la couleur accent (≤10% opacité)
+Bordure   : 1px solid couleur accent (≤25% opacité)
+```
 
 ### Typographie (tout responsive avec clamp())
 | Element | Taille | Poids |
 |---|---|---|
-| Hero H1 | `clamp(44px, 9vw, 92px)` | 800 |
-| Section H2 | `clamp(32px, 5.5vw, 60px)` | 700 |
-| Card title | `clamp(18px, 2vw, 24px)` | 600 |
-| Body large | `clamp(17px, 1.8vw, 20px)` | 400 |
-| Body default | `clamp(15px, 1.5vw, 18px)` | 400 |
+| Hero H1 | `clamp(38px, 5.2vw, 82px)` | 800 |
+| Section H2 | `clamp(36px, 6vw, 72px)` | 800 |
+| Card title | `clamp(24px, 2.6vw, 34px)` | 800 |
+| Body large | `clamp(18px, 2vw, 22px)` | 400 |
+| Body default | `clamp(15px, 1.4vw, 17px)` | 400 |
 
 ### CSS Layers (Tailwind v4)
 **Important** : Tout le CSS custom est dans `@layer base` ou `@layer components` pour ne pas écraser les utilities Tailwind. Les styles hors-layer ont une priorité plus haute que `@layer utilities` en Tailwind v4.

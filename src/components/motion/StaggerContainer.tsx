@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 interface Props {
@@ -7,7 +7,9 @@ interface Props {
   staggerDelay?: number;
 }
 
-export default function StaggerContainer({ children, className = '', staggerDelay = 0.1 }: Props) {
+export default function StaggerContainer({ children, className = '', staggerDelay = 0.07 }: Props) {
+  const reduce = useReducedMotion();
+
   return (
     <motion.div
       initial="hidden"
@@ -15,7 +17,7 @@ export default function StaggerContainer({ children, className = '', staggerDela
       viewport={{ once: true, margin: '-60px' }}
       variants={{
         hidden: {},
-        visible: { transition: { staggerChildren: staggerDelay } },
+        visible: { transition: { staggerChildren: reduce ? 0 : staggerDelay } },
       }}
       className={className}
     >

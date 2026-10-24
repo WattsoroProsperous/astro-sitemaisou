@@ -9,6 +9,7 @@ import DoctorBrowser from '../components/mockups/DoctorBrowser.astro';
 import FloatingPhone from '../components/motion/FloatingPhone.tsx';
 import StepsSection from '../components/motion/StepsSection.tsx';
 import FeatureGrid from '../components/motion/FeatureGrid.tsx';
+import ChartGains from '../components/motion/ChartGains.tsx';
 import FadeIn from '../components/motion/FadeIn.tsx';
 import { TextEffect } from '../components/motion/TextEffect.tsx';
 import { AnimatedGroup } from '../components/motion/AnimatedGroup.tsx';
@@ -22,15 +23,15 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   <div class="hero-center">
     <div>
       <div class="hero-content-left">
-        <h1 class="hero-title text-left" style="margin-bottom:28px;animation:heroFadeUp 0.6s ease 0.05s both;color:rgba(255,255,255,0.93);">
+        <h1 class="hero-title text-left" style="margin-bottom:28px;animation:heroFadeUp 0.6s var(--ease-out) 0.05s both;color:rgba(255,255,255,0.93);">
           Le bon médicament,<br>
           au bon endroit,<br>
           au bon moment.
         </h1>
-        <p class="text-left" style="font-size:clamp(18px,2.2vw,24px);line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:48px;max-width:520px;animation:heroFadeUp 0.5s ease 0.15s both;">
+        <p class="text-left" style="font-size:clamp(18px,2.2vw,24px);line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:48px;max-width:520px;animation:heroFadeUp 0.5s var(--ease-out) 0.15s both;">
           Réservez en ligne, payez par Mobile Money, retirez au comptoir.
         </p>
-        <div class="flex flex-col sm:flex-row gap-3 justify-start" style="animation:heroFadeUp 0.5s ease 0.25s both;">
+        <div class="flex flex-col sm:flex-row gap-3 justify-start" style="animation:heroFadeUp 0.5s var(--ease-out) 0.25s both;">
           <button onclick="openAuthForDownload()" class="btn-primary-large group">
             <svg class="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
             Je suis patient
@@ -90,7 +91,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     <source src="/video_pres.mp4" type="video/mp4" />
   </video>
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:10;">
-    <button id="videoPlayBtn" style="width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:2px solid rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;">
+    <button id="videoPlayBtn" style="width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:2px solid rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color 160ms var(--ease-out),transform 160ms var(--ease-out),border-color 160ms var(--ease-out);">
       <svg style="width:32px;height:32px;margin-left:4px;" fill="#ffffff" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
     </button>
     <span style="color:rgba(255,255,255,0.75);font-size:12px;font-weight:600;letter-spacing:0.02em;white-space:nowrap;">Inscrivez-vous pour regarder</span>
@@ -113,7 +114,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 
     <!-- Patient -->
     <FadeIn client:visible>
-      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 0.3s ease,box-shadow 0.3s ease;"
+      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 280ms var(--ease-out),box-shadow 280ms var(--ease-out);"
            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,0.18),0 4px 12px rgba(0,0,0,0.08)'"
            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1)'">
         <div style="display:grid;grid-template-columns:1fr 300px;align-items:stretch;">
@@ -146,7 +147,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 
     <!-- Pharmacien -->
     <FadeIn client:visible delay={0.05}>
-      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 0.3s ease,box-shadow 0.3s ease;"
+      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 280ms var(--ease-out),box-shadow 280ms var(--ease-out);"
            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,0.18),0 4px 12px rgba(0,0,0,0.08)'"
            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1)'">
         <div style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;">
@@ -176,7 +177,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 
     <!-- Hôpital — Bientôt -->
     <FadeIn client:visible delay={0.1}>
-      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 0.3s ease,box-shadow 0.3s ease;"
+      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 280ms var(--ease-out),box-shadow 280ms var(--ease-out);"
            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,0.18),0 4px 12px rgba(0,0,0,0.08)'"
            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1)'">
         <div style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;">
@@ -208,6 +209,13 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         </div>
       </div>
     </FadeIn>
+
+    <!-- Charts contextuels : patient (vert) + pharmacie (teal) -->
+    <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;" class="charts-row">
+      <ChartGains variant="patient" client:visible />
+      <ChartGains variant="pharma"  client:visible />
+    </div>
+
   </div>
 </section>
 
@@ -228,6 +236,9 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   </div>
 </section>
 
+<style>
+  @media (max-width: 640px) { .charts-row { grid-template-columns: 1fr !important; } }
+</style>
 
 <!-- ===== PRICING — white ===== -->
 <section id="pricing" style="padding:140px 0;background:linear-gradient(160deg, #e8ecef 0%, #dfe4e8 30%, #d5dce2 60%, #e0e5ea 100%);">

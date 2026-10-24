@@ -279,10 +279,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', function () { if (isOpen) setPanelTop(); });
   }
 
-  // Mega item hover
+  // Mega item hover + fermeture au clic
   document.querySelectorAll('.mega-item').forEach(function (el) {
     el.addEventListener('mouseenter', function () { this.style.background = '#F8FAFC'; });
     el.addEventListener('mouseleave', function () { this.style.background = ''; });
+    el.addEventListener('click', function () { closePanel(); });
   });
 
   // Mobile

@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import AuthModal from '../components/AuthModal.astro';
+---
+<Layout title="Politique de confidentialité — Mainsou">
+<Nav />
+<main style="padding-top:100px;padding-bottom:120px;background:#ffffff;">
+  <div style="max-width:760px;margin:0 auto;padding:0 24px;">
+
+    <!-- Header -->
+    <div style="margin-bottom:56px;">
+      <a href="/" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#111110;text-decoration:none;margin-bottom:32px;opacity:0.5;transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+        Retour
+      </a>
+      <p style="font-size:13px;font-weight:700;color:#2a7a35;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Mainsou · Légal</p>
+      <h1 style="font-family:var(--font-heading);font-size:clamp(32px,5vw,52px);font-weight:800;color:#111110;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Politique de confidentialité</h1>
+      <p style="font-size:15px;color:#111110;opacity:0.5;">Dernière mise à jour : octobre 2026</p>
+    </div>
+
+    <!-- En bref -->
+    <div style="background:#f0faf1;border:1px solid #c8e6c9;border-radius:14px;padding:20px 24px;margin-bottom:48px;">
+      <p style="font-size:15px;color:#111110;line-height:1.7;margin:0;"><strong>En bref.</strong> Mainsou ne collecte jamais vos ordonnances ni vos diagnostics. Nous ne vendons pas vos données. Nos analyses de la demande sont anonymisées : nous savons ce qui se cherche dans un quartier, jamais qui le cherche.</p>
+    </div>
+
+    <!-- Contenu -->
+    <div class="legal-content">
+
+      <section>
+        <h2>1. Cadre légal</h2>
+        <p>Mainsou traite vos données personnelles conformément à la loi ivoirienne n° 2013-450 du 19 juin 2013 relative à la protection des données à caractère personnel.</p>
+      </section>
+
+      <section>
+        <h2>2. Les données que nous collectons</h2>
+        <ul>
+          <li><strong>Compte</strong> : nom, numéro de téléphone, adresse e-mail, mot de passe (stocké de façon sécurisée).</li>
+          <li><strong>Commandes</strong> : produits recherchés et commandés, pharmacie choisie, date et statut.</li>
+          <li><strong>Paiement</strong> : référence de la transaction et numéro Mobile Money utilisé. Nous ne conservons aucun code secret.</li>
+          <li><strong>Localisation</strong> : uniquement si vous l'autorisez, pour afficher les pharmacies proches.</li>
+          <li><strong>Données techniques</strong> : type d'appareil, version de l'application, journaux de connexion.</li>
+        </ul>
+        <p>Pour les pharmacies partenaires, nous traitons également leurs informations professionnelles, leurs données de stock et de facturation.</p>
+      </section>
+
+      <section>
+        <h2>3. Ce que nous ne collectons pas</h2>
+        <p>Nous ne collectons ni vos ordonnances, ni votre diagnostic, ni le nom de votre médecin. Pour un médicament sur ordonnance, vous présentez l'original directement au pharmacien.</p>
+      </section>
+
+      <section>
+        <h2>4. Une protection renforcée pour les données sensibles</h2>
+        <p>L'historique des produits que vous commandez peut révéler des informations sur votre santé. Nous le protégeons donc avec un soin particulier : accès limité, partage uniquement avec la pharmacie que vous choisissez, et utilisation fondée sur votre consentement.</p>
+      </section>
+
+      <section>
+        <h2>5. Pourquoi nous utilisons vos données</h2>
+        <ul>
+          <li>Gérer votre compte.</li>
+          <li>Vous permettre de rechercher, réserver, payer et retirer vos produits.</li>
+          <li>Transmettre votre commande à la pharmacie et vous informer de son statut.</li>
+          <li>Gérer les paiements et les remboursements.</li>
+          <li>Assurer la sécurité de la Plateforme et prévenir la fraude.</li>
+          <li>Améliorer nos services et produire des statistiques anonymisées sur la demande par zone.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Avec qui nous les partageons</h2>
+        <ul>
+          <li>La pharmacie que vous choisissez, pour préparer votre commande.</li>
+          <li>Nos prestataires de paiement et d'hébergement, tenus à la confidentialité.</li>
+          <li>Les autorités, uniquement lorsque la loi l'exige.</li>
+        </ul>
+        <p>Mainsou ne vend ni ne loue vos données personnelles. Les statistiques partagées avec les pharmacies sont anonymisées et ne permettent jamais d'identifier une personne.</p>
+      </section>
+
+      <section>
+        <h2>7. Hébergement</h2>
+        <p>Vos données sont hébergées chez des prestataires sécurisés. Tout transfert de données hors de Côte d'Ivoire est réalisé dans le respect de la loi et des formalités prévues auprès de l'ARTCI.</p>
+      </section>
+
+      <section>
+        <h2>8. Durée de conservation</h2>
+        <p>Vos données sont conservées pendant la durée nécessaire au service, puis supprimées ou anonymisées. Les données de facturation sont conservées pendant la durée imposée par la loi.</p>
+      </section>
+
+      <section>
+        <h2>9. Sécurité</h2>
+        <p>Nous mettons en œuvre des mesures techniques et organisationnelles adaptées pour protéger vos données contre la perte, l'accès non autorisé ou la divulgation.</p>
+      </section>
+
+      <section>
+        <h2>10. Vos droits</h2>
+        <p>Vous disposez d'un droit d'information, d'accès, de rectification, d'opposition et de suppression de vos données, ainsi que du droit de retirer votre consentement à tout moment. Pour les exercer, écrivez-nous à <a href="mailto:contact@mainsou.app">contact@mainsou.app</a> en indiquant le numéro de téléphone associé à votre compte. Vous pouvez également saisir l'ARTCI.</p>
+      </section>
+
+      <section>
+        <h2>11. Localisation et cookies</h2>
+        <p>La localisation n'est utilisée qu'avec votre accord, et vous pouvez la désactiver à tout moment dans les réglages de votre téléphone. Le site peut utiliser des cookies nécessaires à son fonctionnement et à la mesure d'audience ; vous pouvez les gérer depuis votre navigateur.</p>
+      </section>
+
+      <section>
+        <h2>12. Mineurs</h2>
+        <p>La Plateforme est destinée aux personnes majeures. Nous ne collectons pas sciemment de données de mineurs sans l'accord d'un représentant légal.</p>
+      </section>
+
+      <section>
+        <h2>13. Mises à jour</h2>
+        <p>Cette politique peut évoluer. En cas de changement important, vous en serez informé sur la Plateforme.</p>
+      </section>
+
+      <section>
+        <h2>14. Contact</h2>
+        <p>Pour toute question sur vos données : <a href="mailto:contact@mainsou.app">contact@mainsou.app</a>.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+<Footer />
+<AuthModal />
+
+<style>
+  .legal-content section {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .legal-content section:last-child {
+    border-bottom: none;
+  }
+  .legal-content h2 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: #111110;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .legal-content p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #111110;
+    margin-bottom: 14px;
+  }
+  .legal-content p:last-child { margin-bottom: 0; }
+  .legal-content ul {
+    margin: 0 0 14px 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legal-content li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #111110;
+  }
+  .legal-content a {
+    color: #2a7a35;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+</Layout>

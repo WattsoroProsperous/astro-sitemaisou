@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 
 interface TextEffectProps {
@@ -11,13 +11,24 @@ interface TextEffectProps {
   preset?: 'blur' | 'slide' | 'fade';
 }
 
-const spring = { type: 'spring' as const, stiffness: 180, damping: 22, mass: 0.8 };
+const spring = { type: 'spring' as const, duration: 0.5, bounce: 0.1 };
 
-const presets = {
-  blur:  { hidden: { opacity: 0, y: 10, filter: 'blur(8px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: spring } },
-  slide: { hidden: { opacity: 0, y: 14 },                      visible: { opacity: 1, y: 0,                       transition: spring } },
-  fade:  { hidden: { opacity: 0 },                              visible: { opacity: 1,                             transition: spring } },
-};
+function getPresets(reduce: boolean) {
+  return {
+    blur:  {
+      hidden:  { opacity: 0, transform: reduce ? 'translateY(0px)' : 'translateY(10px)', filter: reduce ? 'blur(0px)' : 'blur(8px)' },
+      visible: { opacity: 1, transform: 'translateY(0px)', filter: 'blur(0px)', transition: spring },
+    },
+    slide: {
+      hidden:  { opacity: 0, transform: reduce ? 'translateY(0px)' : 'translateY(14px)' },
+      visible: { opacity: 1, transform: 'translateY(0px)', transition: spring },
+    },
+    fade: {
+      hidden:  { opacity: 0 },
+      visible: { opacity: 1, transition: { duration: 0.4 } },
+    },
+  };
+}
 
 function toText(children: React.ReactNode): string {
   if (typeof children === 'string') return children;
@@ -29,18 +40,21 @@ function toText(children: React.ReactNode): string {
 export function TextEffect({ children, as: Tag = 'p', className, style, per = 'word', delay = 0, preset = 'blur' }: TextEffectProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: '-8% 0px' });
+  const reduce = useReducedMotion();
 
   const text = toText(children);
   const segments = per === 'word'
     ? text.split(' ').map((w, i, arr) => (i < arr.length - 1 ? w + ' ' : w))
     : text.split('');
 
+  const staggerMs = per === 'word' ? 0.04 : 0.022;
+
   const container = {
     hidden: {},
-    visible: { transition: { staggerChildren: per === 'word' ? 0.06 : 0.028, delayChildren: delay } },
+    visible: { transition: { staggerChildren: reduce ? 0 : staggerMs, delayChildren: delay } },
   };
 
-  const item = presets[preset];
+  const item = getPresets(reduce ?? false)[preset];
   const MotionEl = motion[Tag];
 
   return (

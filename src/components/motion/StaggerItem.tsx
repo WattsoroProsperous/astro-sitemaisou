@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 interface Props {
@@ -7,11 +7,20 @@ interface Props {
 }
 
 export default function StaggerItem({ children, className = '' }: Props) {
+  const reduce = useReducedMotion();
+
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+        hidden: {
+          opacity: 0,
+          transform: reduce ? 'translateY(0px)' : 'translateY(20px)',
+        },
+        visible: {
+          opacity: 1,
+          transform: 'translateY(0px)',
+          transition: { type: 'spring', duration: 0.5, bounce: 0.1 },
+        },
       }}
       className={className}
     >
