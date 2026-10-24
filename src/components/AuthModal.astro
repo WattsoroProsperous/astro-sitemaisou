@@ -3,73 +3,183 @@ const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 ---
-<!-- AUTH MODAL — Sélection profil -->
 <a id="apk-dl" href={apkUrl} download style="display:none;position:absolute;pointer-events:none;"></a>
 <div id="supabaseConfig" data-url={supabaseUrl} data-key={supabaseKey} class="hidden"></div>
-<div id="authOverlay" class="fixed inset-0 z-[70] bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200"></div>
-<div id="authModal" class="fixed inset-0 z-[80] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
-  <div class="bg-white rounded-lg border border-[#e5e5e5] w-full max-w-[440px] max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between px-6 py-4 border-b border-[#e5e5e5]">
-      <h2 id="authTitle" class="text-[16px] font-bold tracking-[-0.02em]">Choisir votre profil</h2>
-      <button onclick="closeAuth()" class="p-1 text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
 
-    <!-- Sélection profil -->
-    <div id="stepProfile" class="p-6">
-      <p class="text-[13px] font-semibold text-[#6B7280] mb-5">Sélectionnez le profil qui vous correspond.</p>
-      <div class="space-y-3">
-        <button onclick="selectProfile('client')" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#3B5B32] transition-colors text-left group">
-          <div class="w-10 h-10 rounded-lg bg-[#f3f6f2] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div>
-          <div class="flex-1"><p class="text-[14px] font-bold">Patient</p><p class="text-[12px] font-semibold text-[#6B7280]">Commander des médicaments, suivre vos livraisons</p></div>
-          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+<!-- Overlay -->
+<div id="authOverlay" class="fixed inset-0 z-[230] bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200"></div>
+
+<!-- Modal -->
+<div id="authModal" class="fixed inset-0 z-[240] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+  <div onclick="event.stopPropagation()" style="background:#ffffff;border-radius:20px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 24px 64px rgba(0,0,0,0.14),0 4px 16px rgba(0,0,0,0.06);width:100%;max-width:440px;max-height:90vh;overflow-y:auto;">
+
+    <!-- ── STEP 1 : Sélection profil ── -->
+    <div id="stepProfile" style="padding:28px 28px 24px;">
+
+      <!-- Header -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;">
+        <div>
+          <img src="/mainsou.png" alt="Mainsou" style="height:20px;margin-bottom:14px;filter:brightness(0);">
+          <h2 style="font-family:var(--font-heading);font-size:22px;font-weight:800;color:#111110;letter-spacing:-0.03em;line-height:1.15;margin:0;">Choisissez<br>votre espace.</h2>
+        </div>
+        <button onclick="closeAuth()" style="width:32px;height:32px;border-radius:8px;background:#F3F4F6;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s;" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">
+          <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-        <button onclick="selectProfile('livreur')" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#3B5B32] transition-colors text-left group">
-          <div class="w-10 h-10 rounded-lg bg-[#f3f6f2] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
-          <div class="flex-1"><p class="text-[14px] font-bold">Livreur</p><p class="text-[12px] font-semibold text-[#6B7280]">Effectuer des livraisons de médicaments</p></div>
-          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+      </div>
+
+      <!-- Profile cards -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- Patient -->
+        <button onclick="selectProfile('client')" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;cursor:pointer;text-align:left;width:100%;transition:all 0.15s;font-family:inherit;" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(42,122,53,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'">
+          <div style="width:48px;height:48px;border-radius:12px;background:#f0faf1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" fill="none" stroke="#2a7a35" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:15px;font-weight:700;color:#111110;margin:0 0 3px;">Patient</p>
+            <p style="font-size:13px;color:#111110;margin:0;">Trouvez et réservez vos médicaments</p>
+          </div>
+          <svg width="16" height="16" fill="none" stroke="#C4C4C0" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
         </button>
-        <a href="/pharma/" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#0A8754] transition-colors text-left group">
-          <div class="w-10 h-10 rounded-lg bg-[#e8f5ef] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#0A8754]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div>
-          <div class="flex-1"><p class="text-[14px] font-bold">Pharmacien</p><p class="text-[12px] font-semibold text-[#6B7280]">Gérer votre stock, recevoir des commandes</p></div>
-          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#0A8754]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+
+        <!-- Pharmacien -->
+        <a href="/pharma/" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;text-decoration:none;transition:all 0.15s;" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(0,137,122,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'">
+          <div style="width:48px;height:48px;border-radius:12px;background:#f0faf9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" fill="none" stroke="#00897a" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:15px;font-weight:700;color:#111110;margin:0 0 3px;">Pharmacien</p>
+            <p style="font-size:13px;color:#111110;margin:0;">Gérez votre stock et vos commandes</p>
+          </div>
+          <svg width="16" height="16" fill="none" stroke="#C4C4C0" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
         </a>
-        <a href="/doctor/" class="w-full flex items-center gap-4 p-4 border border-[#e5e5e5] rounded-lg hover:border-[#0E7C86] transition-colors text-left group">
-          <div class="w-10 h-10 rounded-lg bg-[#e6f4f5] flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-[#0E7C86]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
-          <div class="flex-1"><p class="text-[14px] font-bold">Hôpital</p><p class="text-[12px] font-semibold text-[#6B7280]">Gérer les dossiers patients et ordonnances</p></div>
-          <svg class="w-4 h-4 text-[#9CA3AF] group-hover:text-[#0E7C86]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+
+        <!-- Hôpital -->
+        <a href="/doctor/" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;text-decoration:none;transition:all 0.15s;" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(2,119,189,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'">
+          <div style="width:48px;height:48px;border-radius:12px;background:#e8f4fb;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" fill="none" stroke="#0277bd" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <p style="font-size:15px;font-weight:700;color:#111110;margin:0;">Hôpital / Médecin</p>
+              <span style="font-size:9px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;background:#e8f4fb;color:#0277bd;border:1px solid #b3d9ee;border-radius:4px;padding:2px 6px;line-height:1;">Bientôt</span>
+            </div>
+            <p style="font-size:13px;color:#111110;margin:0;">Dossiers patients et ordonnances</p>
+          </div>
+          <svg width="16" height="16" fill="none" stroke="#C4C4C0" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
         </a>
       </div>
+
+      <!-- Footer hint -->
+      <p style="font-size:12px;color:#111110;text-align:center;margin-top:20px;">Déjà un compte ? Connectez-vous directement dans l'app.</p>
     </div>
 
-    <!-- Patient / Livreur — Inscription uniquement -->
-    <div id="stepMobile" class="p-6 hidden">
-      <button onclick="goBack()" class="flex items-center gap-1.5 text-[12px] font-semibold text-[#6B7280] hover:text-[#0A0A0A] transition-colors mb-5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>Retour</button>
-      <div class="flex items-start gap-3 p-3 bg-[#f3f6f2] border border-[#e5e5e5] rounded-lg mb-6">
-        <svg class="w-4 h-4 text-[#3B5B32] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
-        <p class="text-[12px] font-semibold text-[#6B7280]">Créez votre compte ici, puis téléchargez l'application pour vous connecter.</p>
+    <!-- ── STEP 2 : Inscription patient ── -->
+    <div id="stepMobile" class="hidden" style="padding:28px 28px 24px;">
+
+      <!-- Header -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+        <button onclick="goBack()" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#111110;background:none;border:none;cursor:pointer;padding:0;font-family:inherit;transition:color 0.15s;" onmouseover="this.style.color='#111110'" onmouseout="this.style.color='#6B7280'">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+          Retour
+        </button>
+        <button onclick="closeAuth()" style="width:32px;height:32px;border-radius:8px;background:#F3F4F6;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">
+          <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
-      <form id="formMobileSignup" onsubmit="handleMobileSignup(event)" class="space-y-4">
-        <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Nom complet</label><input type="text" id="mobileSignupName" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="Entrez votre nom"></div>
-        <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Email</label><input type="email" id="mobileSignupEmail" required class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="votre@email.com"></div>
-          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Téléphone</label><input type="tel" id="mobileSignupPhone" required pattern="[0-9]{9,15}" title="9 à 15 chiffres" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="0701020304"></div>
+
+      <!-- Title -->
+      <div style="margin-bottom:20px;">
+        <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#111110;letter-spacing:-0.03em;margin:0 0 4px;">Créer votre compte</h2>
+        <p style="font-size:13px;color:#111110;margin:0;">Téléchargez ensuite l'app pour vous connecter.</p>
+      </div>
+
+      <!-- Info banner -->
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:#f0faf1;border:1px solid #c8e6c9;border-radius:10px;margin-bottom:20px;">
+        <svg width="14" height="14" fill="none" stroke="#2a7a35" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px;"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
+        <p style="font-size:12px;font-weight:500;color:#2a7a35;line-height:1.55;margin:0;">Créez votre compte ici, puis téléchargez l'application Mainsou pour vous connecter.</p>
+      </div>
+
+      <!-- Form -->
+      <form id="formMobileSignup" onsubmit="handleMobileSignup(event)" style="display:flex;flex-direction:column;gap:14px;">
+
+        <!-- Nom -->
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Nom complet</label>
+          <input type="text" id="mobileSignupName" required
+            style="width:100%;padding:0 12px;height:40px;font-size:14px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit;"
+            placeholder="Ex : Kouassi Ama"
+            onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
+            onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
         </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Mot de passe</label><input type="password" id="mobileSignupPassword" required minlength="6" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="Min. 6 car."></div>
-          <div><label class="block text-[12px] font-bold text-[#6B7280] mb-1.5">Confirmer</label><input type="password" id="mobileSignupConfirm" required minlength="6" class="w-full px-3 py-2.5 text-[14px] border border-[#e5e5e5] rounded-lg bg-[#FAFAFA] focus:border-[#0A0A0A] focus:outline-none transition-colors" placeholder="••••••••"></div>
+
+        <!-- Email + Téléphone -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Email</label>
+            <input type="email" id="mobileSignupEmail" required
+              style="width:100%;padding:0 12px;height:40px;font-size:13px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit;"
+              placeholder="email@domaine.com"
+              onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
+              onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Téléphone</label>
+            <input type="tel" id="mobileSignupPhone" required pattern="[0-9]{9,15}" title="9 à 15 chiffres"
+              style="width:100%;padding:0 12px;height:40px;font-size:13px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit;"
+              placeholder="0701020304"
+              onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
+              onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
+          </div>
         </div>
-        <div id="mobileSignupError" class="text-[12px] font-semibold text-[#EF4444] hidden"></div>
-        <button type="submit" id="mobileSignupBtn" class="w-full bg-[#3B5B32] text-white text-[13px] font-bold rounded-lg py-3 hover:bg-[#2d4526] transition-colors">Créer mon compte</button>
+
+        <!-- Mot de passe + Confirmer -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Mot de passe</label>
+            <input type="password" id="mobileSignupPassword" required minlength="6"
+              style="width:100%;padding:0 12px;height:40px;font-size:14px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit;"
+              placeholder="Min. 6 car."
+              onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
+              onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Confirmer</label>
+            <input type="password" id="mobileSignupConfirm" required minlength="6"
+              style="width:100%;padding:0 12px;height:40px;font-size:14px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit;"
+              placeholder="••••••"
+              onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
+              onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div id="mobileSignupError" class="hidden" style="font-size:12px;font-weight:600;color:#DC2626;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 12px;"></div>
+
+        <!-- Submit -->
+        <button type="submit" id="mobileSignupBtn"
+          style="width:100%;height:44px;background:#2a7a35;color:#fff;font-size:14px;font-weight:700;border-radius:12px;border:none;cursor:pointer;font-family:var(--font-heading);letter-spacing:-0.01em;transition:background 0.15s;margin-top:2px;"
+          onmouseover="this.style.background='#349640'" onmouseout="this.style.background='#2a7a35'">
+          Créer mon compte
+        </button>
       </form>
-      <div id="mobileSuccess" class="hidden text-center py-6">
-        <div class="w-12 h-12 rounded-full bg-[#f3f6f2] flex items-center justify-center mx-auto mb-4"><svg class="w-6 h-6 text-[#3B5B32]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-        <p class="text-[16px] font-bold mb-2">Compte créé !</p>
-        <p class="text-[13px] font-semibold text-[#6B7280] mb-6">Téléchargez l'app Mainsou et connectez-vous avec vos identifiants.</p>
-        <a href={apkUrl} download class="inline-flex items-center justify-center gap-2 bg-[#3B5B32] text-white text-[13px] font-bold rounded-lg px-6 py-3 hover:bg-[#2d4526] transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>Télécharger Mainsou (.apk)</a>
+
+      <!-- Success state -->
+      <div id="mobileSuccess" class="hidden" style="text-align:center;padding:16px 0 8px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:#f0faf1;border:1px solid #c8e6c9;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+          <svg width="24" height="24" fill="none" stroke="#2a7a35" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+        </div>
+        <p style="font-family:var(--font-heading);font-size:18px;font-weight:800;color:#111110;letter-spacing:-0.02em;margin:0 0 6px;">Compte créé !</p>
+        <p style="font-size:13px;color:#111110;line-height:1.6;margin:0 auto 24px;max-width:280px;">Téléchargez l'application Mainsou et connectez-vous avec vos identifiants.</p>
+        <a href={apkUrl} download
+          style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#2a7a35;color:#fff;font-size:14px;font-weight:700;padding:12px 24px;border-radius:12px;text-decoration:none;transition:background 0.15s;"
+          onmouseover="this.style.background='#349640'" onmouseout="this.style.background='#2a7a35'">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          Télécharger Mainsou
+        </a>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -101,7 +211,6 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   function goBack(){
     document.getElementById('stepProfile').classList.remove('hidden');
     document.getElementById('stepMobile').classList.add('hidden');
-    document.getElementById('authTitle').textContent='Choisir votre profil';
     var f=document.getElementById('formMobileSignup');if(f)f.reset();
     document.getElementById('mobileSignupError').classList.add('hidden');
     document.getElementById('mobileSuccess').classList.add('hidden');
@@ -112,7 +221,6 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     selectedRole=role;
     document.getElementById('stepProfile').classList.add('hidden');
     document.getElementById('stepMobile').classList.remove('hidden');
-    document.getElementById('authTitle').textContent=(role==='client'?'Patient':'Livreur')+' — Inscription';
   }
 
   function showError(id,msg){var e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden');}
@@ -136,17 +244,13 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         options:{data:{full_name:document.getElementById('mobileSignupName').value.trim(),phone:phone,role:selectedRole}}
       });
       if(res.error)throw res.error;
-      // Supabase peut retourner identities vide si email deja utilise
       if(res.data&&res.data.user&&res.data.user.identities&&res.data.user.identities.length===0){
         throw {message:'Cet email est déjà utilisé. Veuillez en utiliser un autre ou vous connecter dans l\'app.'};
       }
-      // Si pas de session (email confirmation activee), tenter un login auto
-      // car le trigger DB a deja confirme l email
       if(!res.data||!res.data.session){
         var login=await getSb().auth.signInWithPassword({email:email,password:pw});
         if(login.error)throw {message:'Compte créé mais connexion impossible. Réessayez dans l\'app.'};
       }
-      // Deconnecter la session web (on veut juste verifier que ca marche)
       await getSb().auth.signOut();
       document.getElementById('formMobileSignup').classList.add('hidden');
       document.getElementById('mobileSuccess').classList.remove('hidden');

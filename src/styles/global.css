@@ -1,8 +1,10 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/plus-jakarta-sans";
 
 @theme {
-  --font-sans: 'Switzer', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
-  --font-heading: 'Satoshi', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
 
   --color-text: #111110;
   --color-text-secondary: #63635e;
@@ -41,10 +43,20 @@
     color: #111110;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'cv01' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1, 'ss02' 1;
+    font-variant-numeric: proportional-nums;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    --txt-heading: #111110;
+    --txt-body: #111110;
   }
   body {
     overflow-x: hidden;
     max-width: 100vw;
+  }
+  input, textarea, select, button {
+    font-family: var(--font-sans);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'cv01' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1, 'ss02' 1;
   }
   details summary::-webkit-details-marker { display: none; }
   details summary::marker { display: none; }
@@ -60,6 +72,7 @@
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.04em;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
   }
   .heading-section {
     font-family: var(--font-heading);
@@ -67,7 +80,8 @@
     font-weight: 800;
     line-height: 1.02;
     letter-spacing: -0.035em;
-    color: #111110;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+    color: var(--txt-heading);
   }
   .heading-section-light {
     font-family: var(--font-heading);
@@ -75,6 +89,7 @@
     font-weight: 800;
     line-height: 1.02;
     letter-spacing: -0.035em;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
     color: #ffffff;
   }
   .heading-card {
@@ -83,28 +98,29 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.025em;
-    color: #111110;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+    color: var(--txt-heading);
   }
   .body-large {
     font-family: var(--font-sans);
     font-size: clamp(18px, 2vw, 22px);
     font-weight: 400;
     line-height: 1.6;
-    color: #63635e;
+    color: var(--txt-body);
   }
   .body-default {
     font-family: var(--font-sans);
     font-size: clamp(16px, 1.6vw, 19px);
     font-weight: 400;
     line-height: 1.65;
-    color: #63635e;
+    color: var(--txt-body);
   }
   .body-small {
     font-family: var(--font-sans);
     font-size: clamp(14px, 1.4vw, 17px);
     font-weight: 400;
     line-height: 1.6;
-    color: #63635e;
+    color: var(--txt-body);
   }
   .caption {
     font-family: var(--font-heading);
@@ -138,11 +154,11 @@
     transition: all 0.4s ease;
   }
   .nav-bar.scrolled {
-    background: linear-gradient(90deg, rgba(135,206,250,0.08) 0%, rgba(100,180,255,0.25) 20%, rgba(255,255,255,0.1) 40%, rgba(135,206,250,0.3) 55%, rgba(255,255,255,0.08) 70%, rgba(100,180,255,0.2) 85%, rgba(173,216,230,0.12) 100%);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    box-shadow: 0 1px 0 rgba(100,180,255,0.1);
-    border-bottom-color: rgba(135,206,250,0.2);
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    border-bottom-color: rgba(0,0,0,0.06);
   }
 
   /* ── Hero ── */
@@ -219,10 +235,10 @@
 
   .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(32px, 4vw, 64px);
+    font-size: clamp(32px, 4vw, 62px);
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.035em;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
   }
   .gradient-text {
     background: linear-gradient(180deg, #ffffff 20%, rgba(255,255,255,0.65) 100%);
@@ -374,12 +390,9 @@
     color: #e8e8e4;
     position: relative;
     overflow: hidden;
+    --txt-heading: #ffffff;
+    --txt-body: rgba(255,255,255,0.72);
   }
-  .s-dark .heading-section { color: #ffffff; }
-  .s-dark .body-large,
-  .s-dark .body-default,
-  .s-dark .body-small { color: rgba(255,255,255,0.55); }
-  .s-dark .section-label { color: #349640; }
 
   /* Warm light — subtle warm off-white */
   .s-warm {
@@ -496,10 +509,10 @@
     background: linear-gradient(90deg, rgba(135,206,250,0.08) 0%, rgba(100,180,255,0.18) 30%, rgba(255,255,255,0.06) 50%, rgba(135,206,250,0.2) 70%, rgba(173,216,230,0.1) 100%);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    color: rgba(255,255,255,0.6);
-    font-size: 16px;
+    color: rgba(255,255,255,0.68);
+    font-size: 17px;
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     cursor: pointer;
     transition: all 0.25s ease;
   }
@@ -616,3 +629,4 @@
   0%, 100% { box-shadow: 0 0 0 0 rgba(42,122,53,0.4); }
   50% { box-shadow: 0 0 0 10px rgba(42,122,53,0); }
 }
+

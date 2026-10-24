@@ -14,7 +14,7 @@ import { TextEffect } from '../components/motion/TextEffect.tsx';
 import { AnimatedGroup } from '../components/motion/AnimatedGroup.tsx';
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 ---
-<Layout title="Mainsou — De l'ordonnance à votre porte">
+<Layout title="Mainsou — Votre médicament, au prix officiel, dans la pharmacie la plus proche">
 <Nav />
 
 <!-- ===== HERO ===== -->
@@ -22,20 +22,22 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   <div class="hero-center">
     <div>
       <div class="hero-content-left">
-        <h1 class="hero-title gradient-text text-left" style="margin-bottom:28px;animation:heroFadeUp 0.6s ease 0.05s both;">
-          Nous simplifions chaque étape de votre parcours de soin
+        <h1 class="hero-title text-left" style="margin-bottom:28px;animation:heroFadeUp 0.6s ease 0.05s both;color:rgba(255,255,255,0.93);">
+          Le bon médicament,<br>
+          au bon endroit,<br>
+          au bon moment.
         </h1>
         <p class="text-left" style="font-size:clamp(18px,2.2vw,24px);line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:48px;max-width:520px;animation:heroFadeUp 0.5s ease 0.15s both;">
-          Pour vous livrer l'essentiel, là où vous êtes.
+          Réservez en ligne, payez par Mobile Money, retirez au comptoir.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-start" style="animation:heroFadeUp 0.5s ease 0.25s both;">
           <button onclick="openAuthForDownload()" class="btn-primary-large group">
             <svg class="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
-            Télécharger l'APK
+            Je suis patient
           </button>
-          <button onclick="openAuth()" class="btn-secondary">
-            S'inscrire gratuitement
-          </button>
+          <a href="/pharmacien/" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+            Je suis pharmacien
+          </a>
         </div>
       </div>
     </div>
@@ -46,7 +48,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 <div class="overflow-hidden relative" style="padding:24px 0;background:linear-gradient(90deg, rgba(135,206,250,0.08) 0%, rgba(100,180,255,0.25) 20%, rgba(255,255,255,0.1) 40%, rgba(135,206,250,0.3) 55%, rgba(255,255,255,0.08) 70%, rgba(100,180,255,0.2) 85%, rgba(173,216,230,0.12) 100%);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-top:1px solid rgba(255,255,255,0.4);border-bottom:1px solid rgba(135,206,250,0.25);">
   <div class="marquee-track relative z-10">
     <div class="marquee-content">
-      {['Ordonnances numériques', 'OCR intelligent', 'Géolocalisation', 'Livraison GPS', 'Chiffrement E2E', 'Dossier médical partagé'].map(text => (
+      {["Stock en temps réel", "Géolocalisation", "Réservation Mobile Money", "Réseau d'officines", "7 officines partenaires", "Prix officiel garanti"].map(text => (
         <>
           <span style="font-size:18px;font-weight:700;color:#191919;letter-spacing:0.08em;text-transform:uppercase;">{text}</span>
           <span style="margin:0 40px;color:rgba(0,0,0,0.2);">&#x2022;</span>
@@ -54,7 +56,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       ))}
     </div>
     <div class="marquee-content" aria-hidden="true">
-      {['Ordonnances numériques', 'OCR intelligent', 'Géolocalisation', 'Livraison GPS', 'Chiffrement E2E', 'Dossier médical partagé'].map(text => (
+      {["Stock en temps réel", "Géolocalisation", "Réservation Mobile Money", "Réseau d'officines", "7 officines partenaires", "Prix officiel garanti"].map(text => (
         <>
           <span style="font-size:18px;font-weight:700;color:#191919;letter-spacing:0.08em;text-transform:uppercase;">{text}</span>
           <span style="margin:0 40px;color:rgba(0,0,0,0.2);">&#x2022;</span>
@@ -74,7 +76,8 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
           Comment ça marche
         </div>
-        <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Quatre étapes. Zéro friction.</TextEffect>
+        <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Trois étapes. Zéro friction.</TextEffect>
+        <p class="body-large" style="margin-top:16px;max-width:640px;">Deux pharmacies à 3 km l'une de l'autre : l'une a du stock dormant, l'autre est en rupture sur le même produit. Le patient parcourt la ville, ou se tourne vers le marché informel. Mainsou connecte les deux côtés.</p>
       </div>
     </FadeIn>
     <StepsSection client:visible />
@@ -94,44 +97,45 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   </div>
 </section>
 
-<!-- ===== APPS ECOSYSTEM — dark block ===== -->
+<!-- ===== CE QUE NOUS PROPOSONS — dark block ===== -->
 <section id="apps" class="s-dark" style="padding:140px 0;">
   <div class="mx-auto max-w-[1200px] px-6 lg:px-10 relative z-10">
     <FadeIn client:visible>
       <div style="margin-bottom:64px;">
-        <div class="section-label">
+        <div class="section-label" style="color:#349640;">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
-          L'écosystème
+          Ce que nous proposons
         </div>
-        <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Trois apps. Un système.</TextEffect>
+        <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Disponible aujourd'hui.</TextEffect>
+        <p class="body-large" style="margin-top:16px;max-width:580px;">Trois services complémentaires — pour le patient, pour la pharmacie, pour l'hôpital.</p>
       </div>
     </FadeIn>
 
-    <!-- APP 1: Mainsou — texte gauche, vidéo droite -->
+    <!-- Patient -->
     <FadeIn client:visible>
-      <div class="card-dark" style="padding:48px;margin-bottom:20px;">
-        <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;">
-          <div>
-            <div class="flex items-center gap-2.5 mb-5">
-              <div class="w-8 h-8 rounded-lg bg-accent-green flex items-center justify-center">
-                <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
-              </div>
-              <span class="text-[14px] font-semibold text-brand">Mainsou — Patient & Livreur</span>
+      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 0.3s ease,box-shadow 0.3s ease;"
+           onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,0.18),0 4px 12px rgba(0,0,0,0.08)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1)'">
+        <div style="display:grid;grid-template-columns:1fr 300px;align-items:stretch;">
+          <div style="padding:52px 52px 52px 56px;">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:6px;background:#f0faf1;border:1px solid #c8e6c9;margin-bottom:24px;">
+              <div style="width:5px;height:5px;border-radius:50%;background:#349640;flex-shrink:0;"></div>
+              <span style="font-size:11px;font-weight:700;color:#2a7a35;letter-spacing:0.06em;text-transform:uppercase;">Pour les patients</span>
             </div>
-            <h3 class="heading-card" style="font-size:clamp(22px,2.5vw,30px);margin-bottom:12px;color:#fff;">Pour les patients & livreurs</h3>
-            <p style="margin-bottom:24px;max-width:460px;color:rgba(255,255,255,0.5);font-size:16px;line-height:1.7;">Carte interactive des pharmacies proches, commande par code ordonnance ou photo OCR, suivi GPS du livreur en temps réel.</p>
-            <div class="flex flex-col gap-3">
-              {['OCR intelligent des ordonnances', 'Pharmacies géolocalisées sur carte', 'Suivi GPS du livreur en direct'].map(item => (
-                <div class="flex items-center gap-3 text-[14px]" style="color:rgba(255,255,255,0.65);font-weight:500;">
-                  <div class="w-5 h-5 rounded-md bg-accent-green flex items-center justify-center shrink-0"><svg class="w-3 h-3 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-                  {item}
+            <h3 style="font-family:var(--font-heading);font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-0.03em;color:#111110;line-height:1.15;margin-bottom:16px;">Gratuit.<br>Pour toujours.</h3>
+            <p style="font-size:clamp(15px,1.4vw,17px);color:#111110;line-height:1.7;margin-bottom:32px;max-width:400px;">Cherchez votre médicament, voyez en temps réel les pharmacies proches qui l'ont en stock. Réservez et payez par Mobile Money — l'argent va directement à la pharmacie.</p>
+            <div style="display:flex;flex-direction:column;gap:11px;">
+              {['Pharmacies géolocalisées en temps réel', 'Paiement Mobile Money sécurisé', 'Retrait garanti ou remboursement'].map(item => (
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="#349640" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                  <span style="font-size:14px;font-weight:500;color:#111110;">{item}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div class="flex justify-end shrink-0">
+          <div style="background:#f2f7f3;border-left:1px solid #d8eed9;display:flex;align-items:center;justify-content:center;padding:36px 32px;">
             <video autoplay muted playsinline
-              style="width:220px;border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,0.6);display:block;"
+              style="width:210px;border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,0.15),0 4px 10px rgba(0,0,0,0.08);display:block;"
               ontimeupdate="if(this.currentTime>=5){this.currentTime=0;}">
               <source src="/mainsou.mp4" type="video/mp4" />
             </video>
@@ -140,61 +144,66 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       </div>
     </FadeIn>
 
-    <!-- APP 2: Pharma — texte gauche, image droite -->
+    <!-- Pharmacien -->
     <FadeIn client:visible delay={0.05}>
-      <div class="card-dark" style="padding:48px;margin-bottom:20px;">
-        <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;">
-          <div>
-            <div class="flex items-center gap-2.5 mb-5">
-              <div class="w-8 h-8 rounded-lg bg-accent-teal flex items-center justify-center">
-                <svg style="width:16px;height:16px;" fill="none" stroke="#ffffff" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-              </div>
-              <span class="text-[14px] font-semibold" style="color:#00bfa6;">Pharma App — Pharmacien</span>
+      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 0.3s ease,box-shadow 0.3s ease;"
+           onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,0.18),0 4px 12px rgba(0,0,0,0.08)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;">
+          <div style="padding:52px 52px 52px 56px;">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:6px;background:#f0faf9;border:1px solid #b2dfdb;margin-bottom:24px;">
+              <div style="width:5px;height:5px;border-radius:50%;background:#00bfa6;flex-shrink:0;"></div>
+              <span style="font-size:11px;font-weight:700;color:#00897a;letter-spacing:0.06em;text-transform:uppercase;">Pour les pharmaciens</span>
             </div>
-            <h3 class="heading-card" style="font-size:clamp(22px,2.5vw,30px);margin-bottom:12px;color:#fff;">Pour les pharmaciens</h3>
-            <p style="margin-bottom:24px;max-width:400px;color:rgba(255,255,255,0.5);font-size:16px;line-height:1.7;">Dashboard complet : ventes, commandes, clients actifs, graphiques, produits les plus vendus. Gestion de stock et ROI intégrés.</p>
-            <div class="flex flex-col gap-3">
-              {['KPIs ventes, commandes, clients', 'Graphiques ventes + catégories', 'Dashboard ROI & crédits'].map(item => (
-                <div class="flex items-center gap-3 text-[14px]" style="color:rgba(255,255,255,0.65);font-weight:500;">
-                  <div class="w-5 h-5 rounded-md bg-accent-teal flex items-center justify-center shrink-0"><svg style="width:12px;height:12px;" fill="none" stroke="#ffffff" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-                  {item}
+            <h3 style="font-family:var(--font-heading);font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-0.03em;color:#111110;line-height:1.15;margin-bottom:16px;">Des commandes payées.<br>Moins de stock dormant.</h3>
+            <p style="font-size:clamp(15px,1.4vw,17px);color:#111110;line-height:1.7;margin-bottom:32px;max-width:380px;">Des commandes déjà payées quand elles arrivent. Un réseau d'officines voisines pour se dépanner. Une aide pour commander les bons produits selon la demande réelle.</p>
+            <div style="display:flex;flex-direction:column;gap:11px;">
+              {['Commandes pré-payées à la réservation', "Réseau d'entraide entre officines", 'Optimisation des stocks par zone'].map(item => (
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="#00bfa6" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                  <span style="font-size:14px;font-weight:500;color:#111110;">{item}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div class="flex justify-end">
+          <div style="background:#f0faf9;border-left:1px solid #e0f2f1;position:relative;overflow:hidden;min-height:320px;">
             <img src="/espace-pharmacien.png" alt="Espace Pharmacien"
-              style="width:100%;max-width:520px;border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,0.6);display:block;" />
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;display:block;" />
           </div>
         </div>
       </div>
     </FadeIn>
 
-    <!-- APP 3: Doctor — texte gauche, image droite -->
-    <FadeIn client:visible delay={0.05}>
-      <div class="card-dark" style="padding:48px;">
-        <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;">
-          <div>
-            <div class="flex items-center gap-2.5 mb-5">
-              <div class="w-8 h-8 rounded-lg bg-accent-blue flex items-center justify-center">
-                <svg style="width:16px;height:16px;" fill="none" stroke="#ffffff" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>
-              </div>
-              <span class="text-[14px] font-semibold" style="color:#00bbf9;">Doctor App — Hôpital</span>
+    <!-- Hôpital — Bientôt -->
+    <FadeIn client:visible delay={0.1}>
+      <div style="border-radius:20px;overflow:hidden;background:#f4f6fb;border:1px solid rgba(180,195,230,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1);margin-bottom:16px;transition:transform 0.3s ease,box-shadow 0.3s ease;"
+           onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,0.18),0 4px 12px rgba(0,0,0,0.08)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.1)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;">
+          <div style="padding:52px 52px 52px 56px;">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 12px 4px 8px;border-radius:6px;background:#e8f4fb;border:1px solid #b3d9ee;margin-bottom:24px;">
+              <div style="width:5px;height:5px;border-radius:50%;background:#039be5;flex-shrink:0;"></div>
+              <span style="font-size:11px;font-weight:700;color:#0277bd;letter-spacing:0.06em;text-transform:uppercase;">Hôpitaux &amp; médecins</span>
+              <span style="display:inline-flex;padding:1px 8px;border-radius:4px;font-size:9.5px;font-weight:800;letter-spacing:0.07em;background:#e8f4fb;color:#0277bd;border:1px solid #b3d9ee;margin-left:4px;text-transform:uppercase;">Bientôt</span>
             </div>
-            <h3 class="heading-card" style="font-size:clamp(22px,2.5vw,30px);margin-bottom:12px;color:#fff;">Pour les hôpitaux & médecins</h3>
-            <p style="margin-bottom:24px;max-width:400px;color:rgba(255,255,255,0.5);font-size:16px;line-height:1.7;">Dossier patient partagé entre hôpitaux, ordonnances numériques avec code, gestion des médecins par établissement.</p>
-            <div class="flex flex-col gap-3">
-              {['Dossier patient unique et partagé', 'E-ordonnances avec code patient', 'Gestion médecins par hôpital'].map(item => (
-                <div class="flex items-center gap-3 text-[14px]" style="color:rgba(255,255,255,0.65);font-weight:500;">
-                  <div class="w-5 h-5 rounded-md bg-accent-blue flex items-center justify-center shrink-0"><svg style="width:12px;height:12px;" fill="none" stroke="#ffffff" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div>
-                  {item}
+            <h3 style="font-family:var(--font-heading);font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-0.03em;color:#111110;line-height:1.15;margin-bottom:16px;">Pour les hôpitaux<br>et médecins.</h3>
+            <p style="font-size:clamp(15px,1.4vw,17px);color:#111110;line-height:1.7;margin-bottom:32px;max-width:380px;">Dossier Médical Partagé, ordonnances numériques avec code unique, gestion multi-établissements — déployé progressivement avec les autorités de santé.</p>
+            <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:32px;">
+              {['Dossier Médical Partagé inter-établissements', 'Ordonnances numériques à code unique', 'Gestion des médecins par établissement'].map(item => (
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="#039be5" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                  <span style="font-size:14px;font-weight:500;color:#111110;">{item}</span>
                 </div>
               ))}
             </div>
+            <a href="/hopital/" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#6b7280;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:9px 18px;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">
+              <svg style="width:13px;height:13px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"/></svg>
+              Être informé du lancement
+            </a>
           </div>
-          <div class="flex justify-end">
+          <div style="background:#f0f8fc;border-left:1px solid #daeef8;position:relative;overflow:hidden;min-height:320px;">
             <img src="/espace-hopital.png" alt="Espace Hôpital"
-              style="width:100%;max-width:520px;border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,0.6);display:block;" />
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;display:block;opacity:0.45;filter:grayscale(0.4);" />
           </div>
         </div>
       </div>
@@ -202,16 +211,17 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   </div>
 </section>
 
-<!-- ===== FEATURES — warm light ===== -->
+<!-- ===== POUR LES OFFICINES — warm light ===== -->
 <section id="features" class="s-warm" style="padding:140px 0;">
   <div class="mx-auto max-w-[1200px] px-6 lg:px-10 relative z-10">
     <FadeIn client:visible>
       <div style="margin-bottom:56px;">
         <div class="section-label" style="color:#00bfa6;">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
-          Fonctionnalités
+          Pour les officines
         </div>
-        <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Pensé pour chaque détail.</TextEffect>
+        <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Ce qui change pour votre pharmacie.</TextEffect>
+        <p class="body-large" style="margin-top:16px;max-width:540px;">Déjà opérationnel dans 7 officines du Grand Abidjan depuis fin 2025.</p>
       </div>
     </FadeIn>
     <FeatureGrid client:visible />
@@ -229,80 +239,125 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
           Tarifs
         </div>
         <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Gratuit pour les patients.</TextEffect>
-        <p class="body-large" style="margin-top:16px;max-width:460px;">Un modèle SaaS + micro-crédits pour les professionnels, une marketplace para-pharmaceutique pour tous.</p>
+        <p class="body-large" style="margin-top:16px;max-width:500px;">L'abonnement pharmacie couvre l'accès au réseau. Mainsou ne touche ni au prix ni à la marge du médicament.</p>
       </div>
     </FadeIn>
     <FadeIn client:visible delay={0.08}>
-      <div id="pricing-cards-wrapper" style="position:relative;max-width:1040px;">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" id="pricing-cards-inner">
+      <div style="max-width:1040px;">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <!-- Patient -->
         <div class="notion-card" style="padding:32px;">
           <p class="caption" style="margin-bottom:24px;color:#111110;">Patient</p>
           <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">Gratuit</p>
           <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Pour toujours</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Commande & OCR</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Suivi temps réel</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Marketplace para-pharma</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Recherche par géolocalisation</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Paiement Mobile Money</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Retrait au comptoir</li>
           </ul>
           <button onclick="openAuthForDownload()" style="display:block;width:100%;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;border:none;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">Télécharger</button>
         </div>
-        <!-- Pharmacie -->
-        <div class="notion-card relative" style="padding:32px;box-shadow:0 0 0 2px rgba(42,122,53,0.15), 0 4px 16px rgba(0,0,0,0.06);">
-          <div style="position:absolute;top:-1px;left:24px;right:24px;height:3px;background:linear-gradient(90deg,#2a7a35,#349640);border-radius:2px;"></div>
-          <p class="caption" style="margin-bottom:24px;color:#111110;">Pharmacie</p>
-          <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">SaaS</p>
-          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Abonnement + crédits</p>
+        <!-- Mainsou Réseau -->
+        <div class="notion-card" style="padding:32px;">
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Mainsou Réseau</p>
+          <p style="font-size:32px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">30 000 FCFA</p>
+          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">par mois</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Outils de gestion & stock</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Micro-crédits flexibles</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>ROI garanti</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Publicité marketplace</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Commandes déjà payées</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dépannage entre officines</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Aide à la commande</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>API stock ou validation manuelle</li>
           </ul>
           <button onclick="openAuth()" class="btn-primary" style="width:100%;justify-content:center;">Devenir partenaire</button>
         </div>
-        <!-- Hôpital -->
+        <!-- Option Officine -->
         <div class="notion-card" style="padding:32px;">
-          <p class="caption" style="margin-bottom:24px;color:#111110;">Hôpital</p>
-          <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">SaaS</p>
-          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Abonnement mensuel</p>
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Option Officine</p>
+          <p style="font-size:32px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">+35 000 FCFA</p>
+          <p class="body-small" style="margin-bottom:4px;color:#111110;font-weight:600;">par mois</p>
+          <p style="font-size:12px;color:#111110;margin-bottom:28px;">Frais d'intégration en sus</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dossier médical partagé</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>E-ordonnances</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Gestion médecins</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Services premium</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Tout Mainsou Réseau inclus</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Logiciel de gestion d'officine</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Inventaire automatique RFID</li>
           </ul>
-          <button onclick="openAuth()" style="display:block;width:100%;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;border:none;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">Demander un agrément</button>
+          <button onclick="openAuth()" style="display:block;width:100%;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;border:none;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">En savoir plus</button>
         </div>
-        <!-- Marketplace -->
+        <!-- Parapharmacie -->
         <div class="notion-card" style="padding:32px;">
-          <p class="caption" style="margin-bottom:24px;color:#111110;">Marketplace</p>
-          <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">Para</p>
-          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">Produits non-urgents</p>
+          <p class="caption" style="margin-bottom:24px;color:#111110;">Parapharmacie</p>
+          <p style="font-size:40px;font-weight:800;letter-spacing:-0.035em;color:#111110;margin-bottom:4px;">10%</p>
+          <p class="body-small" style="margin-bottom:28px;color:#111110;font-weight:600;">sur les ventes apportées</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Cosmétiques & beauté</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Alimentation nourrissons</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Pubs labos & marques</li>
-            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Algorithme de proximité</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Cosmétiques et beauté</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Compléments alimentaires</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Visibilité marques de parapharmacie</li>
+            <li class="flex items-center gap-2.5 text-[14px]" style="color:#111110;font-weight:600;"><svg class="w-4 h-4 shrink-0" style="color:#2a7a35;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Rien sur le médicament</li>
           </ul>
           <button onclick="openAuthForDownload()" style="display:block;width:100%;text-align:center;font-size:14px;font-weight:600;color:#111110;background:#f5f5f3;border-radius:10px;padding:10px 16px;border:none;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#ebebea'" onmouseout="this.style.background='#f5f5f3'">Découvrir</button>
         </div>
       </div>
 
-      <!-- Pricing gate overlay -->
-      <div id="pricing-gate" style="position:absolute;inset:0;border-radius:16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:rgba(232,236,239,0.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;opacity:0;pointer-events:none;transition:opacity 0.5s ease;">
-        <div style="width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.10);display:flex;align-items:center;justify-content:center;">
-          <svg style="width:22px;height:22px;color:#1C1F26;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
-        </div>
-        <div style="text-align:center;">
-          <p style="font-size:17px;font-weight:700;color:#1C1F26;margin-bottom:6px;">Contenu réservé aux partenaires</p>
-          <p style="font-size:14px;color:#6B7280;max-width:260px;line-height:1.5;">Connectez-vous pour consulter les détails tarifaires.</p>
-        </div>
-        <button onclick="openAuth()" style="display:inline-flex;align-items:center;gap:8px;background:#1C1F26;color:#fff;font-size:14px;font-weight:600;padding:11px 24px;border-radius:10px;border:none;cursor:pointer;transition:all 0.15s;letter-spacing:-0.01em;" onmouseover="this.style.background='#2d3139'" onmouseout="this.style.background='#1C1F26'">
-          <svg style="width:15px;height:15px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
-          Se connecter
-        </button>
       </div>
+    </FadeIn>
+  </div>
+</section>
+
+<!-- ===== NOTRE VISION — BIENTÔT ===== -->
+<section id="vision" style="padding:120px 0;background:#F7F7F5;">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-10">
+    <FadeIn client:visible>
+      <div style="margin-bottom:56px;">
+        <div class="section-label" style="color:#9b5de5;">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
+          Notre vision
+        </div>
+        <h2 class="heading-section">Ce qui arrive ensuite.</h2>
+        <p class="body-large" style="margin-top:16px;max-width:580px;">Ces services seront déployés progressivement, en lien avec les autorités de santé et selon l'évolution de la réglementation.</p>
+      </div>
+    </FadeIn>
+    <FadeIn client:visible delay={0.06}>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="notion-card p-8">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(155,93,229,0.1);color:#9b5de5;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(155,93,229,0.1);color:#9b5de5;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 class="heading-card mb-2">Ordonnance numérique</h3>
+          <p class="body-small">Code unique généré par le médecin, vérifiable par le pharmacien. Plus de papier, moins d'erreurs.</p>
+        </div>
+        <div class="notion-card p-8">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(0,187,249,0.1);color:#00bbf9;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(0,187,249,0.1);color:#00bbf9;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 class="heading-card mb-2">Dossier Médical Partagé</h3>
+          <p class="body-small">Un dossier unique, accessible par les établissements de santé agréés du réseau Mainsou.</p>
+        </div>
+        <div class="notion-card p-8">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(42,122,53,0.1);color:#2a7a35;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(42,122,53,0.1);color:#2a7a35;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 class="heading-card mb-2">Espace hôpitaux et cliniques</h3>
+          <p class="body-small">Gestion des médecins par établissement, ordonnances liées aux dossiers patients agréés.</p>
+        </div>
+        <div class="notion-card p-8">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(230,122,46,0.1);color:#e67a2e;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(230,122,46,0.1);color:#e67a2e;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 class="heading-card mb-2">Livraison à domicile</h3>
+          <p class="body-small">Quand le cadre réglementaire le permettra, la livraison de médicaments au domicile des patients.</p>
+        </div>
+        <div class="notion-card p-8">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(241,91,181,0.1);color:#f15bb5;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          </div>
+          <div class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full mb-3" style="background:rgba(241,91,181,0.1);color:#f15bb5;letter-spacing:0.04em;">BIENTÔT</div>
+          <h3 class="heading-card mb-2">Téléconsultation et examens</h3>
+          <p class="body-small">Réservation de consultations médicales, prélèvements sanguins et examens depuis l'application.</p>
+        </div>
       </div>
     </FadeIn>
   </div>
@@ -313,12 +368,12 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   <div class="mx-auto max-w-[1200px] px-6 lg:px-10 relative z-10">
     <FadeIn client:visible>
       <div style="margin-bottom:56px;">
-        <div class="section-label">
+        <div class="section-label" style="color:#349640;">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
           Questions fréquentes
         </div>
         <h2 class="heading-section">Vous avez<br>des questions ?</h2>
-        <p class="body-large" style="margin-top:16px;">Tout ce que vous devez savoir sur Mainsou et notre écosystème.</p>
+        <p class="body-large" style="margin-top:16px;">Tout ce que vous devez savoir sur Mainsou.</p>
       </div>
     </FadeIn>
 
@@ -327,23 +382,35 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         <!-- Questions list (left) -->
         <div class="faq-questions">
           <button class="faq-btn faq-btn-active" data-faq="0">
-            <span>Pourquoi les médecins et pharmaciens utiliseraient-ils Mainsou ?</span>
+            <span>Comment fonctionne Mainsou ?</span>
             <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
           </button>
           <button class="faq-btn" data-faq="1">
-            <span>Comment gérez-vous les réglementations entre pays africains ?</span>
+            <span>Et si mon médicament est sur ordonnance ?</span>
             <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
           </button>
           <button class="faq-btn" data-faq="2">
-            <span>Quel est le modèle économique de Mainsou ?</span>
+            <span>Combien ça coûte pour le patient ?</span>
             <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
           </button>
           <button class="faq-btn" data-faq="3">
-            <span>L'application fonctionne-t-elle en zone à faible couverture internet ?</span>
+            <span>Qui reçoit l'argent ?</span>
             <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
           </button>
           <button class="faq-btn" data-faq="4">
-            <span>Les données médicales sont-elles en sécurité ?</span>
+            <span>Pourquoi une pharmacie rejoindrait Mainsou ?</span>
+            <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </button>
+          <button class="faq-btn" data-faq="5">
+            <span>Mainsou touche-t-il au prix des médicaments ?</span>
+            <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </button>
+          <button class="faq-btn" data-faq="6">
+            <span>Que faites-vous de mes données ?</span>
+            <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </button>
+          <button class="faq-btn" data-faq="7">
+            <span>Quels services arrivent ensuite ?</span>
             <svg class="w-4 h-4 shrink-0 faq-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
           </button>
         </div>
@@ -351,46 +418,64 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         <!-- Answer panel (right) -->
         <div class="faq-panel">
           <div class="faq-answer faq-answer-active" data-answer="0">
-            <h4 class="faq-answer-title">Pourquoi utiliser Mainsou au quotidien ?</h4>
+            <h4 class="faq-answer-title">Comment fonctionne Mainsou ?</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Dossier Médical Partagé : Un support numérique durable, sécurisé et accessible par tous les praticiens agréés.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Suivi du parcours patient : Centralisation des données tout au long de la vie du patient.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Aide au diagnostic : L'historique complet facilite la compréhension des pathologies.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Vous cherchez un médicament dans l'application. Mainsou affiche les pharmacies proches qui l'ont en stock, au prix officiel.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Vous choisissez votre pharmacie et payez par Mobile Money. La commande est confirmée immédiatement.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Vous vous rendez au comptoir pour retirer votre commande. Pour un médicament sur ordonnance, vous présentez l'original au pharmacien.</span></div>
             </div>
           </div>
           <div class="faq-answer" data-answer="1">
-            <h4 class="faq-answer-title">Réglementations entre pays africains</h4>
+            <h4 class="faq-answer-title">Médicament sur ordonnance</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Collaboration institutionnelle : Agréments et collaboration avec les autorités locales.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Outils pour l'État : Meilleur suivi épidémiologique et analyse des tendances sanitaires.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Disponibilité : Centralisation des stocks garantissant l'accès aux médicaments d'urgence.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Vous présentez votre ordonnance originale au pharmacien au moment du retrait. C'est lui qui vérifie et délivre.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Mainsou ne collecte aucune ordonnance. Nous ne stockons aucun document médical de votre part.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Si le pharmacien refuse de délivrer, vous êtes intégralement remboursé.</span></div>
             </div>
           </div>
           <div class="faq-answer" data-answer="2">
-            <h4 class="faq-answer-title">Modèle économique</h4>
+            <h4 class="faq-answer-title">Coût pour le patient</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Abonnement SaaS : Pour hôpitaux et pharmacies (dossier médical, outils de gestion).</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Micro-crédits : Pour augmenter le volume de commandes, ROI garanti.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Publicité ciblée : Espaces sponsorisés pour les laboratoires pharmaceutiques et marques de santé.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Marketplace para-pharmaceutique : Cosmétiques, beauté, nourrissons.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Services de santé : Téléconsultation, prise de sang à domicile ou au bureau, réservation d'examens médicaux.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Commissions livraison : Frais de livraison + services premium.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Mainsou est entièrement gratuit pour le patient. Vous ne payez que le prix officiel de votre médicament.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Aucun frais de service. Aucune commission cachée. Le prix affiché est le prix que vous payez.</span></div>
             </div>
           </div>
           <div class="faq-answer" data-answer="3">
-            <h4 class="faq-answer-title">Zones à faible couverture</h4>
+            <h4 class="faq-answer-title">Qui reçoit l'argent ?</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Hébergement local : Datacenters locaux, souveraineté numérique.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Carte patient physique : QR Code avec infos essentielles, consultables hors-ligne.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Connectivité résiliente : Infrastructures satellites pour les zones isolées.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>L'argent de la commande va directement à la pharmacie. Mainsou ne touche ni au prix ni à la marge du médicament.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Notre revenu vient de l'abonnement mensuel des pharmacies partenaires et de la commission sur la parapharmacie.</span></div>
             </div>
           </div>
           <div class="faq-answer" data-answer="4">
-            <h4 class="faq-answer-title">Sécurité des données</h4>
+            <h4 class="faq-answer-title">Pourquoi rejoindre Mainsou ?</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Chiffrement bout-en-bout : Données chiffrées en transit et au repos.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Conformité réglementaire : Respect des normes strictes en matière de données de santé.</span></div>
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Hébergement souverain : Datacenters locaux sous contrôle des autorités compétentes.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Des commandes déjà payées venant de patients dans votre zone, sans effort de prospection de votre part.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>La mise en relation avec les officines voisines pour se dépanner : stock dormant d'un côté, rupture de l'autre.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Une aide pour commander les bons produits en bonne quantité selon la demande réelle de votre quartier. Déjà opérationnel dans 7 officines du Grand Abidjan depuis fin 2025.</span></div>
+            </div>
+          </div>
+          <div class="faq-answer" data-answer="5">
+            <h4 class="faq-answer-title">Le prix des médicaments</h4>
+            <div class="faq-answer-items">
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Non. Mainsou affiche uniquement les prix officiels. Nous ne prenons aucune commission sur le médicament.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Le pharmacien garde l'intégralité de sa marge. Mainsou ne s'interpose pas entre la pharmacie et le patient sur le prix du médicament.</span></div>
+            </div>
+          </div>
+          <div class="faq-answer" data-answer="6">
+            <h4 class="faq-answer-title">Vos données</h4>
+            <div class="faq-answer-items">
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Mainsou ne stocke ni ordonnance ni diagnostic. Nous ne collectons aucun document médical.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>La carte de la demande que nous construisons est entièrement anonymisée : on sait quels médicaments se cherchent dans un quartier, jamais qui les cherche.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Vos données personnelles restent dans votre téléphone.</span></div>
+            </div>
+          </div>
+          <div class="faq-answer" data-answer="7">
+            <h4 class="faq-answer-title">Services à venir</h4>
+            <div class="faq-answer-items">
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Ordonnance numérique avec code unique, Dossier Médical Partagé entre établissements agréés, espace cliniques et hôpitaux.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Livraison à domicile, téléconsultation, réservation d'examens et prélèvements.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Ces services seront déployés progressivement, en lien avec les autorités de santé et selon l'évolution de la réglementation.</span></div>
             </div>
           </div>
           <!-- Empty state -->
@@ -444,25 +529,5 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     selectProfile('client');
   });
 
-  // Pricing gate — blur after 1.4s in viewport
-  var pricingGate = document.getElementById('pricing-gate');
-  var pricingSection = document.getElementById('pricing');
-  var pricingTriggered = false;
-  var pricingTimer = null;
-  var pricingObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !pricingTriggered) {
-        pricingTimer = setTimeout(function() {
-          pricingTriggered = true;
-          pricingGate.style.opacity = '1';
-          pricingGate.style.pointerEvents = 'auto';
-          pricingObs.disconnect();
-        }, 1400);
-      } else if (!entry.isIntersecting && !pricingTriggered) {
-        clearTimeout(pricingTimer);
-      }
-    });
-  }, { threshold: 0.35 });
-  pricingObs.observe(pricingSection);
 </script>
 </Layout>

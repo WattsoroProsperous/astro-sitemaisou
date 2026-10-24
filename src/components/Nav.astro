@@ -1,160 +1,370 @@
 ---
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 ---
-<header id="mainNav" class="nav-bar fixed inset-x-0 top-0 z-50 flex items-center">
-  <div class="mx-auto w-full max-w-[1200px] px-6 lg:px-10 flex items-center justify-between">
+
+<header id="mainNav" class="nav-bar fixed inset-x-0 top-0 z-[200]">
+  <div class="mx-auto max-w-[1200px] px-6 lg:px-10 h-full flex items-center justify-between gap-10">
+
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 shrink-0">
-      <img src="/mainsou.png" alt="Mainsou" class="h-10 sm:h-11">
+    <a href="/" class="flex items-center shrink-0">
+      <img src="/mainsou.png" alt="Mainsou" class="h-9">
     </a>
 
-    <!-- Desktop nav — clean segmented tabs -->
-    <nav class="hidden md:flex items-center gap-0.5 nav-tabs-container">
-      <a href="#how" class="nav-link nav-tab">Comment ça marche</a>
-      <a href="#apps" class="nav-link nav-tab">Écosystème</a>
-      <a href="#features" class="nav-link nav-tab">Fonctionnalités</a>
-      <a href="#pricing" class="nav-link nav-tab">Tarifs</a>
-      <a href="#faq" class="nav-link nav-tab">FAQ</a>
+    <!-- Nav desktop -->
+    <nav class="hidden md:flex items-center gap-8 flex-1 justify-center">
+      <div id="navDropdown" class="relative">
+        <button id="navDropBtn" class="nav-link inline-flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false">
+          Mainsou
+          <svg id="navChevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transition:transform 0.2s ease;flex-shrink:0;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+          </svg>
+        </button>
+      </div>
+      <a href="#pricing" class="nav-link">Tarifs</a>
+      <a href="#faq" class="nav-link">FAQ</a>
     </nav>
 
-    <!-- Desktop actions -->
-    <div class="hidden md:flex items-center gap-3 shrink-0">
-      <button onclick="openAuth()" class="nav-login text-[15px] font-bold text-[#1a1a1a] hover:text-[#000] transition-colors rounded-xl px-5 py-2.5 hover:bg-[#f5f5f3]">Se connecter</button>
-      <button onclick="openAuthForDownload()" class="inline-flex items-center gap-2.5 text-[15px] font-semibold text-white bg-[#2a7a35] hover:bg-[#349640] rounded-xl px-6 py-3 transition-colors">
-        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+    <!-- CTA desktop -->
+    <div class="hidden md:flex items-center gap-4 shrink-0">
+      <button onclick="openAuth()" class="nav-login" style="font-size:17px;font-weight:600;letter-spacing:-0.02em;padding:9px 16px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;background:none;transition:background 0.15s,color 0.15s;">
+        Se connecter
+      </button>
+      <button onclick="openAuthForDownload()" class="nav-cta" style="display:inline-flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-0.02em;padding:11px 22px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;background:#2a7a35;color:#ffffff;transition:background 0.15s,box-shadow 0.15s;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
         Télécharger
       </button>
     </div>
 
-    <!-- Mobile hamburger -->
-    <button id="menuBtn" class="nav-hamburger md:hidden p-2.5 -mr-2 text-[#1a1a1a] hover:bg-[#f5f5f3] rounded-xl transition-colors">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
+    <!-- Mobile burger -->
+    <button id="menuBtn" class="nav-hamburger md:hidden p-2 -mr-2" style="background:none;border:none;cursor:pointer;">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
     </button>
   </div>
 </header>
+
+<!-- MEGA PANEL -->
+<div id="megaPanel" role="dialog" aria-label="Menu Mainsou" style="position:fixed;top:0;left:0;width:100%;background:#ffffff;border-bottom:1px solid #EBEBEB;box-shadow:0 20px 60px rgba(0,0,0,0.08),0 4px 16px rgba(0,0,0,0.04);visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s cubic-bezier(0.16,1,0.3,1),visibility 0s linear 0.2s;z-index:198;">
+  <div id="megaInner" style="max-width:1200px;margin:0 auto;padding:0 40px 40px;display:flex;gap:0;font-feature-settings:'ss01','ss02','cv01';-webkit-font-smoothing:antialiased;">
+
+    <!-- Col gauche -->
+    <div style="width:340px;flex-shrink:0;">
+      <p style="font-family:var(--font-heading);font-size:13px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:20px;">À propos</p>
+      <a href="#how" class="mega-item" style="display:flex;align-items:flex-start;gap:16px;padding:14px 16px;border-radius:14px;text-decoration:none;margin-bottom:4px;">
+        <div style="width:48px;height:48px;min-width:48px;border-radius:13px;background:#FEF3E2;color:#D97706;display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126Z"/></svg>
+        </div>
+        <div>
+          <p style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:#111110;margin-bottom:5px;line-height:1.2;">Le problème</p>
+          <p style="font-size:14px;color:#111110;line-height:1.6;">Stock dormant dans une officine, rupture dans la suivante. Le patient parcourt la ville pour trouver ses médicaments.</p>
+        </div>
+      </a>
+      <a href="#apps" class="mega-item" style="display:flex;align-items:flex-start;gap:16px;padding:14px 16px;border-radius:14px;text-decoration:none;margin-bottom:4px;">
+        <div style="width:48px;height:48px;min-width:48px;border-radius:13px;background:#D1FAE5;color:#059669;display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+        </div>
+        <div>
+          <p style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:#111110;margin-bottom:5px;line-height:1.2;">Notre positionnement</p>
+          <p style="font-size:14px;color:#111110;line-height:1.6;">Application disponible dès maintenant pour les patients et pharmacies partenaires.</p>
+        </div>
+      </a>
+      <a href="#vision" class="mega-item" style="display:flex;align-items:flex-start;gap:16px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+        <div style="width:48px;height:48px;min-width:48px;border-radius:13px;background:#EDE9FE;color:#7C3AED;display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+        </div>
+        <div>
+          <p style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:#111110;margin-bottom:5px;line-height:1.2;">Notre vision</p>
+          <p style="font-size:14px;color:#111110;line-height:1.6;">Ordonnances numériques, dossier médical partagé et téléconsultation pour le système de santé de demain.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Séparateur -->
+    <div style="width:1px;background:#EBEBEB;flex-shrink:0;margin:0 44px;align-self:stretch;"></div>
+
+    <!-- Col droite -->
+    <div style="flex:1;min-width:0;">
+      <p style="font-family:var(--font-heading);font-size:13px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:20px;">Fonctionnalités</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+
+        <a href="#features" class="mega-item" style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+          <div style="width:44px;height:44px;min-width:44px;border-radius:12px;background:#CFFAFE;color:#0891B2;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:#111110;margin-bottom:4px;line-height:1.2;">Géolocalisation</p>
+            <p style="font-size:13px;color:#111110;line-height:1.55;">Trouvez le médicament disponible le plus proche, en temps réel.</p>
+          </div>
+        </a>
+
+        <a href="#features" class="mega-item" style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+          <div style="width:44px;height:44px;min-width:44px;border-radius:12px;background:#FEF3E2;color:#D97706;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:#111110;margin-bottom:4px;line-height:1.2;">Mobile Money</p>
+            <p style="font-size:13px;color:#111110;line-height:1.55;">Paiement sécurisé via Orange Money, Wave ou MTN.</p>
+          </div>
+        </a>
+
+        <a href="#features" class="mega-item" style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+          <div style="width:44px;height:44px;min-width:44px;border-radius:12px;background:#EDE9FE;color:#7C3AED;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:#111110;margin-bottom:4px;line-height:1.2;">Dépannage officines</p>
+            <p style="font-size:13px;color:#111110;line-height:1.55;">Réseau de pharmacies voisines pour combler les ruptures de stock.</p>
+          </div>
+        </a>
+
+        <a href="#features" class="mega-item" style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+          <div style="width:44px;height:44px;min-width:44px;border-radius:12px;background:#FCE7F3;color:#DB2777;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:#111110;margin-bottom:4px;line-height:1.2;">Aide à la commande</p>
+            <p style="font-size:13px;color:#111110;line-height:1.55;">Suggestions basées sur la demande réelle de votre zone.</p>
+          </div>
+        </a>
+
+        <a href="#features" class="mega-item" style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+          <div style="width:44px;height:44px;min-width:44px;border-radius:12px;background:#D1FAE5;color:#059669;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:#111110;margin-bottom:4px;line-height:1.2;">Gestion RFID</p>
+            <p style="font-size:13px;color:#111110;line-height:1.55;">Inventaire automatisé pour les officines équipées (Option Pro).</p>
+          </div>
+        </a>
+
+        <a href="#features" class="mega-item" style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;text-decoration:none;">
+          <div style="width:44px;height:44px;min-width:44px;border-radius:12px;background:#E0F2FE;color:#0284C7;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 1.037-.443 48.282 48.282 0 0 0 5.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:#111110;margin-bottom:4px;line-height:1.2;">Parapharmacie</p>
+            <p style="font-size:13px;color:#111110;line-height:1.55;">Visibilité marques, 10 % de commission sur les ventes générées.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Mobile overlay -->
 <div id="mobileOverlay" class="mob-overlay"></div>
 
 <!-- Mobile drawer -->
-<div id="mobileMenu" class="mob-menu fixed inset-y-0 right-0 z-[60] w-[300px] bg-white flex flex-col shadow-2xl">
-  <!-- Drawer header -->
-  <div class="flex items-center justify-between px-6 py-5 border-b border-[#e3e2e0]">
+<div id="mobileMenu" class="mob-menu fixed inset-y-0 right-0 z-[210] w-[300px] bg-white flex flex-col shadow-2xl">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-[#ebebeb]">
     <img src="/mainsou.png" alt="Mainsou" class="h-8">
-    <button id="closeMenu" class="p-2 text-[#6b6b6b] hover:text-[#1a1a1a] hover:bg-[#f5f5f3] rounded-xl transition-colors">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    <button id="closeMenu" style="background:none;border:none;cursor:pointer;padding:8px;color:#6b6b6b;border-radius:8px;">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
-  <!-- Drawer links -->
-  <div class="flex-1 overflow-y-auto px-4 py-4">
-    <a href="#how" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
-      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-      Comment ça marche
+  <div class="flex-1 overflow-y-auto px-4 py-5">
+    <p style="font-size:11px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.07em;padding:0 12px;margin-bottom:8px;">À propos</p>
+    <a href="#how" class="mob-link nav-link flex items-center gap-3 px-3 py-3 rounded-xl" style="text-decoration:none;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#FEF3E2;color:#D97706;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126Z"/></svg>
+      </div>
+      <span style="font-size:15px;font-weight:600;color:#111110;">Le problème</span>
     </a>
-    <a href="#apps" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
-      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5z"/></svg>
-      Écosystème
+    <a href="#apps" class="mob-link nav-link flex items-center gap-3 px-3 py-3 rounded-xl" style="text-decoration:none;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#D1FAE5;color:#059669;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+      </div>
+      <span style="font-size:15px;font-weight:600;color:#111110;">Notre positionnement</span>
     </a>
-    <a href="#features" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
-      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-      Fonctionnalités
+    <a href="#vision" class="mob-link nav-link flex items-center gap-3 px-3 py-3 rounded-xl" style="text-decoration:none;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#EDE9FE;color:#7C3AED;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+      </div>
+      <span style="font-size:15px;font-weight:600;color:#111110;">Notre vision</span>
     </a>
-    <a href="#pricing" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
-      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75"/></svg>
-      Tarifs
+    <div style="height:1px;background:#EBEBEB;margin:12px 0;"></div>
+    <a href="#features" class="mob-link nav-link flex items-center gap-3 px-3 py-3 rounded-xl" style="text-decoration:none;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#F3F4F6;color:#6B7280;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+      </div>
+      <span style="font-size:15px;font-weight:600;color:#111110;">Fonctionnalités</span>
     </a>
-    <a href="#faq" class="nav-link flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors">
-      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
-      FAQ
+    <a href="#pricing" class="mob-link nav-link flex items-center gap-3 px-3 py-3 rounded-xl" style="text-decoration:none;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#F3F4F6;color:#6B7280;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75"/></svg>
+      </div>
+      <span style="font-size:15px;font-weight:600;color:#111110;">Tarifs</span>
     </a>
-    <div class="my-3 mx-4 h-px bg-[#e3e2e0]"></div>
-    <button onclick="openAuth();cl();" class="flex items-center gap-3.5 text-[16px] font-medium text-[#1a1a1a] px-4 py-3.5 rounded-xl hover:bg-[#f5f5f3] transition-colors w-full text-left">
-      <svg class="w-5 h-5 text-[#9c9c9c]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
-      Se connecter
-    </button>
+    <a href="#faq" class="mob-link nav-link flex items-center gap-3 px-3 py-3 rounded-xl" style="text-decoration:none;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#F3F4F6;color:#6B7280;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
+      </div>
+      <span style="font-size:15px;font-weight:600;color:#111110;">FAQ</span>
+    </a>
   </div>
-  <!-- Drawer footer -->
-  <div class="px-4 pb-6 pt-2">
-    <button onclick="openAuthForDownload();cl();" class="flex items-center justify-center gap-2 w-full text-[15px] font-semibold text-white bg-[#2a7a35] hover:bg-[#349640] rounded-xl px-4 py-3.5 transition-colors">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-      Télécharger l'APK
+  <div style="padding:16px;border-top:1px solid #EBEBEB;display:flex;flex-direction:column;gap:10px;">
+    <button onclick="openAuth();cl();" style="width:100%;padding:13px 20px;border-radius:12px;border:1px solid #E5E7EB;background:#fff;font-size:15px;font-weight:600;color:#111110;cursor:pointer;font-family:inherit;">Se connecter</button>
+    <button onclick="openAuthForDownload();cl();" style="width:100%;padding:13px 20px;border-radius:12px;border:none;background:#2a7a35;font-size:15px;font-weight:700;color:#fff;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+      Télécharger
     </button>
   </div>
 </div>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    var nav = document.getElementById('mainNav');
-    var hero = document.querySelector('.hero-section');
-    function updateNav() {
-      var heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 0;
-      if (window.scrollY > heroBottom - nav.offsetHeight) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    }
-    updateNav();
-    window.addEventListener('scroll', updateNav);
+document.addEventListener('DOMContentLoaded', function () {
+  var nav      = document.getElementById('mainNav');
+  var panel    = document.getElementById('megaPanel');
+  var inner    = document.getElementById('megaInner');
+  var dropdown = document.getElementById('navDropdown');
+  var btn      = document.getElementById('navDropBtn');
+  var chevron  = document.getElementById('navChevron');
+
+  // Scroll
+  function updateNav() {
+    nav.classList.toggle('scrolled', window.scrollY > 0);
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+
+  // Mega panel
+  var leaveTimer = null;
+  var isOpen = false;
+
+  function setPanelTop() {
+    if (inner) inner.style.paddingTop = nav.offsetHeight + 'px';
+  }
+
+  function openPanel() {
+    clearTimeout(leaveTimer);
+    if (isOpen) return;
+    isOpen = true;
+    setPanelTop();
+    nav.classList.add('panel-open');
+    btn.style.color = '#2a7a35';
+    if (chevron) chevron.style.transform = 'rotate(180deg)';
+    btn.setAttribute('aria-expanded', 'true');
+    panel.style.visibility    = 'visible';
+    panel.style.pointerEvents = 'auto';
+    panel.style.transition    = 'opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1), visibility 0s';
+    panel.offsetHeight; // force reflow
+    panel.style.opacity   = '1';
+    panel.style.transform = 'translateY(0)';
+  }
+
+  function closePanel() {
+    if (!isOpen) return;
+    isOpen = false;
+    nav.classList.remove('panel-open');
+    btn.style.color = '';
+    if (chevron) chevron.style.transform = '';
+    btn.setAttribute('aria-expanded', 'false');
+    panel.style.transition = 'opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s';
+    panel.style.opacity    = '0';
+    panel.style.transform  = 'translateY(-6px)';
+    leaveTimer = setTimeout(function () {
+      panel.style.visibility    = 'hidden';
+      panel.style.pointerEvents = 'none';
+    }, 180);
+  }
+
+  if (dropdown && panel) {
+    dropdown.addEventListener('mouseenter', openPanel);
+    dropdown.addEventListener('mouseleave', function () { leaveTimer = setTimeout(closePanel, 90); });
+    panel.addEventListener('mouseenter', function () { clearTimeout(leaveTimer); if (!isOpen) openPanel(); });
+    panel.addEventListener('mouseleave', function () { leaveTimer = setTimeout(closePanel, 90); });
+    document.addEventListener('click', function (e) {
+      if (isOpen && !dropdown.contains(e.target) && !panel.contains(e.target)) closePanel();
+    });
+    window.addEventListener('resize', function () { if (isOpen) setPanelTop(); });
+  }
+
+  // Mega item hover
+  document.querySelectorAll('.mega-item').forEach(function (el) {
+    el.addEventListener('mouseenter', function () { this.style.background = '#F8FAFC'; });
+    el.addEventListener('mouseleave', function () { this.style.background = ''; });
   });
+
+  // Mobile
+  var m = document.getElementById('mobileMenu');
+  var o = document.getElementById('mobileOverlay');
+  function cl() {
+    if (m) m.classList.remove('open');
+    if (o) o.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.cl = cl;
+  var menuBtn   = document.getElementById('menuBtn');
+  var closeMenu = document.getElementById('closeMenu');
+  if (m && o && menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      m.classList.add('open'); o.classList.add('open'); document.body.style.overflow = 'hidden';
+    });
+    if (closeMenu) closeMenu.addEventListener('click', cl);
+    o.addEventListener('click', cl);
+    m.querySelectorAll('a.mob-link').forEach(function (l) { l.addEventListener('click', cl); });
+  }
+});
 </script>
 
 <style>
-  .nav-tabs-container {
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.04);
-    backdrop-filter: blur(8px);
-    border: 1px solid transparent;
-    padding: 4px;
-    transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  /* ── Base nav bar ── */
+  .nav-bar {
+    font-family: var(--font-heading);
+    height: 76px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  :global(.nav-bar:not(.scrolled)) .nav-tabs-container {
-    background: linear-gradient(90deg, rgba(135,206,250,0.1) 0%, rgba(100,180,255,0.2) 30%, rgba(255,255,255,0.08) 50%, rgba(135,206,250,0.25) 70%, rgba(173,216,230,0.1) 100%);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    border-color: rgba(135,206,250,0.2);
+  .nav-bar.scrolled {
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(0,0,0,0.07);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
   }
-  .nav-tab {
-    position: relative;
-    font-size: 15px;
+  .nav-bar.panel-open {
+    background: rgba(255,255,255,0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* ── Nav links ── */
+  .nav-link {
+    font-size: 18px;
     font-weight: 700;
-    color: #1a1a1a;
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: color 0.4s ease, background 0.4s ease;
+    letter-spacing: -0.025em;
+    color: rgba(255,255,255,0.92);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 6px 2px;
+    transition: color 0.15s;
     white-space: nowrap;
   }
-  :global(.nav-bar:not(.scrolled)) .nav-tab {
-    color: #ffffff;
-    font-weight: 700;
-  }
-  .nav-tab:hover {
-    color: #000;
-    background: rgba(255, 255, 255, 0.6);
-  }
-  :global(.nav-bar:not(.scrolled)) .nav-tab:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.12);
-  }
-  :global(.nav-bar:not(.scrolled)) .nav-login {
-    color: #ffffff !important;
-  }
-  :global(.nav-bar:not(.scrolled)) .nav-login:hover {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.12);
-  }
-  :global(.nav-bar:not(.scrolled)) .nav-hamburger {
-    color: #ffffff;
-  }
-  .nav-link.active.nav-tab {
-    color: #ffffff;
-    font-weight: 700;
-    background: linear-gradient(160deg, #1a2230 0%, #212a3a 30%, #262f40 55%, #1c2534 100%);
-    box-shadow: 0 2px 8px rgba(26, 34, 48, 0.3);
-    transition: background 0.4s ease, box-shadow 0.4s ease;
-  }
-  :global(.nav-bar:not(.scrolled)) .nav-link.active.nav-tab {
-    background: #2a7a35;
-    box-shadow: 0 2px 8px rgba(42, 122, 53, 0.4);
-  }
+  .nav-link:hover { color: #ffffff; }
+
+  .nav-bar.scrolled .nav-link,
+  .nav-bar.panel-open .nav-link { color: #0f0f0f; }
+  .nav-bar.scrolled .nav-link:hover,
+  .nav-bar.panel-open .nav-link:hover { color: #000000; }
+
+  /* ── Login / CTA ── */
+  .nav-login { color: rgba(255,255,255,0.9) !important; }
+  .nav-login:hover { color: #ffffff !important; background: rgba(255,255,255,0.1) !important; }
+  .nav-cta:hover { background: #349640 !important; box-shadow: 0 0 0 3px rgba(42,122,53,0.2); }
+
+  .nav-bar.scrolled .nav-login,
+  .nav-bar.panel-open .nav-login { color: #0f0f0f !important; }
+  .nav-bar.scrolled .nav-login:hover,
+  .nav-bar.panel-open .nav-login:hover { color: #000000 !important; background: #F3F4F6 !important; }
+
+  /* ── Mobile ── */
+  .nav-hamburger svg { stroke: rgba(255,255,255,0.9); transition: stroke 0.2s; }
+  .nav-bar.scrolled .nav-hamburger svg,
+  .nav-bar.panel-open .nav-hamburger svg { stroke: #374151; }
+  .mob-link:hover { background: #F8FAFC; }
 </style>
