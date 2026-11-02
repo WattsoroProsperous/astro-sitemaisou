@@ -2,9 +2,9 @@ import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 
 const steps = [
-  { num: '01', title: 'Cherchez', desc: "Entrez le nom du médicament et trouvez les pharmacies proches qui l'ont en stock, au prix officiel.", color: '#e67a2e', bg: 'rgba(230,122,46,0.1)' },
-  { num: '02', title: 'Réservez et payez', desc: "Choisissez votre pharmacie et payez par Mobile Money. L'argent va directement à la pharmacie.", color: '#00bfa6', bg: 'rgba(0,191,166,0.1)' },
-  { num: '03', title: 'Retirez au comptoir', desc: "La pharmacie prépare votre commande. Pour un médicament sur ordonnance, présentez l'original au pharmacien. En cas de refus, vous êtes remboursé.", color: '#2a7a35', bg: 'rgba(42,122,53,0.1)' },
+  { num: '01', title: 'Cherchez', desc: "Entrez le nom de votre médicament. Votre demande est envoyée aux pharmacies partenaires situées dans votre zone.", color: '#e67a2e', bg: 'rgba(230,122,46,0.1)' },
+  { num: '02', title: 'La pharmacie confirme', desc: "Le pharmacien vérifie son stock et confirme : disponibilité, prix et délai de validité — 10 à 30 minutes pour vous rendre sur place.", color: '#00bfa6', bg: 'rgba(0,191,166,0.1)' },
+  { num: '03', title: 'Rendez-vous', desc: "Vous savez exactement où aller. Si le délai expire avant votre arrivée, Mainsou vous en informe pour une nouvelle vérification.", color: '#2a7a35', bg: 'rgba(42,122,53,0.1)' },
 ];
 
 const spring = { type: 'spring' as const, duration: 0.5, bounce: 0.1 };

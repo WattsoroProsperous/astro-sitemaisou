@@ -15,7 +15,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <div id="navDropdown" class="relative">
         <button id="navDropBtn" class="nav-link inline-flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false">
           Mainsou
-          <svg id="navChevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transition:transform 0.2s ease;flex-shrink:0;">
+          <svg id="navChevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transition:transform 200ms var(--ease-out);flex-shrink:0;">
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
           </svg>
         </button>
@@ -26,10 +26,10 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
 
     <!-- CTA desktop -->
     <div class="hidden md:flex items-center gap-4 shrink-0">
-      <button onclick="openAuth()" class="nav-login" style="font-size:17px;font-weight:600;letter-spacing:-0.02em;padding:9px 16px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;background:none;transition:background 0.15s,color 0.15s;">
+      <button onclick="openAuth()" class="nav-login" style="font-size:17px;font-weight:600;letter-spacing:-0.02em;padding:9px 16px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;background:none;">
         Se connecter
       </button>
-      <button onclick="openAuthForDownload()" class="nav-cta" style="display:inline-flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-0.02em;padding:11px 22px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;background:#2a7a35;color:#ffffff;transition:background 0.15s,box-shadow 0.15s;">
+      <button onclick="openAuthForDownload()" class="nav-cta" style="display:inline-flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-0.02em;padding:11px 22px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;background:#2a7a35;color:#ffffff;">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
         Télécharger
       </button>
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.style.color = '';
     if (chevron) chevron.style.transform = '';
     btn.setAttribute('aria-expanded', 'false');
-    panel.style.transition = 'opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s';
+    panel.style.transition = 'opacity 0.18s cubic-bezier(0.23,1,0.32,1), transform 0.18s cubic-bezier(0.23,1,0.32,1), visibility 0s linear 0.18s';
     panel.style.opacity    = '0';
     panel.style.transform  = 'translateY(-6px)';
     leaveTimer = setTimeout(function () {
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
     height: 76px;
     background: transparent;
     border-bottom: 1px solid transparent;
-    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 250ms var(--ease-out), border-color 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
   }
   .nav-bar.scrolled {
     background: rgba(255,255,255,0.96);
@@ -343,10 +343,12 @@ document.addEventListener('DOMContentLoaded', function () {
     cursor: pointer;
     font-family: inherit;
     padding: 6px 2px;
-    transition: color 0.15s;
+    transition: color 150ms var(--ease-out);
     white-space: nowrap;
   }
-  .nav-link:hover { color: #ffffff; }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover { color: #ffffff; }
+  }
 
   .nav-bar.scrolled .nav-link,
   .nav-bar.panel-open .nav-link { color: #0f0f0f; }
@@ -354,9 +356,18 @@ document.addEventListener('DOMContentLoaded', function () {
   .nav-bar.panel-open .nav-link:hover { color: #000000; }
 
   /* ── Login / CTA ── */
-  .nav-login { color: rgba(255,255,255,0.9) !important; }
-  .nav-login:hover { color: #ffffff !important; background: rgba(255,255,255,0.1) !important; }
-  .nav-cta:hover { background: #349640 !important; box-shadow: 0 0 0 3px rgba(42,122,53,0.2); }
+  .nav-login {
+    color: rgba(255,255,255,0.9) !important;
+    transition: background-color 150ms var(--ease-out), color 150ms var(--ease-out);
+  }
+  .nav-cta {
+    transition: background-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .nav-cta:active { transform: scale(0.97); }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-login:hover { color: #ffffff !important; background: rgba(255,255,255,0.1) !important; }
+    .nav-cta:hover { background: #349640 !important; box-shadow: 0 0 0 3px rgba(42,122,53,0.2); }
+  }
 
   .nav-bar.scrolled .nav-login,
   .nav-bar.panel-open .nav-login { color: #0f0f0f !important; }
@@ -364,8 +375,14 @@ document.addEventListener('DOMContentLoaded', function () {
   .nav-bar.panel-open .nav-login:hover { color: #000000 !important; background: #F3F4F6 !important; }
 
   /* ── Mobile ── */
-  .nav-hamburger svg { stroke: rgba(255,255,255,0.9); transition: stroke 0.2s; }
+  .nav-hamburger svg { stroke: rgba(255,255,255,0.9); transition: stroke 200ms var(--ease-out); }
   .nav-bar.scrolled .nav-hamburger svg,
   .nav-bar.panel-open .nav-hamburger svg { stroke: #374151; }
-  .mob-link:hover { background: #F8FAFC; }
+  .mob-link { transition: background-color 150ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .mob-link:hover { background: #F8FAFC; }
+  }
+
+  /* ── Mega items ── */
+  .mega-item { transition: background-color 150ms var(--ease-out); border-radius: 14px; }
 </style>
