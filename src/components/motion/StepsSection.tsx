@@ -3,7 +3,7 @@ import { useRef } from 'react';
 
 const steps = [
   { num: '01', title: 'Cherchez', desc: "Entrez le nom de votre médicament. Votre demande est envoyée aux pharmacies partenaires situées dans votre zone.", color: '#e67a2e', bg: 'rgba(230,122,46,0.1)' },
-  { num: '02', title: 'La pharmacie confirme', desc: "Le pharmacien vérifie son stock et confirme : disponibilité, prix et délai de validité — 10 à 30 minutes pour vous rendre sur place.", color: '#00bfa6', bg: 'rgba(0,191,166,0.1)' },
+  { num: '02', title: 'La pharmacie confirme', desc: "Le pharmacien vérifie son stock et confirme : disponibilité, prix et délai de validité. Comptez 10 à 30 minutes pour vous rendre sur place.", color: '#00bfa6', bg: 'rgba(0,191,166,0.1)' },
   { num: '03', title: 'Rendez-vous', desc: "Vous savez exactement où aller. Si le délai expire avant votre arrivée, Mainsou vous en informe pour une nouvelle vérification.", color: '#2a7a35', bg: 'rgba(42,122,53,0.1)' },
 ];
 

@@ -93,7 +93,6 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         <div style="font-size:12px;color:#6b7280;margin-top:3px;">à Abidjan (HTA, diabète…)</div>
       </div>
     </div>
-    <p style="text-align:center;font-size:11px;color:#9ca3af;margin-top:24px;letter-spacing:0.02em;">Enquête terrain · 50 patients interrogés à la sortie du CHU de Treichville · Pilote : 10 pharmacies, 24 patients</p>
   </div>
 </section>
 <style>
@@ -110,7 +109,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
           Comment ça marche
         </div>
         <TextEffect client:visible as="h2" className="heading-section" per="word" preset="blur">Trois étapes. Zéro friction.</TextEffect>
-        <p class="body-large" style="margin-top:16px;max-width:640px;">50 patients interrogés à la sortie du CHU de Treichville : en moyenne, ils visitent trois pharmacies avant de trouver leur médicament, et dépensent plus de 300 francs de transport. Le médicament est souvent disponible — le patient ne sait simplement pas où le trouver.</p>
+        <p class="body-large" style="margin-top:16px;max-width:640px;">50 patients interrogés à la sortie du CHU de Treichville : en moyenne, ils visitent trois pharmacies avant de trouver leur médicament, et dépensent plus de 300 francs de transport. Le médicament est souvent disponible. Le patient ne sait simplement pas où le trouver.</p>
       </div>
     </FadeIn>
     <StepsSection client:visible />
@@ -317,7 +316,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
               'Demandes patients dans votre zone',
               'Données de demande locale',
               "Réseau d'entraide entre officines",
-              'Validation manuelle — aucun logiciel requis',
+              'Validation manuelle, aucun logiciel requis',
               'Mesure des résultats avant abonnement',
             ].map(f => (
               <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:500;color:#111110;line-height:1.4;">
@@ -624,7 +623,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
           <div class="faq-answer" data-answer="2">
             <h4 class="faq-answer-title">Coût pour le patient</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>50 FCFA par recherche aboutie — seulement si une pharmacie confirme la disponibilité. Si aucune ne confirme, la recherche est gratuite.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>50 FCFA par recherche aboutie, seulement si une pharmacie confirme la disponibilité. Si aucune ne confirme, la recherche est gratuite.</span></div>
               <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>En évitant deux ou trois déplacements inutiles, vous économisez bien plus que 50 FCFA en transport.</span></div>
               <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Mainsou ne touche ni au prix ni à la marge du médicament. Aucune commission cachée sur le médicament lui-même.</span></div>
             </div>
@@ -632,7 +631,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
           <div class="faq-answer" data-answer="3">
             <h4 class="faq-answer-title">Qui reçoit l'argent ?</h4>
             <div class="faq-answer-items">
-              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Les 50 FCFA de recherche vont à Mainsou. Le patient paie le médicament directement au comptoir, à la pharmacie — Mainsou n'est pas intermédiaire sur ce paiement.</span></div>
+              <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Les 50 FCFA de recherche vont à Mainsou. Le patient paie le médicament directement au comptoir, à la pharmacie. Mainsou n'est pas intermédiaire sur ce paiement.</span></div>
               <div class="faq-item"><div class="faq-check"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></div><span>Notre revenu vient des frais de recherche (50 FCFA), de l'abonnement mensuel des pharmacies partenaires (5 000 FCFA/mois) et des commissions sur la parapharmacie (10%).</span></div>
             </div>
           </div>
