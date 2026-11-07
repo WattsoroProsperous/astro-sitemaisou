@@ -1,6 +1,7 @@
 {
   "trailingSlash": true,
   "rewrites": [
+    { "source": "/pharmacie/:path*", "destination": "https://pharmaweb-wine.vercel.app/pharmacie/:path*" },
     { "source": "/pharma/:path*", "destination": "/pharma/index.html" },
     { "source": "/doctor/:path*", "destination": "/doctor/index.html" }
   ]

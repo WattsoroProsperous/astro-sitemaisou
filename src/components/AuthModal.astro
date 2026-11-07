@@ -2,7 +2,7 @@
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
-const locatorPharmaUrl = import.meta.env.PUBLIC_LOCATOR_PHARMA_URL || 'https://pharmaweb-wine.vercel.app';
+const locatorPharmaUrl = '/pharmacie';
 ---
 <a id="apk-dl" href={apkUrl} download style="display:none;position:absolute;pointer-events:none;"></a>
 <div id="supabaseConfig" data-url={supabaseUrl} data-key={supabaseKey} class="hidden"></div>
