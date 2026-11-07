@@ -1,0 +1,7 @@
+:HL["/pharmacie/_next/static/chunks/2mnfjyzzt85zc.css","style"]
+5:[["children",{"s":"__PAGE__","h":160}]]
+4:[["children",{"s":{"n":"id","t":"d","k":"_","s":[]},"h":100,"c":"$Q5"}]]
+3:[["children",{"s":"pharmacies","h":108,"c":"$Q4"}]]
+2:[["children",{"s":"admin","h":104,"c":"$Q3"}]]
+1:[["children",{"s":"(admin)","h":104,"c":"$Q2"}]]
+0:{"b":"AlgaKtpkyuBDtrDO9v0HD","t":{"t":{"s":"","h":88,"c":"$Q1"}}}
