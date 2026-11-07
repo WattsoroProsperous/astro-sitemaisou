@@ -2,6 +2,7 @@
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
 const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
+const locatorPharmaUrl = import.meta.env.PUBLIC_LOCATOR_PHARMA_URL || 'https://pharmaweb-wine.vercel.app';
 ---
 <a id="apk-dl" href={apkUrl} download style="display:none;position:absolute;pointer-events:none;"></a>
 <div id="supabaseConfig" data-url={supabaseUrl} data-key={supabaseKey} class="hidden"></div>
@@ -31,7 +32,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <div style="display:flex;flex-direction:column;gap:8px;">
 
         <!-- Patient -->
-        <button onclick="selectProfile('client')" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;cursor:pointer;text-align:left;width:100%;transition:background-color 150ms var(--ease-out),border-color 150ms var(--ease-out),transform 150ms var(--ease-out);font-family:inherit;" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(42,122,53,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='scale(1)'" onmouseleave="this.style.transform='scale(1)'">
+        <button onclick="selectProfile()" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;cursor:pointer;text-align:left;width:100%;transition:background-color 150ms var(--ease-out),border-color 150ms var(--ease-out),transform 150ms var(--ease-out);font-family:inherit;" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(42,122,53,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='scale(1)'" onmouseleave="this.style.transform='scale(1)'">
           <div style="width:48px;height:48px;border-radius:12px;background:#f0faf1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="22" height="22" fill="none" stroke="#2a7a35" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
           </div>
@@ -43,13 +44,13 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
         </button>
 
         <!-- Pharmacien -->
-        <a href="/pharma/" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;text-decoration:none;transition:background-color 150ms var(--ease-out),border-color 150ms var(--ease-out);" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(0,137,122,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'">
+        <a href={locatorPharmaUrl} style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid #E5E7EB;background:#fff;text-decoration:none;transition:background-color 150ms var(--ease-out),border-color 150ms var(--ease-out);" onmouseover="this.style.background='#F9FAFB';this.style.borderColor='rgba(0,137,122,0.4)'" onmouseout="this.style.background='#fff';this.style.borderColor='#E5E7EB'">
           <div style="width:48px;height:48px;border-radius:12px;background:#f0faf9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="22" height="22" fill="none" stroke="#00897a" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
           </div>
           <div style="flex:1;min-width:0;">
             <p style="font-size:15px;font-weight:700;color:#111110;margin:0 0 3px;">Pharmacien</p>
-            <p style="font-size:13px;color:#111110;margin:0;">Gérez votre stock et vos commandes</p>
+            <p style="font-size:13px;color:#111110;margin:0;">Tableau de bord · Réseau Locator</p>
           </div>
           <svg width="16" height="16" fill="none" stroke="#C4C4C0" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
         </a>
@@ -91,13 +92,13 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       <!-- Title -->
       <div style="margin-bottom:20px;">
         <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#111110;letter-spacing:-0.03em;margin:0 0 4px;">Créer votre compte</h2>
-        <p style="font-size:13px;color:#111110;margin:0;">Téléchargez ensuite l'app pour vous connecter.</p>
+        <p style="font-size:13px;color:#111110;margin:0;">Accédez au réseau pharmaceutique Mainsou Locator.</p>
       </div>
 
       <!-- Info banner -->
       <div style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:#f0faf1;border:1px solid #c8e6c9;border-radius:10px;margin-bottom:20px;">
         <svg width="14" height="14" fill="none" stroke="#2a7a35" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px;"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
-        <p style="font-size:12px;font-weight:500;color:#2a7a35;line-height:1.55;margin:0;">Créez votre compte ici, puis téléchargez l'application Mainsou pour vous connecter.</p>
+        <p style="font-size:12px;font-weight:500;color:#2a7a35;line-height:1.55;margin:0;">Trouvez en moins d'une minute quelle pharmacie proche a votre médicament — puis téléchargez l'app pour vous connecter.</p>
       </div>
 
       <!-- Form -->
@@ -113,24 +114,14 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
             onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
         </div>
 
-        <!-- Email + Téléphone -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div>
-            <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Email</label>
-            <input type="email" id="mobileSignupEmail" required
-              style="width:100%;padding:0 12px;height:40px;font-size:13px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:border-color 150ms var(--ease-out),background-color 150ms var(--ease-out),box-shadow 150ms var(--ease-out);box-sizing:border-box;font-family:inherit;"
-              placeholder="email@domaine.com"
-              onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
-              onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
-          </div>
-          <div>
-            <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Téléphone</label>
-            <input type="tel" id="mobileSignupPhone" required pattern="[0-9]{9,15}" title="9 à 15 chiffres"
-              style="width:100%;padding:0 12px;height:40px;font-size:13px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:border-color 150ms var(--ease-out),background-color 150ms var(--ease-out),box-shadow 150ms var(--ease-out);box-sizing:border-box;font-family:inherit;"
-              placeholder="0701020304"
-              onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
-              onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
-          </div>
+        <!-- Email -->
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:#111110;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Email</label>
+          <input type="email" id="mobileSignupEmail" required
+            style="width:100%;padding:0 12px;height:40px;font-size:14px;border:1px solid #E5E7EB;border-radius:10px;background:#F9FAFB;color:#111110;outline:none;transition:border-color 150ms var(--ease-out),background-color 150ms var(--ease-out),box-shadow 150ms var(--ease-out);box-sizing:border-box;font-family:inherit;"
+            placeholder="email@domaine.com"
+            onfocus="this.style.background='#fff';this.style.borderColor='#111110';"
+            onblur="this.style.background='#F9FAFB';this.style.borderColor='#E5E7EB';">
         </div>
 
         <!-- Mot de passe + Confirmer -->
@@ -187,7 +178,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   var _cfg=document.getElementById('supabaseConfig');
   var SUPABASE_URL=_cfg.dataset.url;
   var SUPABASE_KEY=_cfg.dataset.key;
-  var sb=null, selectedRole='';
+  var sb=null;
   function getSb(){if(!sb)sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);return sb;}
 
   function openAuth(){
@@ -201,7 +192,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
   function openAuthForDownload(){
     window._pendingApkDownload = true;
     openAuth();
-    selectProfile('client');
+    selectProfile();
   }
   function closeAuth(){
     var dialog=document.getElementById('authDialog');
@@ -221,8 +212,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     document.getElementById('formMobileSignup').classList.remove('hidden');
   }
 
-  function selectProfile(role){
-    selectedRole=role;
+  function selectProfile(){
     document.getElementById('stepProfile').classList.add('hidden');
     document.getElementById('stepMobile').classList.remove('hidden');
   }
@@ -235,8 +225,6 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
     var pw2=document.getElementById('mobileSignupConfirm').value;
     if(pw.length<6){showError('mobileSignupError','Le mot de passe doit contenir au moins 6 caractères');return;}
     if(pw!==pw2){showError('mobileSignupError','Les mots de passe ne correspondent pas');return;}
-    var phone=document.getElementById('mobileSignupPhone').value.replace(/\s/g,'');
-    if(!/^[0-9]{9,15}$/.test(phone)){showError('mobileSignupError','Numéro de téléphone invalide');return;}
     var btn=document.getElementById('mobileSignupBtn');
     btn.disabled=true;btn.textContent='Chargement...';
     document.getElementById('mobileSignupError').classList.add('hidden');
@@ -245,7 +233,7 @@ const apkUrl = import.meta.env.PUBLIC_APK_URL || '/mainsou.apk';
       var res=await getSb().auth.signUp({
         email:email,
         password:pw,
-        options:{data:{full_name:document.getElementById('mobileSignupName').value.trim(),phone:phone,role:selectedRole}}
+        options:{data:{full_name:document.getElementById('mobileSignupName').value.trim()}}
       });
       if(res.error)throw res.error;
       if(res.data&&res.data.user&&res.data.user.identities&&res.data.user.identities.length===0){

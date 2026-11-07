@@ -12,6 +12,13 @@ const { title } = Astro.props;
   <meta name="description" content="Mainsou digitalise le parcours de soin en Afrique. De l'ordonnance à la livraison de médicaments à domicile.">
   <link rel="icon" type="image/png" href="/favicon.png">
   <script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+        regs.forEach(function(r) { r.unregister(); });
+      });
+    }
+  </script>
 </head>
 <body class="bg-surface text-[#111110]">
   <slot />
