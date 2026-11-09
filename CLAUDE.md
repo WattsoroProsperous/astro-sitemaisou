@@ -15,7 +15,38 @@ Déployé sur **Vercel**. Ce repo sert de point d'entrée unique en attendant un
 
 ---
 
-## 2. Lien avec le projet source
+## 2. Architecture de Déploiement — OBLIGATOIRE À COMPRENDRE
+
+```
+astro-site/ (SOURCE ET DÉPLOIEMENT — ce repo = github.com/WattsoroProsperous/astro-sitemaisou)
+    │
+    └── git push → Vercel auto-build → mainsou.com
+```
+
+**Ce repo `astro-sitemaisou` est connecté directement à Vercel. Pas de copie manuelle, pas de repo intermédiaire.**
+
+**Règles absolues :**
+- Déployer = `git push` depuis `astro-site/` — c'est tout
+- NE JAMAIS copier dans `mainsou_webSite/` — ce repo appartient au projet "Plan You Operation" et pointe sur `mainsou-esn.com`
+- NE JAMAIS mettre l'APK dans `public/` — trop lourd pour git (75MB)
+- L'APK est sur GitHub Release : `astro-sitemaisou/releases/download/v1.0.0/app-release.apk`
+- `locator/pharma_web` (Next.js SSR) est sur un projet Vercel séparé : `pharmaweb-wine.vercel.app`
+
+⚠️  **PIÈGE — mainsou_webSite ≠ mainsou.com :**
+`C:\Users\KARTA\Desktop\mainsou_webSite` → repo `mainsou_webSite` → `mainsou-esn.com` → Projet "Plan You Operation"
+Ne JAMAIS y copier de contenu Mainsou.
+
+**Variables d'environnement Vercel (projet astro-sitemaisou) :**
+```
+PUBLIC_SUPABASE_URL=https://pdipksjhxtbvwfiejxle.supabase.co
+PUBLIC_SUPABASE_KEY=eyJhbGci...  (anon key)
+PUBLIC_APK_URL=https://github.com/WattsoroProsperous/astro-sitemaisou/releases/download/v1.0.0/app-release.apk
+PUBLIC_LOCATOR_PHARMA_URL=https://pharmaweb-wine.vercel.app
+```
+
+---
+
+## 2b. Lien avec le projet source
 
 Le code source des applications Flutter se trouve dans :
 ```
@@ -69,20 +100,44 @@ rm -rf "C:\Users\KARTA\Desktop\astro-site\public\doctor"
 cp -r "C:\Users\KARTA\Desktop\perigrin falcon\dev it\mainsou app\doctor_app\build\web" "C:\Users\KARTA\Desktop\astro-site\public\doctor"
 ```
 
-### 3.5 Mettre à jour l'APK Mainsou
-```bash
-cd "C:\Users\KARTA\Desktop\perigrin falcon\dev it\mainsou app\Mainsou"
-flutter build apk --release
-cp "build\app\outputs\flutter-apk\app-release.apk" "C:\Users\KARTA\Desktop\astro-site\public\mainsou.apk"
+### 3.5 Mettre à jour l'APK
+
+L'APK est hébergé sur **GitHub Release** — PAS dans le repo git.
+
+```
+Release : github.com/WattsoroProsperous/astro-sitemaisou/releases/tag/v1.0.0
+Asset   : app-release.apk
+App     : locator/patient (Flutter dual-rôle patient + pharmacien locator)
 ```
 
-### 3.6 Déployer
-```bash
+**Pour mettre à jour :**
+1. Builder : `flutter build apk --release` dans `locator/patient/`
+2. Aller sur le release GitHub → supprimer l'ancien asset → uploader le nouveau
+3. L'URL `PUBLIC_APK_URL` reste inchangée
+
+**INTERDIT** : Copier le `.apk` dans `public/` — 75MB dépasse les limites git.
+
+### 3.6 Déployer sur mainsou.com
+
+Le repo `astro-site` est **directement connecté à Vercel** (`github.com/WattsoroProsperous/astro-sitemaisou`). Un `git push` suffit — pas de copie manuelle.
+
+```powershell
 cd "C:\Users\KARTA\Desktop\astro-site"
 git add -A
-git commit -m "Update Flutter web builds + APK"
-git push  # Vercel auto-deploy
+git commit -m "Update site"
+git push  # → Vercel reconstruit et déploie sur mainsou.com
 ```
+
+### 3.7 Déployer locator/pharma_web (espace pharmacien)
+
+App Next.js SSR — projet Vercel séparé (ne peut PAS être embarqué dans public/).
+
+```powershell
+cd "C:\Users\KARTA\Desktop\perigrin falcon\dev it\mainsou app\locator\pharma_web"
+vercel --prod
+```
+
+URL production : `https://pharmaweb-wine.vercel.app`
 
 ---
 
@@ -119,7 +174,7 @@ astro-site/
 │   │       ├── StaggerContainer.tsx
 │   │       └── StaggerItem.tsx
 │   ├── layouts/
-│   │   └── Layout.astro         ← Layout principal (fonts, meta, supabase)
+│   │   └── Layout.astro         ← Layout principal (fonts, meta, supabase, désinscription SW Flutter)
 │   └── styles/
 │       └── global.css           ← Tailwind v4 + design tokens + composants CSS
 ├── public/
@@ -142,8 +197,11 @@ astro-site/
 ```
 PUBLIC_SUPABASE_URL=https://pdipksjhxtbvwfiejxle.supabase.co
 PUBLIC_SUPABASE_KEY=eyJhbGciOiJIUzI1NiIs...  (anon key)
-PUBLIC_APK_URL=/mainsou.apk
+PUBLIC_APK_URL=https://github.com/WattsoroProsperous/astro-sitemaisou/releases/download/v1.0.0/app-release.apk
+PUBLIC_LOCATOR_PHARMA_URL=https://pharmaweb-wine.vercel.app
 ```
+
+Les variables sont baked à la compilation (Astro static) — elles doivent aussi être définies dans le dashboard Vercel du projet `astro-sitemaisou`.
 
 ### 5.2 Vercel rewrites (vercel.json)
 Les apps Flutter sont des SPA — toutes les sous-routes doivent pointer vers leur `index.html` :
