@@ -1,4 +1,4 @@
 :HL["/pharmacie/_next/static/chunks/18-nkhi2twa8b.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"WaAro1gjJdRIwmq2EnuiN","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"UXoZHoOWD9t5Kb9Hkh_sK","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
