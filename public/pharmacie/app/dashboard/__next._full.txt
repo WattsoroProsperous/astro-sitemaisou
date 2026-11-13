@@ -1,51 +1,50 @@
 1:"$Sreact.fragment"
-2:"/pharmacie/_next/static/chunks/0umf92h1sb77c.js"
-3:"/pharmacie/_next/static/chunks/02caezj-zf6lt.js"
-4:I[59253,["$2","$3"],"ThemeInit"]
-5:I[39756,["$2","$3"],"default"]
-6:I[37457,["$2","$3"],"default"]
-8:"ClientSegmentRoot"
-9:I[92825,["$2","$3"],"$8"]
-a:"/pharmacie/_next/static/chunks/121q2qrw58zs3.js"
-b:"/pharmacie/_next/static/chunks/3_19v-381jj7f.js"
-c:I[38845,["$2","$3","$a","$b"],"default"]
-11:"LoadingBoundaryProvider"
-12:I[39756,["$2","$3"],"$11"]
-21:"ViewportBoundary"
-22:I[97367,["$2","$3"],"$21"]
-24:"MetadataBoundary"
-25:I[97367,["$2","$3"],"$24"]
-26:"$Sreact.suspense"
-28:I[68027,["$2","$3"],"default",1]
-:HL["/pharmacie/_next/static/chunks/18-nkhi2twa8b.css","style"]
-f:X
-1f:[["children",{"s":"__PAGE__","h":512,"d":{"r":"$L20","p":false,"v":null}}]]
-10:[["children",{"s":"dashboard","h":516,"d":{"r":["$","$L12",null,{"loading":[["$","div","l",{"style":{"maxWidth":"1120px","margin":"0 auto"},"children":[["$","div",null,{"style":{"padding":"20px 28px","background":"linear-gradient(135deg, var(--brand) 0%, var(--brand-mid) 100%)","borderBottom":"1px solid rgba(22,163,74,0.15)"},"children":["$","div",null,{"style":{"display":"flex","alignItems":"flex-start","justifyContent":"space-between","gap":"16px"},"children":[["$","div",null,{"children":[["$","div",null,{"style":{"width":"60px","height":"8px","borderRadius":"4px","background":"rgba(255,255,255,0.12)","marginBottom":"10px"}}],["$","div",null,{"style":{"width":"220px","height":"20px","borderRadius":"6px","background":"rgba(255,255,255,0.15)","marginBottom":"8px"}}],["$","div",null,{"style":{"width":"280px","height":"12px","borderRadius":"4px","background":"rgba(255,255,255,0.10)"}}]]}],["$","div",null,{"style":{"width":"140px","height":"36px","borderRadius":"8px","background":"rgba(255,255,255,0.12)","flexShrink":0}}]]}]}],["$","div",null,{"style":{"padding":"28px 32px"},"children":[["$","div",null,{"style":{"display":"grid","gridTemplateColumns":"repeat(4, 1fr)","gap":"12px","marginBottom":"20px"},"children":[["$","div","0",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}],"$L13","$L14","$L15"]}],"$L16",["$L17","$L18","$L19","$L1a","$L1b","$L1c"],"$L1d"]}]]}],[],null],"children":"$L1e"}],"p":false,"v":"$f"},"c":"$Q1f"}]]
-e:[["children",{"s":"app","h":520,"d":{"r":["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$f"},"c":"$Q10"}]]
-7:[["children",{"s":"(pharmacy)","h":520,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/pharmacie/_next/static/chunks/121q2qrw58zs3.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/pharmacie/_next/static/chunks/3_19v-381jj7f.js","async":true,"nonce":"$undefined"}]],["$","$L9",null,{"Component":"$c","slots":{"children":["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"serverProvidedParams":{"params":{},"promises":["$@d"]}}]]}],"p":false,"v":null},"c":"$Qe"}]]
-0:{"P":null,"c":["","app","dashboard",""],"q":"","i":false,"t":{"t":{"s":"","h":536,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/pharmacie/_next/static/chunks/18-nkhi2twa8b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/pharmacie/_next/static/chunks/0umf92h1sb77c.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/pharmacie/_next/static/chunks/02caezj-zf6lt.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"fr","className":"h-full","suppressHydrationWarning":true,"children":["$","body",null,{"className":"h-full","children":[["$","$L4",null,{}],["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],"p":false,"v":null},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$L22",null,{"children":"$L23"}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":"$L27"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$28",[["$","link","0",{"rel":"stylesheet","href":"/pharmacie/_next/static/chunks/18-nkhi2twa8b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Jt0p2h29cIBG_8m-uNAEY"}
-29:I[47257,["$2","$3"],"ClientPageRoot"]
-2a:"/pharmacie/_next/static/chunks/31kr0dj1-j0ox.js"
-2b:I[63093,["$2","$3","$a","$b","$2a"],"default"]
-2e:I[97367,["$2","$3"],"OutletBoundary"]
-f:C
-13:["$","div","1",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}]
-14:["$","div","2",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}]
-15:["$","div","3",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}]
-16:["$","div",null,{"className":"skeleton","style":{"height":"36px","borderRadius":"8px 8px 0 0"}}]
-17:["$","div","0",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
-18:["$","div","1",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
-19:["$","div","2",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
-1a:["$","div","3",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
-1b:["$","div","4",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
-1c:["$","div","5",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
-1d:["$","div",null,{"className":"skeleton","style":{"height":"52px","marginTop":"1px","borderRadius":"0 0 8px 8px"}}]
-1e:["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
-20:["$","$1","c",{"children":[["$","$L29",null,{"Component":"$2b","serverProvidedParams":{"searchParams":{},"params":"$7:0:1:d:r:props:children:1:props:serverProvidedParams:params","promises":["$@2c","$@2d"]}}],[["$","script","script-0",{"src":"/pharmacie/_next/static/chunks/31kr0dj1-j0ox.js","async":true,"nonce":"$undefined"}]],["$","$L2e",null,{"children":["$","$26",null,{"name":"Next.MetadataOutlet","children":"$@2f"}]}]]}]
-d:"$7:0:1:d:r:props:children:1:props:serverProvidedParams:params"
-2c:{}
-2d:"$7:0:1:d:r:props:children:1:props:serverProvidedParams:params"
-23:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-30:I[27201,["$2","$3"],"IconMark"]
-27:[["$","title","0",{"children":"Mainsou Locator"}],["$","meta","1",{"name":"description","content":"Espace pharmacien — Réseau Mainsou Locator"}],["$","link","2",{"rel":"icon","href":"/logo.png"}],["$","link","3",{"rel":"apple-touch-icon","href":"/logo.png"}],["$","$L30","4",{}]]
-2f:null
+2:"/pharmacie/_next/static/chunks/336ti3byz3j0s.js"
+3:I[59253,["$2"],"ThemeInit"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+7:"ClientSegmentRoot"
+8:I[92825,["$2"],"$7"]
+9:"/pharmacie/_next/static/chunks/1h3l2se8_5rz9.js"
+a:"/pharmacie/_next/static/chunks/3_19v-381jj7f.js"
+b:I[38845,["$2","$9","$a"],"default"]
+10:"LoadingBoundaryProvider"
+11:I[39756,["$2"],"$10"]
+1f:"ViewportBoundary"
+20:I[97367,["$2"],"$1f"]
+22:"MetadataBoundary"
+23:I[97367,["$2"],"$22"]
+24:"$Sreact.suspense"
+26:I[68027,["$2"],"default",1]
+:HL["/pharmacie/_next/static/chunks/2z0ww0zoz6w9m.css","style"]
+e:X
+1d:[["children",{"s":"__PAGE__","h":512,"d":{"r":"$L1e","p":false,"v":null}}]]
+f:[["children",{"s":"dashboard","h":516,"d":{"r":["$","$L11",null,{"loading":[["$","div","l",{"style":{"maxWidth":"1120px","margin":"0 auto"},"children":[["$","div",null,{"style":{"padding":"20px 28px","background":"linear-gradient(135deg, var(--brand) 0%, var(--brand-mid) 100%)","borderBottom":"1px solid rgba(22,163,74,0.15)"},"children":["$","div",null,{"style":{"display":"flex","alignItems":"flex-start","justifyContent":"space-between","gap":"16px"},"children":[["$","div",null,{"children":[["$","div",null,{"style":{"width":"60px","height":"8px","borderRadius":"4px","background":"rgba(255,255,255,0.12)","marginBottom":"10px"}}],["$","div",null,{"style":{"width":"220px","height":"20px","borderRadius":"6px","background":"rgba(255,255,255,0.15)","marginBottom":"8px"}}],["$","div",null,{"style":{"width":"280px","height":"12px","borderRadius":"4px","background":"rgba(255,255,255,0.10)"}}]]}],["$","div",null,{"style":{"width":"140px","height":"36px","borderRadius":"8px","background":"rgba(255,255,255,0.12)","flexShrink":0}}]]}]}],["$","div",null,{"style":{"padding":"28px 32px"},"children":[["$","div",null,{"style":{"display":"grid","gridTemplateColumns":"repeat(4, 1fr)","gap":"12px","marginBottom":"20px"},"children":[["$","div","0",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}],["$","div","1",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}],"$L12","$L13"]}],"$L14",["$L15","$L16","$L17","$L18","$L19","$L1a"],"$L1b"]}]]}],[],null],"children":"$L1c"}],"p":false,"v":"$e"},"c":"$Q1d"}]]
+d:[["children",{"s":"app","h":520,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$e"},"c":"$Qf"}]]
+6:[["children",{"s":"(pharmacy)","h":520,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/pharmacie/_next/static/chunks/1h3l2se8_5rz9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/pharmacie/_next/static/chunks/3_19v-381jj7f.js","async":true,"nonce":"$undefined"}]],["$","$L8",null,{"Component":"$b","slots":{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"serverProvidedParams":{"params":{},"promises":["$@c"]}}]]}],"p":false,"v":null},"c":"$Qd"}]]
+0:{"P":null,"c":["","app","dashboard",""],"q":"","i":false,"t":{"t":{"s":"","h":536,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/pharmacie/_next/static/chunks/2z0ww0zoz6w9m.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/pharmacie/_next/static/chunks/336ti3byz3j0s.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"fr","className":"h-full","suppressHydrationWarning":true,"children":["$","body",null,{"className":"h-full","children":[["$","$L3",null,{}],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],"p":false,"v":null},"c":"$Q6"},"h":{"r":["$","$1","h",{"children":[null,["$","$L20",null,{"children":"$L21"}],["$","$L23",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$24",null,{"name":"Next.Metadata","children":"$L25"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$26",[["$","link","0",{"rel":"stylesheet","href":"/pharmacie/_next/static/chunks/2z0ww0zoz6w9m.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"FAOEpFLD1jNSTQbjCmYVE"}
+27:I[47257,["$2"],"ClientPageRoot"]
+28:"/pharmacie/_next/static/chunks/3h-joj8a9tsu8.js"
+29:"/pharmacie/_next/static/chunks/3a6sb1t6entf5.js"
+2a:I[63093,["$2","$9","$a","$28","$29"],"default"]
+2d:I[97367,["$2"],"OutletBoundary"]
+e:C
+12:["$","div","2",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}]
+13:["$","div","3",{"className":"skeleton","style":{"height":"96px","borderRadius":"8px"}}]
+14:["$","div",null,{"className":"skeleton","style":{"height":"36px","borderRadius":"8px 8px 0 0"}}]
+15:["$","div","0",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
+16:["$","div","1",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
+17:["$","div","2",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
+18:["$","div","3",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
+19:["$","div","4",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
+1a:["$","div","5",{"className":"skeleton","style":{"height":"52px","marginTop":"1px"}}]
+1b:["$","div",null,{"className":"skeleton","style":{"height":"52px","marginTop":"1px","borderRadius":"0 0 8px 8px"}}]
+1c:["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+1e:["$","$1","c",{"children":[["$","$L27",null,{"Component":"$2a","serverProvidedParams":{"searchParams":{},"params":"$6:0:1:d:r:props:children:1:props:serverProvidedParams:params","promises":["$@2b","$@2c"]}}],[["$","script","script-0",{"src":"/pharmacie/_next/static/chunks/3h-joj8a9tsu8.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/pharmacie/_next/static/chunks/3a6sb1t6entf5.js","async":true,"nonce":"$undefined"}]],["$","$L2d",null,{"children":["$","$24",null,{"name":"Next.MetadataOutlet","children":"$@2e"}]}]]}]
+c:"$6:0:1:d:r:props:children:1:props:serverProvidedParams:params"
+2b:{}
+2c:"$6:0:1:d:r:props:children:1:props:serverProvidedParams:params"
+21:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2f:I[27201,["$2"],"IconMark"]
+25:[["$","title","0",{"children":"Mainsou Locator"}],["$","meta","1",{"name":"description","content":"Espace pharmacien — Réseau Mainsou Locator"}],["$","link","2",{"rel":"icon","href":"/logo.png"}],["$","link","3",{"rel":"apple-touch-icon","href":"/logo.png"}],["$","$L2f","4",{}]]
+2e:null

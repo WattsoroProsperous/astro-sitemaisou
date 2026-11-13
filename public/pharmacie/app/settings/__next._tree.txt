@@ -1,6 +1,6 @@
-:HL["/pharmacie/_next/static/chunks/18-nkhi2twa8b.css","style"]
+:HL["/pharmacie/_next/static/chunks/2z0ww0zoz6w9m.css","style"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":"settings","h":96,"c":"$Q4"}]]
 2:[["children",{"s":"app","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(pharmacy)","h":96,"c":"$Q2"}]]
-0:{"b":"Jt0p2h29cIBG_8m-uNAEY","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"FAOEpFLD1jNSTQbjCmYVE","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
